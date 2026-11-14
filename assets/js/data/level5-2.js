@@ -756,6 +756,5 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       { file: "assets/files/level5/office-data-capstone.xlsx", label: "Office data capstone workbook", note: "Exercise and Solution sheets \u2014 the linked Sunrise Traders system with October closed and November open" }
     ],
     keywords: ["office system", "linked sheets", "reconciliation checklist", "month-end close", "sheet protection", "capstone", "data management"]
-  },
-  ""
+  }
 );
