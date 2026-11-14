@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full Curriculum — Excel Lab</title>
+  <meta name="description" content="Browse every Excel Lab lesson: 7 levels from Excel fundamentals to Power Query, dashboards and VBA projects.">
+  <script>(function(){try{var t=localStorage.getItem("ellab.theme");if(!t){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark")document.documentElement.classList.add("dark")}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230d9488'/%3E%3Crect x='5' y='5' width='6' height='6' rx='1' fill='white'/%3E%3Crect x='13' y='5' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='5' y='13' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='13' y='13' width='6' height='6' rx='1' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>
+        Excel&nbsp;Lab
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="lessons.html">Course</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reference.html">Reference</a>
+        <a href="docs.html">Guides</a>
+      </nav>
+      <form class="header-search" id="headerSearchForm" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="Search lessons…" aria-label="Search lessons">
+      </form>
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <div class="page-head">
+        <h1>The complete curriculum</h1>
+        <p>Seven levels, from your very first cell to complete office systems. Work through them in order — each level builds on everything before it.</p>
+      </div>
+
+      <div class="catalog-toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="catalogSearch" placeholder="Search lessons — try “VLOOKUP”, “payroll”, “pivot”, “macros”…" aria-label="Search lessons">
+        </div>
+        <span class="search-results-count" id="resultsCount" aria-live="polite"></span>
+      </div>
+
+      <div id="catalog" aria-live="polite"></div>
+      <div class="empty-state hidden" id="noResults">
+        <h2>No lessons match your search</h2>
+        <p>Try a shorter or different keyword — for example “formula”, “chart”, “data” or “project”.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none">
+        <span>Excel Lab — free and open source.</span>
+        <span><a href="docs.html">Learning guides</a> · <a href="reference.html">Formula reference</a> · <a href="dashboard.html#files">All practice files</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/data/level1-1.js"></script>
+  <script src="assets/js/data/level1-2.js"></script>
+  <script src="assets/js/data/level2-1.js"></script>
+  <script src="assets/js/data/level2-2.js"></script>
+  <script src="assets/js/data/level3-1.js"></script>
+  <script src="assets/js/data/level3-2.js"></script>
+  <script src="assets/js/data/level4-1.js"></script>
+  <script src="assets/js/data/level4-2.js"></script>
+  <script src="assets/js/data/level5-1.js"></script>
+  <script src="assets/js/data/level5-2.js"></script>
+  <script src="assets/js/data/level6-1.js"></script>
+  <script src="assets/js/data/level6-2.js"></script>
+  <script src="assets/js/data/level7-1.js"></script>
+  <script src="assets/js/data/level7-2.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var catalog = document.getElementById("catalog");
+      var searchInput = document.getElementById("catalogSearch");
+      var countEl = document.getElementById("resultsCount");
+      var noResults = document.getElementById("noResults");
+
+      function lessonCard(l) {
+        var el = document.createElement("article");
+        el.className = "card card-hover lesson-card";
+        var badges = '<div class="top"><div class="meta">' + diffBadge(l.difficulty)
+          + (l.version ? '<span class="badge badge-version">' + escHtml(l.version) + "</span>" : "") + "</div>";
+        if (isDone(l.id)) badges += '<span class="checkmark" title="Completed"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';
+        badges += "</div>";
+        el.innerHTML = badges
+          + '<h3><a href="lesson.html?id=' + l.id + '">' + escHtml(l.title) + "</a></h3>"
+          + '<div class="meta"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>≈ '
+          + durationMin(l) + " min</span>"
+          + (l.exercises && l.exercises.length ? '<span class="chip">' + l.exercises.length + " exercises</span>" : "")
+          + (l.downloads && l.downloads.length ? '<span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>workbook</span>' : "")
+          + "</div>";
+        return el;
+      }
+
+      function injectIcon(el, name) {
+        var put = function () { if (el && !el.firstChild) el.innerHTML = icon(name); };
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", put);
+        else put();
+      }
+
+      function build(filter) {
+        var q = (filter || "").trim().toLowerCase();
+        catalog.innerHTML = "";
+        var shown = 0;
+        Object.keys(window.LEVEL_META).map(Number).sort(function (a, b) { return a - b; }).forEach(function (n) {
+          var m = window.LEVEL_META[n];
+          var lessons = (window.LEVEL_LESSONS[n] || []).filter(function (l) {
+            if (!q) return true;
+            var hay = [l.title, l.intro, (l.objectives || []).join(" "), (l.summary || []).join(" "), (l.keywords || []).join(" "), l.difficulty].join(" ").toLowerCase();
+            return q.split(/\s+/).every(function (w) { return hay.indexOf(w) !== -1; });
+          });
+          if (!lessons.length) return;
+          shown += lessons.length;
+          var done = lessons.filter(function (l) { return isDone(l.id); }).length;
+
+          var block = document.createElement("section");
+          block.className = "level-block";
+          block.id = "level-" + n;
+          var head = '<div class="level-block-head">'
+            + '<div class="icon" data-icon="' + (m.icon || "book") + '"></div>'
+            + "<div><h2>" + escHtml(m.title) + '</h2><div class="sub">' + escHtml(m.subtitle) + "</div></div>"
+            + '<div class="progress"><span>' + (done ? done + "/" : "") + lessons.length + " lessons</span>"
+            + '<span class="mini-track" aria-hidden="true"><i style="width:' + Math.round(done / lessons.length * 100) + '%"></i></span></div></div>';
+          block.innerHTML = head;
+          injectIcon(block.querySelector(".icon"), m.icon || "book");
+          var gridWrap = document.createElement("div");
+          gridWrap.className = "lesson-grid";
+          lessons.forEach(function (l) { gridWrap.appendChild(lessonCard(l)); });
+          block.appendChild(gridWrap);
+          catalog.appendChild(block);
+        });
+        countEl.textContent = shown === (window.LESSON_TOTAL || shown) ? shown + " lessons" : shown + " of " + allLessons().length + " lessons shown";
+        noResults.classList.toggle("hidden", shown > 0);
+      }
+
+      window.LESSON_TOTAL = allLessons().length;
+
+      var q = qParam("q");
+      if (q) searchInput.value = q;
+      build(q);
+      var t = null;
+      searchInput.addEventListener("input", function () {
+        clearTimeout(t);
+        t = setTimeout(function () { build(searchInput.value); }, 150);
+      });
+      searchInput.focus();
+      // if URL has a level hash, scroll to it
+      if (location.hash) {
+        setTimeout(function () {
+          var target = document.querySelector(location.hash);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+      document.addEventListener("el:progress", function () { build(searchInput.value); });
+    })();
+  </script>
+</body>
+</html>

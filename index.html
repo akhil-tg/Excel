@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Excel Lab — Learn Microsoft Excel from Zero to Professional</title>
+  <meta name="description" content="A complete, free Excel learning platform: 7 levels, 76 lessons, real practice workbooks and office projects. From your first cell to Power Query, dashboards and VBA.">
+  <script>(function(){try{var t=localStorage.getItem("ellab.theme");if(!t){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark")document.documentElement.classList.add("dark")}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230d9488'/%3E%3Crect x='5' y='5' width='6' height='6' rx='1' fill='white'/%3E%3Crect x='13' y='5' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='5' y='13' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='13' y='13' width='6' height='6' rx='1' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>
+        Excel&nbsp;Lab
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="lessons.html">Course</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reference.html">Reference</a>
+        <a href="docs.html">Guides</a>
+      </nav>
+      <form class="header-search" id="headerSearchForm" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="Search lessons…" aria-label="Search lessons">
+      </form>
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <noscript><div class="container" style="padding:20px 24px"><strong>JavaScript is disabled.</strong> Excel Lab renders lessons with JavaScript — please enable it to use the course.</div></noscript>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h1>Learn Microsoft Excel <span class="accent">from zero to professional</span></h1>
+          <p class="lead">Excel Lab is a complete, hands-on Excel course. Follow 7 structured levels, practise in real downloadable workbooks, take quizzes, and build the office systems — payroll, inventory, invoices, dashboards — that businesses actually run on.</p>
+          <div class="hero-cta">
+            <a class="btn btn-accent btn-lg" href="lesson.html?id=l1-what-is-excel" id="heroStart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              Start learning free
+            </a>
+            <a class="btn btn-outline btn-lg" href="lessons.html">
+              Browse the full curriculum
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="hero-meta">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Beginner to advanced</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Real Excel practice files</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Quizzes with answers</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Progress tracking</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="kpi-row">
+            <div class="kpi-card"><div class="num" id="statLessons">—</div><div class="lbl">Structured lessons</div></div>
+            <div class="kpi-card"><div class="num" id="statFiles">—</div><div class="lbl">Practice workbooks</div></div>
+            <div class="kpi-card"><div class="num" id="statProjects">10</div><div class="lbl">Office projects</div></div>
+          </div>
+          <div class="hero-card">
+            <div class="xlsheet">
+              <div class="xlsheet-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9.5 12 5 5"/><path d="m14.5 12-5 5"/></svg>sales-summary.xlsx — what you will learn to build</div>
+              <table>
+                <thead><tr><th class="rowhead"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
+                <tbody>
+                  <tr><th class="rowhead">1</th><td class="headcell">Region</td><td class="headcell">Target</td><td class="headcell">Actual</td><td class="headcell">Status</td></tr>
+                  <tr><th class="rowhead">2</th><td>North</td><td class="num">500,000</td><td class="num">612,400</td><td class="formula">=IF(C2&gt;=B2,"On track","Behind")</td></tr>
+                  <tr><th class="rowhead">3</th><td>South</td><td class="num">450,000</td><td class="num">388,200</td><td class="formula">=IF(C3&gt;=B3,"On track","Behind")</td></tr>
+                  <tr><th class="rowhead">4</th><td class="formula">=SUM(A2:A3)</td><td class="num formula">=SUM(B2:B3)</td><td class="num formula">=SUM(C2:C3)</td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats band -->
+    <div class="stats-band">
+      <div class="container">
+        <div class="stat"><div class="num">7</div><div class="lbl">Progressive levels</div></div>
+        <div class="stat"><div class="num" id="statQuizzes">—</div><div class="lbl">Interactive quizzes</div></div>
+        <div class="stat"><div class="num" id="statExercises">—</div><div class="lbl">Practice exercises</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Free and open</div></div>
+      </div>
+    </div>
+
+    <!-- Levels -->
+    <section class="section" id="levels">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">The curriculum</div>
+          <h2>Seven levels, one clear path</h2>
+          <p>Every level builds on the last. Start at Level 1 even if you have never opened Excel — by Level 7 you will be building complete business systems.</p>
+        </div>
+        <div class="levels-grid" id="levelsGrid"><!-- populated by JS --></div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <div class="steps-band">
+      <div class="container steps-grid">
+        <div class="step"><h3><span class="n">1</span> Read a lesson</h3><p>Short explanations with real examples, screenshots-style sheet views and formula boxes — written for absolute beginners.</p></div>
+        <div class="step"><h3><span class="n">2</span> Download a workbook</h3><p>Every topic comes with a real .xlsx file: an Exercise sheet for you and a Solution sheet to compare against.</p></div>
+        <div class="step"><h3><span class="n">3</span> Practise and quiz</h3><p>Solve realistic office tasks, then check yourself with an interactive quiz — answers include explanations.</p></div>
+        <div class="step"><h3><span class="n">4</span> Build projects</h3><p>Finish with 10 complete systems: attendance, payroll, inventory, invoicing and full dashboards for your portfolio.</p></div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Why Excel Lab</div>
+          <h2>Built like a real academy</h2>
+          <p>Not a list of tips — a structured course designed around how adults actually learn software.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="card feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h3>Truly from zero</h3><p>No assumption of prior knowledge. Every concept is explained, then applied, then practised.</p></div>
+          <div class="card feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></div><h3>Real workbooks, not screenshots</h3><p>Download genuine .xlsx files with live formulas, realistic business data and worked solutions.</p></div>
+          <div class="card feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></div><h3>Office-first examples</h3><p>Payroll, attendance, stock, invoices, budgets — the spreadsheets offices use every single day.</p></div>
+          <div class="card feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3>Quizzes that teach</h3><p>Every question explains why the answer is right, so wrong turns become learning.</p></div>
+          <div class="card feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/></svg></div><h3>Visible progress</h3><p>Track completed lessons, quiz scores and level progress on your personal dashboard — stored in your browser.</p></div>
+          <div class="card feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div><h3>Light and dark mode</h3><p>Comfortable reading day or night, on phone or desktop. Keyboard friendly and screen-reader accessible.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>Your first formula is 15 minutes away</h2>
+            <p>Open Lesson 1, download the practice workbook, and start building the skill offices pay for. No sign-up, no cost, no ads.</p>
+          </div>
+          <a class="btn btn-accent btn-lg" href="lesson.html?id=l1-what-is-excel">
+            Start Lesson 1 now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>Excel&nbsp;Lab</a>
+          <p style="margin-top:12px">A complete, free Microsoft Excel course with real practice workbooks — from your first cell to Power Query, dashboards and VBA.</p>
+        </div>
+        <div>
+          <h4>Learn</h4>
+          <ul>
+            <li><a href="lessons.html">Full curriculum</a></li>
+            <li><a href="dashboard.html">My dashboard</a></li>
+            <li><a href="reference.html">Formula reference</a></li>
+            <li><a href="docs.html">Guides and FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Levels</h4>
+          <ul id="footerLevels">
+            <li><a href="lessons.html#level-1">1 · Excel Fundamentals</a></li>
+            <li><a href="lessons.html#level-2">2 · Formulas and Functions</a></li>
+            <li><a href="lessons.html#level-3">3 · Data Management</a></li>
+            <li><a href="lessons.html#level-4">4 · Data Analysis</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>More levels</h4>
+          <ul>
+            <li><a href="lessons.html#level-5">5 · Office Applications</a></li>
+            <li><a href="lessons.html#level-6">6 · Advanced Excel</a></li>
+            <li><a href="lessons.html#level-7">7 · Practical Projects</a></li>
+            <li><a href="dashboard.html#files">All practice files</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Excel Lab — free and open source. Practice workbooks generated with openpyxl.</span>
+        <span>No sign-up · No ads · Works offline once loaded</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/data/level1-1.js"></script>
+  <script src="assets/js/data/level1-2.js"></script>
+  <script src="assets/js/data/level2-1.js"></script>
+  <script src="assets/js/data/level2-2.js"></script>
+  <script src="assets/js/data/level3-1.js"></script>
+  <script src="assets/js/data/level3-2.js"></script>
+  <script src="assets/js/data/level4-1.js"></script>
+  <script src="assets/js/data/level4-2.js"></script>
+  <script src="assets/js/data/level5-1.js"></script>
+  <script src="assets/js/data/level5-2.js"></script>
+  <script src="assets/js/data/level6-1.js"></script>
+  <script src="assets/js/data/level6-2.js"></script>
+  <script src="assets/js/data/level7-1.js"></script>
+  <script src="assets/js/data/level7-2.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var all = allLessons();
+      document.getElementById("statLessons").textContent = all.length;
+      document.getElementById("statQuizzes").textContent = all.filter(function (l) { return l.quiz && l.quiz.length; }).length;
+      document.getElementById("statExercises").textContent = all.reduce(function (n, l) { return n + (l.exercises ? l.exercises.length : 0); }, 0);
+      var files = {}; all.forEach(function (l) { (l.downloads || []).forEach(function (d) { files[d.file] = 1; }); });
+      document.getElementById("statFiles").textContent = Object.keys(files).length;
+
+      // levels grid
+      var grid = document.getElementById("levelsGrid");
+      var done = getCompleted();
+      Object.keys(window.LEVEL_META).map(Number).sort(function (a, b) { return a - b; }).forEach(function (n) {
+        var m = window.LEVEL_META[n];
+        var lessons = window.LEVEL_LESSONS[n] || [];
+        var dn = lessons.filter(function (l) { return done.indexOf(l.id) !== -1; }).length;
+        var mins = lessons.reduce(function (s, l) { return s + durationMin(l); }, 0);
+        var el = document.createElement("a");
+        el.className = "card card-hover level-card";
+        el.href = "lessons.html#level-" + n;
+        el.innerHTML =
+          '<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-icon></svg></div>'
+          + '<div style="display:flex;gap:8px;flex-wrap:wrap"><span class="badge badge-level">Level ' + n + "</span>" + diffBadge(m.difficulty) + "</div>"
+          + "<h3>" + escHtml(m.title) + "</h3><p>" + escHtml(m.description) + "</p>"
+          + '<div class="foot"><span>' + lessons.length + " lessons · ~" + mins + " min</span>"
+          + (dn ? '<span style="color:var(--green-600)">' + dn + " done</span>" : "") + "</div>";
+        // swap in the right icon via the sprite after it loads
+        document.addEventListener("DOMContentLoaded", function () {
+          el.querySelector("[data-icon]").outerHTML = icon(m.icon || "book");
+        });
+        grid.appendChild(el);
+      });
+
+      // hero start button: continue where left off
+      var next = all.find(function (l) { return !isDone(l.id); });
+      if (next) document.getElementById("heroStart").href = "lesson.html?id=" + next.id;
+    })();
+  </script>
+</body>
+</html>

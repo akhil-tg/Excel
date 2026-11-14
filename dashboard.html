@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Dashboard — Excel Lab</title>
+  <meta name="description" content="Track your Excel learning progress: completed lessons, level progress, quiz scores and your personal practice file library.">
+  <script>(function(){try{var t=localStorage.getItem("ellab.theme");if(!t){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark")document.documentElement.classList.add("dark")}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230d9488'/%3E%3Crect x='5' y='5' width='6' height='6' rx='1' fill='white'/%3E%3Crect x='13' y='5' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='5' y='13' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='13' y='13' width='6' height='6' rx='1' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>
+        Excel&nbsp;Lab
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="lessons.html">Course</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reference.html">Reference</a>
+        <a href="docs.html">Guides</a>
+      </nav>
+      <form class="header-search" id="headerSearchForm" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="Search lessons…" aria-label="Search lessons">
+      </form>
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <div class="page-head">
+        <h1>My dashboard</h1>
+        <p>Your personal learning tracker. Progress and quiz scores are saved in this browser — no account needed.</p>
+      </div>
+
+      <div class="dash-grid">
+        <div class="ring-card card" aria-label="Overall progress">
+          <h3 style="font-size:.85rem;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3)">Overall progress</h3>
+          <div class="ring-wrap">
+            <svg width="190" height="190" viewBox="0 0 190 190" aria-hidden="true">
+              <circle class="ring-bg" cx="95" cy="95" r="80" fill="none" stroke-width="14"></circle>
+              <circle class="ring-val" id="ringVal" cx="95" cy="95" r="80" fill="none" stroke-width="14" stroke-linecap="round" stroke-dasharray="502.65" stroke-dashoffset="502.65"></circle>
+            </svg>
+            <div class="ring-center">
+              <div><div class="pct" id="ringPct">0%</div><div class="sub" id="ringSub">0 of 0 lessons</div></div>
+            </div>
+          </div>
+          <div class="dash-stats">
+            <div class="dash-stat"><div class="num" id="stDone">0</div><div class="lbl">Lessons done</div></div>
+            <div class="dash-stat"><div class="num" id="stQuizAvg">—</div><div class="lbl">Quiz average</div></div>
+            <div class="dash-stat"><div class="num" id="stLevels">0/7</div><div class="lbl">Levels finished</div></div>
+          </div>
+        </div>
+
+        <div class="dash-main">
+          <div class="next-lesson card" id="nextLesson">
+            <div class="icon" data-icon="play"></div>
+            <div class="body">
+              <div class="kicker">Up next for you</div>
+              <h3 id="nextTitle">—</h3>
+              <div class="meta" id="nextMeta"></div>
+            </div>
+            <a class="btn btn-primary" id="nextBtn" href="lessons.html">Continue learning</a>
+          </div>
+
+          <div class="level-progress-list card" id="levelProgress" aria-label="Level progress">
+            <h3 style="margin:0 0 18px;font-size:1.05rem">Progress by level</h3>
+            <div id="levelBars"></div>
+          </div>
+
+          <div class="quiz-summary card" id="quizSummaryCard">
+            <h3 style="margin:0 0 12px;font-size:1.05rem">Quiz results</h3>
+            <div id="quizSummary"><p style="color:var(--text-3);margin:0">Take a quiz in any lesson — your scores will appear here.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section" id="files" style="padding-top:24px">
+        <div class="section-head">
+          <div class="kicker">Resources</div>
+          <h2>Practice file library</h2>
+          <p>Every downloadable Excel workbook in the course, in one place. Files with a Solution sheet include worked answers.</p>
+        </div>
+        <div class="download-list" id="fileLibrary" style="max-width:820px"></div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="container" style="padding:0">
+          <div class="cta-band" style="max-width:960px">
+            <div>
+              <h2>Keep the momentum going</h2>
+              <p>Your next lesson is waiting — most take about 15 minutes plus practice time.</p>
+            </div>
+            <a class="btn btn-accent btn-lg" id="ctaNext" href="lessons.html">Go to my next lesson</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none">
+        <span>Excel Lab — free and open source.</span>
+        <span>Progress is stored locally in your browser. Clearing site data resets it.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/data/level1-1.js"></script>
+  <script src="assets/js/data/level1-2.js"></script>
+  <script src="assets/js/data/level2-1.js"></script>
+  <script src="assets/js/data/level2-2.js"></script>
+  <script src="assets/js/data/level3-1.js"></script>
+  <script src="assets/js/data/level3-2.js"></script>
+  <script src="assets/js/data/level4-1.js"></script>
+  <script src="assets/js/data/level4-2.js"></script>
+  <script src="assets/js/data/level5-1.js"></script>
+  <script src="assets/js/data/level5-2.js"></script>
+  <script src="assets/js/data/level6-1.js"></script>
+  <script src="assets/js/data/level6-2.js"></script>
+  <script src="assets/js/data/level7-1.js"></script>
+  <script src="assets/js/data/level7-2.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var C = 2 * Math.PI * 80; // ring circumference
+
+      function injectIcon(el, name) {
+        var put = function () { if (el && !el.firstChild) el.innerHTML = icon(name); };
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", put);
+        else put();
+      }
+
+      function render() {
+        var all = allLessons();
+        var done = getCompleted();
+        var doneCount = all.filter(function (l) { return done.indexOf(l.id) !== -1; }).length;
+        var pct = all.length ? Math.round(doneCount / all.length * 100) : 0;
+
+        document.getElementById("ringPct").textContent = pct + "%";
+        document.getElementById("ringSub").textContent = doneCount + " of " + all.length + " lessons";
+        document.getElementById("ringVal").style.strokeDashoffset = String(C * (1 - pct / 100));
+        document.getElementById("stDone").textContent = doneCount;
+
+        // levels finished
+        var levelsDone = 0;
+        Object.keys(window.LEVEL_META).map(Number).forEach(function (n) {
+          var ls = window.LEVEL_LESSONS[n] || [];
+          if (ls.length && ls.every(function (l) { return done.indexOf(l.id) !== -1; })) levelsDone++;
+        });
+        document.getElementById("stLevels").textContent = levelsDone + "/7";
+
+        // quiz average
+        var q = Store.get("quiz", {}) || {};
+        var scores = Object.keys(q).map(function (k) { return q[k]; });
+        if (scores.length) {
+          var tot = scores.reduce(function (s, x) { return s + x.score; }, 0);
+          var all2 = scores.reduce(function (s, x) { return s + x.total; }, 0);
+          document.getElementById("stQuizAvg").textContent = all2 ? Math.round(tot / all2 * 100) + "%" : "—";
+        } else {
+          document.getElementById("stQuizAvg").textContent = "—";
+        }
+
+        // next lesson
+        var next = all.find(function (l) { return done.indexOf(l.id) === -1; });
+        if (next) {
+          var lv = levelOf(next.id);
+          document.getElementById("nextTitle").textContent = next.title;
+          document.getElementById("nextMeta").innerHTML =
+            "Level " + lv + " · " + escHtml((window.LEVEL_META[lv] || {}).title || "") + " · ≈" + durationMin(next) + " min · " + next.difficulty;
+          document.getElementById("nextBtn").href = "lesson.html?id=" + next.id;
+          document.getElementById("nextBtn").textContent = "Continue learning";
+          document.getElementById("ctaNext").href = "lesson.html?id=" + next.id;
+          document.getElementById("ctaNext").textContent = "Go to my next lesson";
+        } else {
+          document.getElementById("nextTitle").textContent = "All lessons completed — congratulations!";
+          document.getElementById("nextMeta").textContent = "Revisit any lesson or replay quizzes to keep skills sharp.";
+          document.getElementById("nextBtn").href = "lessons.html";
+          document.getElementById("nextBtn").textContent = "Review lessons";
+          document.getElementById("ctaNext").textContent = "Review the curriculum";
+          document.getElementById("ctaNext").href = "lessons.html";
+        }
+
+        // level bars
+        var bars = document.getElementById("levelBars");
+        bars.innerHTML = "";
+        Object.keys(window.LEVEL_META).map(Number).sort(function (a, b) { return a - b; }).forEach(function (n) {
+          var m = window.LEVEL_META[n];
+          var ls = window.LEVEL_LESSONS[n] || [];
+          var dn = ls.filter(function (l) { return done.indexOf(l.id) !== -1; }).length;
+          var p = ls.length ? Math.round(dn / ls.length * 100) : 0;
+          var row = document.createElement("div");
+          row.className = "lpl-row" + (p === 100 ? " done" : "");
+          row.innerHTML = '<div class="icon" data-icon="' + (m.icon || "book") + '"></div>'
+            + '<div><div class="lpl-top"><h4><a href="lessons.html#level-' + n + '" style="color:inherit">' + escHtml(m.title) + "</a></h4>"
+            + '<span class="pct">' + dn + "/" + ls.length + " · " + p + "%</span></div>"
+            + '<div class="lpl-track"><i style="width:' + p + '%"></i></div></div>';
+          bars.appendChild(row);
+          injectIcon(row.querySelector(".icon"), m.icon || "book");
+        });
+
+        // quiz summary table
+        var qs = document.getElementById("quizSummary");
+        if (scores.length) {
+          var rows = Object.keys(q).map(function (k) {
+            var l = findLesson(k);
+            return { title: l ? l.title : k, score: q[k].score, total: q[k].total };
+          }).sort(function (a, b) { return a.title.localeCompare(b.title); });
+          var h = '<table><thead><tr><th>Lesson</th><th>Score</th><th>%</th></tr></thead><tbody>';
+          rows.forEach(function (r) {
+            h += "<tr><td>" + escHtml(r.title) + "</td><td>" + r.score + " / " + r.total + "</td><td><strong>"
+              + Math.round(r.score / r.total * 100) + "%</strong></td></tr>";
+          });
+          qs.innerHTML = h + "</tbody></table>";
+        }
+
+        // file library (render once)
+        var lib = document.getElementById("fileLibrary");
+        if (!lib.dataset.built) {
+          var files = {}, order = [];
+          all.forEach(function (l) {
+            (l.downloads || []).forEach(function (d) {
+              if (!files[d.file]) { files[d.file] = d; order.push(d.file); }
+            });
+          });
+          order.forEach(function (f) {
+            var d = files[f];
+            var a = document.createElement("a");
+            a.className = "download-item";
+            a.href = d.file; a.download = "";
+            a.innerHTML = '<span class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></span>'
+              + '<span class="dl-body"><span class="dl-label">' + escHtml(d.label) + "</span>"
+              + (d.note ? '<span class="dl-note">' + escHtml(d.note) + "</span>" : "") + "</span>"
+              + '<span class="dl-cta">' + escHtml(d.file.split(".").pop().toUpperCase()) + "</span>";
+            lib.appendChild(a);
+          });
+          lib.dataset.built = "1";
+        }
+      }
+
+      render();
+      document.addEventListener("el:progress", render);
+    })();
+  </script>
+</body>
+</html>
