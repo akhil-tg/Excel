@@ -7,15 +7,41 @@
 function rGrid(b) {
   var rows = b.rows || [];
   if (!rows.length) return "";
+
+  /* Some lesson data embeds its own coordinates: a first row of column
+     letters like ["", "B", "C"] and data rows starting with a row number
+     like ["2", "Notebook", "45"]. The renderer already draws its own
+     letters/numbers, so detect that style and absorb the coordinates
+     instead of rendering them as doubled data. */
+  var manualLetters = null, manualNums = null;
+  if (rows[0][0] === "" && rows[0].length > 1 &&
+      rows[0].slice(1).every(function (c) { return /^[A-Z]{1,3}$/.test(String(c)); })) {
+    var dataRows = rows.slice(1);
+    var hasCoords = dataRows.length > 0 && dataRows.every(function (r) {
+      return /^\d+$/.test(String(r[0])) ||
+        r.every(function (c) { return String(c) === ""; });
+    });
+    if (hasCoords) {
+      manualLetters = rows[0].slice(1);
+      rows = dataRows
+        .filter(function (r) { return !r.every(function (c) { return String(c) === ""; }); })
+        .map(function (r) { return r.slice(1); });
+      manualNums = dataRows
+        .filter(function (r) { return !r.every(function (c) { return String(c) === ""; }); })
+        .map(function (r) { return String(r[0]); });
+    }
+  }
+  if (!rows.length) return "";
+
   var nCols = Math.max.apply(null, rows.map(function (r) { return r.length; }));
-  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").slice(0, nCols);
+  var letters = manualLetters || "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").slice(0, nCols);
   var h = '<div class="lesson-grid-table"><div class="xlsheet">';
   if (b.title) h += '<div class="xlsheet-title">' + icon("xls") + escHtml(b.title) + "</div>";
   h += "<table><thead><tr><th class='rowhead' aria-hidden='true'></th>";
   letters.forEach(function (c) { h += "<th>" + c + "</th>"; });
   h += "</tr></thead><tbody>";
   rows.forEach(function (r, ri) {
-    h += "<tr><th class='rowhead'>" + (ri + 1) + "</th>";
+    h += "<tr><th class='rowhead'>" + (manualNums ? manualNums[ri] : (ri + 1)) + "</th>";
     for (var c = 0; c < nCols; c++) {
       var cell = r[c] !== undefined && r[c] !== null && r[c] !== "" ? String(r[c]) : "";
       var cls = "cell";
