@@ -45,7 +45,7 @@
     <div class="container">
       <div class="page-head">
         <h1>Practice data</h1>
-        <p>Ready-made raw data for learning lookups and analysis. Click <strong>Copy data</strong>, click cell <code>A1</code> of a blank sheet, and press <kbd>Ctrl</kbd> + <kbd>V</kbd> — the data lands in neat columns. Or download the CSV and open it in Excel.</p>
+        <p>Ready-made raw data for learning lookups and analysis. Click <strong>Download Excel</strong> to get a real <code>.xlsx</code> workbook — the full 100-row dataset with lookup tables already placed on their own sheet, exactly as an office lookup file is organised. You can also click cell <code>A1</code> of a blank sheet after <strong>Copy data</strong> and press <kbd>Ctrl</kbd> + <kbd>V</kbd>.</p>
       </div>
 
       <div class="callout callout-tip" style="margin-bottom:30px">
@@ -80,6 +80,7 @@
       var DATA = [
         {
           id: "employee",
+          file: "assets/files/practice-data/employee-master.xlsx",
           title: "Employee master",
           desc: "A typical office employee register. Paste it on Sheet1, then practise VLOOKUP / XLOOKUP to fetch any employee's department, join date or salary from the ID, and INDEX + MATCH to do the same left-to-right or right-to-left.",
           tables: [{
@@ -103,6 +104,7 @@
         },
         {
           id: "products",
+          file: "assets/files/practice-data/products-orders.xlsx",
           title: "Product price list + order log",
           desc: "The classic VLOOKUP setup: an order log on Sheet1, a price list on Sheet2. Fetch each product's name and price with VLOOKUP, wrap it in IFERROR to handle the one SKU that is missing from the price list, then multiply price by quantity to build the bill value.",
           tables: [
@@ -144,6 +146,7 @@
         },
         {
           id: "twoway",
+          file: "assets/files/practice-data/region-month-sales.xlsx",
           title: "Two-way sales grid (INDEX + MATCH)",
           desc: "Regions down the side, months across the top. Paste it on Sheet1, then practise the two-way lookup: use MATCH to find the row of a region and the column of a month, and INDEX to return the sales figure where they cross — the professional alternative to nested VLOOKUPs.",
           tables: [{
@@ -160,6 +163,7 @@
         },
         {
           id: "grades",
+          file: "assets/files/practice-data/student-grades.xlsx",
           title: "Student marks + grade slabs",
           desc: "Two tables for approximate-match VLOOKUP: marks on Sheet1 and grade slabs on Sheet2. Because the slab table is sorted ascending and you want the closest lower boundary, use VLOOKUP with the range_lookup argument set to TRUE — the one case where approximate match is exactly right. Try the same with XLOOKUP's match_mode.",
           tables: [
@@ -196,6 +200,7 @@
         },
         {
           id: "invoice",
+          file: "assets/files/practice-data/invoice-items.xlsx",
           title: "Invoice lines + item master",
           desc: "A real billing workbook in miniature. Keep the invoice lines on Sheet1 and the item master on Sheet2. Look up each item's rate with VLOOKUP, compute Amount as rate × qty, total each invoice with SUMIF, and cross-check a couple of totals by hand.",
           tables: [
@@ -243,20 +248,11 @@
       function toTSV(t) {
         return t.headers.join("\t") + "\n" + t.rows.map(function (r) { return r.join("\t"); }).join("\n");
       }
-      function toCSV(t) {
-        var q = function (v) {
-          v = String(v);
-          return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
-        };
-        return t.headers.map(q).join(",") + "\n" + t.rows.map(function (r) { return r.map(q).join(","); }).join("\n");
-      }
-
       function tableHTML(d, t) {
         var h = "";
         if (t.caption) h += '<p class="pd-note">' + escHtml(t.caption) + "</p>";
         h += '<div class="pd-actions">'
-          + '<button type="button" class="btn btn-primary btn-sm" data-copy="' + d.id + ":" + t.file + '">' + icon("download") + "Copy data</button>"
-          + '<button type="button" class="btn btn-outline btn-sm" data-csv="' + d.id + ":" + t.file + '">' + icon("xls") + "Download CSV</button>"
+          + '<button type="button" class="btn btn-outline btn-sm" data-copy="' + d.id + ":" + t.file + '">' + icon("xls") + "Copy data</button>"
           + "</div>";
         h += '<div style="overflow-x:auto"><table class="data-table"><thead><tr>';
         t.headers.forEach(function (hd) { h += "<th>" + escHtml(hd) + "</th>"; });
@@ -278,13 +274,15 @@
         var sec = document.createElement("section");
         sec.className = "card pd-block";
         sec.id = "data-" + d.id;
-        var h = '<div class="pd-head"><div><h2>' + (di + 1) + ". " + escHtml(d.title) + "</h2><p>" + escHtml(d.desc) + "</p></div></div>";
+        var h = '<div class="pd-head"><div><h2>' + (di + 1) + ". " + escHtml(d.title) + "</h2><p>" + escHtml(d.desc) + "</p></div>"
+          + '<div class="pd-actions"><a class="btn btn-primary btn-sm" href="' + d.file + '" download>' + icon("download") + "Download Excel</a></div></div>";
+        h += '<p class="pd-note">Preview below — the Excel workbook contains the full 100-row dataset.</p>';
         d.tables.forEach(function (t) { h += tableHTML(d, t); });
         sec.innerHTML = h;
         root.appendChild(sec);
       });
 
-      /* copy + csv actions */
+      /* copy actions */
       function findTable(key) {
         var parts = key.split(":");
         var d = DATA.filter(function (x) { return x.id === parts[0]; })[0];
@@ -298,31 +296,20 @@
       document.getElementById("pdRoot").addEventListener("click", function (e) {
         var btn = e.target.closest("button");
         if (!btn) return;
-        var key = btn.getAttribute("data-copy") || btn.getAttribute("data-csv");
+        var key = btn.getAttribute("data-copy");
         var t = findTable(key);
         if (!t) return;
-        if (btn.hasAttribute("data-copy")) {
-          var text = toTSV(t);
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function () { flash(btn, true); }, function () { flash(btn, false); });
-          } else {
-            var ta = document.createElement("textarea");
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
-            var ok = document.execCommand("copy");
-            document.body.removeChild(ta);
-            flash(btn, ok);
-          }
+        var text = toTSV(t);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { flash(btn, true); }, function () { flash(btn, false); });
         } else {
-          var blob = new Blob(["\uFEFF" + toCSV(t)], { type: "text/csv;charset=utf-8" });
-          var a = document.createElement("a");
-          a.href = URL.createObjectURL(blob);
-          a.download = t.file + ".csv";
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = document.execCommand("copy");
+          document.body.removeChild(ta);
+          flash(btn, ok);
         }
       });
     })();
