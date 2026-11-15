@@ -610,6 +610,17 @@ html.dark .docs-nav a.active { color: var(--teal-200); }
 .faq-item .faq-body { padding: 0 18px 16px; color: var(--text-2); }
 
 /* ============================================================
+   Practice data page
+   ============================================================ */
+.pd-block { padding: 24px 26px; margin-bottom: 26px; }
+.pd-head { display: flex; gap: 14px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; margin-bottom: 16px; }
+.pd-head h2 { margin: 0 0 6px; font-size: 1.2rem; }
+.pd-head p { margin: 0; color: var(--text-2); font-size: .93rem; max-width: 78ch; }
+.pd-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.pd-note { color: var(--text-3); font-size: .85rem; font-weight: 600; margin: 14px 0 2px; }
+.pd-block .data-table { margin: 8px 0 4px; }
+
+/* ============================================================
    Utilities & responsive
    ============================================================ */
 .hidden { display: none !important; }

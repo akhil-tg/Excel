@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practice Data — Sample Raw Data for Lookups — Excel Lab</title>
+  <meta name="description" content="Free sample raw data for practising Excel VLOOKUP, XLOOKUP, INDEX-MATCH, IFERROR and approximate-match lookups. Copy or download the tables and paste them straight into Excel.">
+  <script>(function(){try{var t=localStorage.getItem("ellab.theme");if(!t){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark")document.documentElement.classList.add("dark")}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230d9488'/%3E%3Crect x='5' y='5' width='6' height='6' rx='1' fill='white'/%3E%3Crect x='13' y='5' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='5' y='13' width='6' height='6' rx='1' fill='white' opacity='.75'/%3E%3Crect x='13' y='13' width='6' height='6' rx='1' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>
+        Excel&nbsp;Lab
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="lessons.html">Course</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reference.html">Reference</a>
+        <a href="practice-data.html">Practice Data</a>
+        <a href="docs.html">Guides</a>
+      </nav>
+      <form class="header-search" id="headerSearchForm" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="Search lessons…" aria-label="Search lessons">
+      </form>
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <div class="page-head">
+        <h1>Practice data</h1>
+        <p>Ready-made raw data for learning lookups and analysis. Click <strong>Copy data</strong>, click cell <code>A1</code> of a blank sheet, and press <kbd>Ctrl</kbd> + <kbd>V</kbd> — the data lands in neat columns. Or download the CSV and open it in Excel.</p>
+      </div>
+
+      <div class="callout callout-tip" style="margin-bottom:30px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+        <div><p><strong>How to use.</strong> Paste each table into its own sheet in one workbook. Keep the first table on <strong>Sheet1</strong> and paste lookup tables onto <strong>Sheet2</strong> — that is exactly how real office lookup workbooks are organised. Every dataset below is structured so you can practise <code>VLOOKUP</code>, <code>XLOOKUP</code>, <code>INDEX</code> + <code>MATCH</code>, <code>IFERROR</code> and approximate-match lookups immediately.</p></div>
+      </div>
+
+      <div id="pdRoot"></div>
+
+      <div class="callout callout-info" style="margin-top:34px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <div><p><strong>Feeling stuck?</strong> The full course walks through every lookup step by step — start with <a href="lessons.html#level-2">Level 2: Formulas and Functions</a>, then continue to <a href="lessons.html#level-3">Level 3: Data Management</a>. The <a href="reference.html">formula reference</a> has quick syntax for all of them.</p></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none">
+        <span>Excel Lab — free and open source. Built by Akhil TG.</span>
+        <span><a href="lessons.html">All lessons</a> · <a href="reference.html">Reference</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      /* Each dataset: id, title, desc, tables (a block can hold one or two tables) */
+      var DATA = [
+        {
+          id: "employee",
+          title: "Employee master",
+          desc: "A typical office employee register. Paste it on Sheet1, then practise VLOOKUP / XLOOKUP to fetch any employee's department, join date or salary from the ID, and INDEX + MATCH to do the same left-to-right or right-to-left.",
+          tables: [{
+            file: "employee-master",
+            headers: ["Emp ID", "Name", "Department", "Join Date", "Salary"],
+            rows: [
+              ["E101", "Ramesh Kumar", "Accounts", "12-Jan-2023", 32000],
+              ["E102", "Priya Sharma", "Sales", "03-Mar-2023", 28500],
+              ["E103", "Anil Verma", "Stores", "21-Jun-2023", 24000],
+              ["E104", "Deepa Nair", "HR", "15-Aug-2023", 35000],
+              ["E105", "Sunil Patel", "Accounts", "02-Oct-2023", 31000],
+              ["E106", "Meena Iyer", "Sales", "27-Nov-2023", 29500],
+              ["E107", "Karan Mehta", "Production", "09-Jan-2024", 22500],
+              ["E108", "Lata Rao", "HR", "14-Feb-2024", 33500],
+              ["E109", "Vikram Singh", "Production", "01-Apr-2024", 23000],
+              ["E110", "Sunita Joshi", "Accounts", "20-May-2024", 30500],
+              ["E111", "Rahul Das", "Sales", "11-Jul-2024", 27000],
+              ["E112", "Kavita Reddy", "Stores", "30-Sep-2024", 25500]
+            ]
+          }]
+        },
+        {
+          id: "products",
+          title: "Product price list + order log",
+          desc: "The classic VLOOKUP setup: an order log on Sheet1, a price list on Sheet2. Fetch each product's name and price with VLOOKUP, wrap it in IFERROR to handle the one SKU that is missing from the price list, then multiply price by quantity to build the bill value.",
+          tables: [
+            {
+              file: "product-price-list",
+              caption: "Paste on Sheet2 — this is the lookup table",
+              headers: ["SKU", "Product", "Category", "Price"],
+              rows: [
+                ["NB-001", "Notebook A5", "Stationery", 45],
+                ["NB-002", "Notebook B5", "Stationery", 60],
+                ["PN-010", "Pen pack (10)", "Stationery", 72],
+                ["PN-011", "Gel pen single", "Stationery", 15],
+                ["PR-100", "Printer LaserJet", "Electronics", 12500],
+                ["PR-101", "Ink cartridge", "Electronics", 850],
+                ["CL-020", "A4 paper ream", "Stationery", 210],
+                ["ST-030", "Stapler medium", "Stationery", 130],
+                ["GL-040", "Glue stick", "Stationery", 35],
+                ["MP-050", "Mouse wireless", "Electronics", 640]
+              ]
+            },
+            {
+              file: "order-log",
+              caption: "Paste on Sheet1 — fetch Product and Price from the price list",
+              headers: ["Order ID", "Date", "SKU", "Qty", "Product", "Price", "Bill Value"],
+              rows: [
+                ["SO-2001", "01-Nov-2026", "NB-001", 40, "", "", ""],
+                ["SO-2002", "01-Nov-2026", "CL-020", 25, "", "", ""],
+                ["SO-2003", "02-Nov-2026", "PN-010", 12, "", "", ""],
+                ["SO-2004", "02-Nov-2026", "MP-050", 4, "", "", ""],
+                ["SO-2005", "03-Nov-2026", "PR-101", 6, "", "", ""],
+                ["SO-2006", "03-Nov-2026", "ST-030", 15, "", "", ""],
+                ["SO-2007", "04-Nov-2026", "XX-999", 3, "", "", ""],
+                ["SO-2008", "04-Nov-2026", "NB-002", 30, "", "", ""],
+                ["SO-2009", "05-Nov-2026", "GL-040", 50, "", "", ""],
+                ["SO-2010", "05-Nov-2026", "PN-011", 60, "", "", ""]
+              ]
+            }
+          ]
+        },
+        {
+          id: "twoway",
+          title: "Two-way sales grid (INDEX + MATCH)",
+          desc: "Regions down the side, months across the top. Paste it on Sheet1, then practise the two-way lookup: use MATCH to find the row of a region and the column of a month, and INDEX to return the sales figure where they cross — the professional alternative to nested VLOOKUPs.",
+          tables: [{
+            file: "region-month-sales",
+            headers: ["Region", "Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+            rows: [
+              ["North", 182000, 195500, 208300, 199400, 221000, 234600],
+              ["South", 165400, 158900, 172600, 181200, 176500, 190300],
+              ["East", 143200, 149800, 138700, 152400, 160900, 155200],
+              ["West", 201700, 210300, 224900, 218600, 230400, 247100],
+              ["Central", 98600, 104200, 99800, 112500, 118900, 121400]
+            ]
+          }]
+        },
+        {
+          id: "grades",
+          title: "Student marks + grade slabs",
+          desc: "Two tables for approximate-match VLOOKUP: marks on Sheet1 and grade slabs on Sheet2. Because the slab table is sorted ascending and you want the closest lower boundary, use VLOOKUP with the range_lookup argument set to TRUE — the one case where approximate match is exactly right. Try the same with XLOOKUP's match_mode.",
+          tables: [
+            {
+              file: "grade-slabs",
+              caption: "Paste on Sheet2 — slab boundaries must stay sorted ascending",
+              headers: ["Marks From", "Grade"],
+              rows: [
+                [0, "D"],
+                [40, "C"],
+                [60, "B"],
+                [75, "A"],
+                [90, "A+"]
+              ]
+            },
+            {
+              file: "student-marks",
+              caption: "Paste on Sheet1 — fetch the Grade with an approximate-match VLOOKUP",
+              headers: ["Roll No", "Name", "Marks", "Grade"],
+              rows: [
+                [101, "Arun Kumar", 82, ""],
+                [102, "Bhavna Gupta", 57, ""],
+                [103, "Chetan Bose", 93, ""],
+                [104, "Divya Menon", 41, ""],
+                [105, "Farhan Ali", 66, ""],
+                [106, "Gita Pillai", 38, ""],
+                [107, "Harish Rao", 75, ""],
+                [108, "Ishita Sen", 89, ""],
+                [109, "Jayanth Kumar", 24, ""],
+                [110, "Kiran Shah", 71, ""]
+              ]
+            }
+          ]
+        },
+        {
+          id: "invoice",
+          title: "Invoice lines + item master",
+          desc: "A real billing workbook in miniature. Keep the invoice lines on Sheet1 and the item master on Sheet2. Look up each item's rate with VLOOKUP, compute Amount as rate × qty, total each invoice with SUMIF, and cross-check a couple of totals by hand.",
+          tables: [
+            {
+              file: "item-master",
+              caption: "Paste on Sheet2 — the lookup table",
+              headers: ["Item", "Unit", "Rate"],
+              rows: [
+                ["Cement bag 50kg", "bag", 410],
+                ["Steel rod 12mm", "rod", 680],
+                ["Bricks (per 1000)", "1000", 7200],
+                ["River sand", "cu.ft", 55],
+                ["Paint white 4L", "can", 1850],
+                ["Wire 1.5mm", "roll", 320]
+              ]
+            },
+            {
+              file: "invoice-lines",
+              caption: "Paste on Sheet1 — fetch Rate, compute Amount = Rate × Qty",
+              headers: ["Invoice", "Item", "Qty", "Rate", "Amount"],
+              rows: [
+                ["INV-501", "Cement bag 50kg", 120, "", ""],
+                ["INV-501", "Steel rod 12mm", 45, "", ""],
+                ["INV-502", "Bricks (per 1000)", 3, "", ""],
+                ["INV-502", "River sand", 200, "", ""],
+                ["INV-503", "Paint white 4L", 8, "", ""],
+                ["INV-503", "Wire 1.5mm", 15, "", ""],
+                ["INV-504", "Cement bag 50kg", 60, "", ""],
+                ["INV-504", "River sand", 150, "", ""],
+                ["INV-504", "Bricks (per 1000)", 2, "", ""]
+              ]
+            }
+          ]
+        }
+      ];
+
+      function fmt(cell) {
+        if (typeof cell === "number") return String(cell);
+        return escHtml(String(cell));
+      }
+      function cellCls(cell) {
+        return typeof cell === "number" ? " num" : (/^-?[\d,]+(\.\d+)?$/.test(String(cell)) ? " num" : "");
+      }
+
+      function toTSV(t) {
+        return t.headers.join("\t") + "\n" + t.rows.map(function (r) { return r.join("\t"); }).join("\n");
+      }
+      function toCSV(t) {
+        var q = function (v) {
+          v = String(v);
+          return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+        };
+        return t.headers.map(q).join(",") + "\n" + t.rows.map(function (r) { return r.map(q).join(","); }).join("\n");
+      }
+
+      function tableHTML(d, t) {
+        var h = "";
+        if (t.caption) h += '<p class="pd-note">' + escHtml(t.caption) + "</p>";
+        h += '<div class="pd-actions">'
+          + '<button type="button" class="btn btn-primary btn-sm" data-copy="' + d.id + ":" + t.file + '">' + icon("download") + "Copy data</button>"
+          + '<button type="button" class="btn btn-outline btn-sm" data-csv="' + d.id + ":" + t.file + '">' + icon("xls") + "Download CSV</button>"
+          + "</div>";
+        h += '<div style="overflow-x:auto"><table class="data-table"><thead><tr>';
+        t.headers.forEach(function (hd) { h += "<th>" + escHtml(hd) + "</th>"; });
+        h += "</tr></thead><tbody>";
+        t.rows.forEach(function (r) {
+          h += "<tr>";
+          r.forEach(function (c) {
+            if (c === "" ) h += "<td></td>";
+            else h += "<td" + (cellCls(c) ? ' class="' + cellCls(c).trim() + '"' : "") + ">" + fmt(c) + "</td>";
+          });
+          h += "</tr>";
+        });
+        h += "</tbody></table></div>";
+        return h;
+      }
+
+      var root = document.getElementById("pdRoot");
+      DATA.forEach(function (d, di) {
+        var sec = document.createElement("section");
+        sec.className = "card pd-block";
+        sec.id = "data-" + d.id;
+        var h = '<div class="pd-head"><div><h2>' + (di + 1) + ". " + escHtml(d.title) + "</h2><p>" + escHtml(d.desc) + "</p></div></div>";
+        d.tables.forEach(function (t) { h += tableHTML(d, t); });
+        sec.innerHTML = h;
+        root.appendChild(sec);
+      });
+
+      /* copy + csv actions */
+      function findTable(key) {
+        var parts = key.split(":");
+        var d = DATA.filter(function (x) { return x.id === parts[0]; })[0];
+        return d ? d.tables.filter(function (t) { return t.file === parts[1]; })[0] : null;
+      }
+      function flash(btn, ok) {
+        var old = btn.innerHTML;
+        btn.innerHTML = ok ? icon("check") + "Copied!" : "Copy failed";
+        setTimeout(function () { btn.innerHTML = old; }, 1400);
+      }
+      document.getElementById("pdRoot").addEventListener("click", function (e) {
+        var btn = e.target.closest("button");
+        if (!btn) return;
+        var key = btn.getAttribute("data-copy") || btn.getAttribute("data-csv");
+        var t = findTable(key);
+        if (!t) return;
+        if (btn.hasAttribute("data-copy")) {
+          var text = toTSV(t);
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () { flash(btn, true); }, function () { flash(btn, false); });
+          } else {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            flash(btn, ok);
+          }
+        } else {
+          var blob = new Blob(["\uFEFF" + toCSV(t)], { type: "text/csv;charset=utf-8" });
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = t.file + ".csv";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
