@@ -7,7 +7,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
 window.LEVEL_META[2] = {
   id: 2,
   title: "Formulas and Functions",
-  icon: "fx",
+  icon: "sigma",
   difficulty: "Beginner",
   subtitle: "Master the functions that do the real work: SUM, IF, lookups, text and dates",
   description: "Learn the essential Excel functions step by step — from SUM and IF to VLOOKUP, XLOOKUP, INDEX/MATCH, text, date and dynamic array functions."

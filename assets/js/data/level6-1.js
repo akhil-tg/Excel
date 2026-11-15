@@ -8,7 +8,7 @@ window.LEVEL_META[6] = {
   subtitle: "Power Query, Power Pivot, DAX and automation with macros and VBA",
   description: "Go professional: nested formulas, advanced lookups, Power Query, Power Pivot, an introduction to DAX, and automation with macros and VBA.",
   difficulty: "Advanced",
-  icon: "bolt"
+  icon: "zap"
 };
 
 (window.LEVEL_LESSONS[6] = window.LEVEL_LESSONS[6] || []).push(
