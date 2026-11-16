@@ -18,6 +18,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Reconcile the summaries against the log so the numbers can be trusted"
     ],
     intro: "Every office watches money leave. In this project you build the expense tracker for Sunrise Traders' head office: a log where every payment is typed once — date, category, description, amount — and two summary sheets that instantly show where the money went, month by month and category by category, against the budgets management approved.\n\nThe tracker covers July to October 2026 and uses six categories: Rent, Salaries, Electricity, Transport, Marketing and Miscellaneous. The tools are all from Levels 2 to 6 — validation, SUMIF, TEXT, IF, conditional formatting — but the project teaches a discipline that tools alone cannot: a small set of checks that prove the summaries agree with the log before anyone sees them.",
+    keyIdea: "Type each payment once, and summary sheets plus check totals prove where the money went.",
     sections: [
       {
         heading: "What You Will Build",
@@ -244,6 +245,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Set up the sheet as a print-ready one-page invoice"
     ],
     intro: "Invoices are the most repeated document in any trading business, and most offices still type them from scratch each time. In this project you build the reusable invoice of Sunrise Traders: pick a customer ID, type up to ten item lines, and the customer's name, address and GST number fill themselves from the customer master while the amounts, GST and grand total compute to the rupee — ready to print.\n\nThe invoice uses the INDEX/MATCH pattern from Level 5 and one number everyone in India knows: GST, the Goods and Services Tax added to most sales. Stationery items carry 12% GST, electronics like printers and laptops carry 18%. Everything works in Excel 2010 and later; no new functions appear, but the discipline here is different — every formula must behave well when the invoice is half-empty, because a reusable template is empty most of the time.",
+    keyIdea: "A reusable invoice fills itself from masters and must behave well while half-empty.",
     sections: [
       {
         heading: "What You Will Build",
@@ -486,6 +488,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Summarise pending POs and supplier-wise dues with COUNTIF and SUMIFS"
     ],
     intro: "Buying is half of any trading business, and it is easy to lose track of: orders that were placed but never arrived, goods received but never paid for, suppliers owed money in three different places. In this project you build the purchase system for Sunrise Traders — a register where each purchase order is one row carrying its supplier, its status and its payment position, plus a summary that answers the two questions purchase managers live by: what is still open, and who do we owe?\n\nThe tools are familiar — validation, VLOOKUP, COUNTIF, SUMIFS, IF — but this project teaches something new in how they are arranged: three pieces of state (order status, payment status, amount paid) living in one row, with formulas that respect the business logic, such as a cancelled order never owing money. Everything works in Excel 2010 and later.",
+    keyIdea: "One register row carries order status, payment status and amount paid — the purchase system's heart.",
     sections: [
       {
         heading: "What You Will Build",
@@ -711,6 +714,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Test the dashboard by changing one cell and watching everything move"
     ],
     intro: "The sales tracker from Project 5 answers questions one at a time — you read a summary, then a performance sheet, then a region block. A dashboard answers them all at once, on one screen, and updates when you change one cell.\n\nIn this project you build that screen for Sunrise Traders' sales meeting. One dropdown selects the month, and every card on the sheet — revenue, share of quarter, top performer, region split — recomputes for that month. The data underneath is the same Sales Log from Project 5: six salespeople, four regions, five products, three months of invoices.\n\nEverything here works in Excel 2010 and later. The dashboard introduces no new functions; it is an arrangement discipline — one input cell, locked ranges, and formulas that read the log through generous headroom ranges.",
+    keyIdea: "One dropdown drives the whole dashboard — change the month and every card recomputes.",
     sections: [
       {
         heading: "What You Will Build",
@@ -914,6 +918,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Close the period and hand over a file the next person can run"
     ],
     intro: "Seven projects in, you own the pieces: an employee system, attendance, payroll, inventory, a sales tracker, an expense tracker, invoices and a purchase register. Each one works alone. An office needs them to work together — and it needs one page where the owner can read the month without opening six files.\n\nThis final project builds that page: the Complete Office MIS. It pulls the sales tracker's revenue and the expense tracker's spending onto one sheet, computes the net position month by month, and finishes with a reconciliation checklist and a closing routine. Nothing new is introduced — the project is the discipline of connecting what you already built.\n\nEverything works in Excel 2010 and later.",
+    keyIdea: "The MIS connects sheets you already built into one page the owner reads in minutes.",
     sections: [
       {
         heading: "What You Will Build",

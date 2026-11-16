@@ -225,6 +225,11 @@ function renderLessonPage() {
       + escHtml(lesson.version) + "</strong> features. If you use an older version, follow along with the alternatives the lesson suggests.</p></div></div>";
   }
 
+  /* key idea */
+  if (lesson.keyIdea) {
+    h += '<div class="key-idea card">' + icon("bulb") + '<div><span class="key-idea-lbl">Key idea</span><p>' + md(lesson.keyIdea) + "</p></div></div>";
+  }
+
   /* objectives */
   if (lesson.objectives && lesson.objectives.length) {
     h += '<div class="objectives card"><h2>' + icon("target") + "In this lesson you will learn to</h2><ul>"

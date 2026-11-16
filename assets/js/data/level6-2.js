@@ -16,6 +16,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Create a measure with the right name, format and description"
     ],
     intro: "DAX (Data Analysis Expressions) is the formula language that lives inside Power Pivot and the Data Model. If the previous lesson wired your tables together, DAX is how you ask the model smart questions: total sales per filter, laptop revenue in the North region, the average order value for whichever salesperson the slicer selects.\n\nThe good news: DAX looks almost exactly like Excel formulas. `=SUM(Sales[Amount])` is recognisable at a glance. The one big idea to accept early: DAX formulas do not point at cells like A2 or B7. They point at columns of whole tables — `Sales[Amount]` means \"the Amount column of the Sales table\". That single difference changes how you think about every calculation, and this lesson walks it in small steps.",
+    keyIdea: "DAX points at columns of whole tables, not at single cells like A2 or B7.",
     sections: [
       {
         heading: "What DAX is and where it runs",
@@ -148,6 +149,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Save correctly as .xlsm and understand macro security prompts"
     ],
     intro: "A macro is a saved list of actions that Excel can repeat for you at the click of a button. Suppose every morning you format the Sunrise Traders daily report the same way: bold header, coloured fill, column widths, freeze the top row. Doing it by hand is two minutes of clicking; recording it once turns it into one click, forever.\n\nThis lesson needs no programming. Excel watches what you do, writes the steps down in VBA (a language you will read properly two lessons from now), and can play them back exactly. You will learn where the record button lives, what Excel actually writes down, the one setting most beginners get wrong (relative vs absolute), and the saving rule that protects your work.",
+    keyIdea: "Record your clicks once, and Excel repeats them forever at the click of a button.",
     sections: [
       {
         heading: "What a macro is, and when to record one",
@@ -276,6 +278,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Comment code and step through it line by line with F8"
     ],
     intro: "Recording can repeat what you do, but it cannot think. It cannot loop over 4,000 rows, decide that this one is overdue, format only those rows, and write a summary sheet. For that you write VBA directly — and it is more approachable than most people expect, because VBA is English-like and you already know the objects: workbooks, worksheets, ranges.\n\nThis lesson builds the vocabulary you will use for the rest of your career in Excel automation: the editor, a Sub, variables, cell references, With blocks, messages to the user, comments, and stepping through code one line at a time. Everything here runs in any modern Excel, with no add-ons.",
+    keyIdea: "VBA is English-like code over objects you already know: workbooks, worksheets and ranges.",
     sections: [
       {
         heading: "The VBA editor: your workbench",
@@ -404,6 +407,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Add basic error handling with On Error and assemble a full Monthly Report macro"
     ],
     intro: "This lesson assembles everything so far into the macro every office eventually needs: a Monthly Report routine. Point it at the sales data, click once, and it scans every row, highlights what matters, writes a summary onto a fresh sheet, and saves a dated copy of the workbook — the whole month-end chore in a few seconds.\n\nThe building blocks are small: one loop, one If, some formatting, one new sheet, one save. Each is introduced on its own with a runnable snippet, then the final section combines them into a single macro you can copy from the provided .bas file. A closing note explains how professionals really work: record the parts you can, edit what the recorder wrote, and hand-write only the logic.",
+    keyIdea: "One loop plus one If turns the whole month-end report chore into a single click.",
     sections: [
       {
         heading: "The monthly report job, planned",

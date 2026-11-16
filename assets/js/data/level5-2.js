@@ -15,6 +15,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Find the top performer and customer-wise totals"
     ],
     intro: "Sales is the one department where every manager asks for numbers daily. The way to survive that is a disciplined sales log plus a handful of formulas that rebuild every report automatically.\n\nSunrise Traders' four salespeople — Arjun Mehta, Priya Nair, Rahul Verma and Sneha Iyer — log every invoice as one row. In this lesson you will turn their October log into daily totals, monthly totals, target tracking, growth rates and a top-performer board.",
+    keyIdea: "One row per invoice in a disciplined log lets formulas rebuild every sales report automatically.",
     sections: [
       {
         heading: "The Sales Log: One Row Per Invoice",
@@ -137,6 +138,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Close the month with a total variance you can explain"
     ],
     intro: "A budget is a promise written as numbers. Before October began, Sunrise Traders sat down and wrote down what each expense head should cost and what sales should bring in. October is now over, so the promise can be checked against reality.\n\nIn this lesson you will build the budget sheet for October 2026: the expense heads, the budget column, the actual column and the variance column that turns two numbers into one sentence \u2014 over, under or on budget.",
+    keyIdea: "Budget vs actual is checked with one variance column that says over, under or on.",
     sections: [
       {
         heading: "A Budget Is a Plan with a Difference Column",
@@ -262,6 +264,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Close the month with a reconciliation check"
     ],
     intro: "Every office spends small amounts every day: diesel for the delivery van, a ream of paper, courier charges, tea for a visiting customer. Nobody plans these in advance, everybody pays somehow, and by month-end nobody can say where the money went.\n\nThe fix is an expense log with discipline: one row per voucher, categories from a dropdown, and three small SUMIFS reports on top. In this lesson you will build that log for November 2026 and end up knowing exactly who must be reimbursed what.",
+    keyIdea: "Log each voucher in one row with a category dropdown, and the summaries build themselves.",
     sections: [
       {
         heading: "One Row Per Voucher",
@@ -399,6 +402,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Feed every invoice into the sales log as one row"
     ],
     intro: "The sales log you built earlier records invoices after the fact. This lesson is where those invoices are born. A good invoice does three jobs at once: it tells the customer exactly what to pay, it gives your accountant a tax document, and it feeds your sales log one clean row.\n\nSunrise Traders invoices with 18% GST on office supplies. In this lesson you will build the invoice layout, pull rates from the product master, apply discount and tax with correct rounding, and connect the result back to the log.",
+    keyIdea: "An invoice informs the customer, feeds the accounts, and adds one clean row to your log.",
     sections: [
       {
         heading: "Invoice Numbering That Never Collides",
@@ -519,6 +523,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Reconcile every report back to its source log"
     ],
     intro: "MIS stands for Management Information System, but in a small office it means something simpler: one sheet the owner can open on the 1st and read the whole month from. Not ten files, not a folder of screenshots \u2014 one page of numbers that all reconcile.\n\nIn this lesson you will build the October 2026 MIS for Sunrise Traders: sales by person, sales by product, payroll and office expense, every block computed by formula from the logs you built in the earlier lessons.",
+    keyIdea: "One MIS page, computed by formula from your logs, reads the whole month at a glance.",
     sections: [
       {
         heading: "MIS: One Sheet That Answers the Month",
@@ -648,6 +653,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Close a month and start the next one without breaking history"
     ],
     intro: "This lesson ties Level 5 together. You have built the pieces one at a time \u2014 employee master, attendance, leave, payroll, inventory, purchase, sales, budget, expense log, invoices and MIS. Now they become one system: a single workbook where every sheet has a job, every sheet is reachable by a key, and the month closes with a checklist instead of a panic.\n\nThe capstone workbook holds October 2026 closed and November 2026 open, exactly as an office would.",
+    keyIdea: "The capstone joins every Level 5 sheet into one workbook where each sheet has a job.",
     sections: [
       {
         heading: "One Workbook, Many Sheets, One Set of Keys",

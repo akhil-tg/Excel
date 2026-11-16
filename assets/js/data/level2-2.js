@@ -16,7 +16,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Filter by a date range using >= and <= joined to cell references",
       "Combine region, month and product conditions in one formula"
     ],
-    intro: "SUMIF and COUNTIF from the last lesson handle one condition. But the questions managers ask usually have two or three: \"What did the **North** region sell in **March**?\" \"How many **Stapler** orders came from the **East**?\" For those you need the plural versions — SUMIFS, COUNTIFS and AVERAGEIFS.\n\nThe big difference to remember from day one: in SUMIFS the **sum range comes first**, not last. Everything after it travels in pairs — a range, then its criteria. Get that order right and the rest follows.",
+    keyIdea: "SUMIFS and COUNTIFS handle two or more conditions: sum range first, then range-and-criteria pairs.",
+    intro: "SUMIF and COUNTIF handle one condition. But managers usually ask with two or three: \"What did the **North** region sell in **March**?\" \"How many **Stapler** orders came from the **East**?\"\n\nFor those you need the plural versions: SUMIFS, COUNTIFS and AVERAGEIFS. Remember one big difference from day one. In SUMIFS the **sum range comes first**, not last. After it, conditions travel in pairs — a range, then its criteria. Get that order right and the rest follows.",
     sections: [
       {
         heading: "SUMIFS: sum range first, then pairs",
@@ -28,7 +29,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=SUMIFS(E2:E10, A2:A10, \"North\", B2:B10, \"Staplers\")",
             explanation: "Adds the Amount column only for rows where the Region is North AND the Product is Staplers. Every pair after the sum range works like one SUMIF."
           },
-          { type: "p", text: "Notice the changed order compared with SUMIF: the range to add leads the formula. After it, each condition is written as a two-part pair — the column to test, then the test itself. You can stack as many pairs as the report needs." },
+          { type: "p", text: "Notice the changed order compared with SUMIF: the range to add leads the formula. After it, each condition is a two-part pair — the column to test, then the test itself. You can stack as many pairs as the report needs." },
           {
             type: "grid",
             title: "Sunrise Traders sales record (same table as lesson 7)",
@@ -45,7 +46,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["West", "Notebooks", "25", "45", "=C10*D10"]
             ]
           },
-          { type: "p", text: "`=SUMIFS(E2:E10, A2:A10, \"North\", B2:B10, \"Staplers\")` walks the table row by row: North **and** Staplers is true only in row 9, so the result is 1300. Change the product pair to Notebooks and it returns 1800 — only row 2 is North and Notebook." }
+          { type: "p", text: "`=SUMIFS(E2:E10, A2:A10, \"North\", B2:B10, \"Staplers\")` walks the table row by row. North **and** Staplers is true only in row 9, so the result is 1300. Change the product pair to Notebooks and it returns 1800. Only row 2 is North and Notebook." }
         ]
       },
       {
@@ -75,14 +76,15 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["North average", "=AVERAGEIFS(E2:E10, A2:A10, \"North\")", "6700"]
             ]
           },
-          { type: "p", text: "The average of 20100 across 3 orders is 6700 — the typical North invoice. Averages answer \"what is a normal order like?\" while totals answer \"how much altogether?\" Managers want both, and now you can produce them with the same criteria structure." },
-          { type: "warning", text: "All criteria ranges must be the same size and shape as the sum range. If one pair runs A2:A9 while another runs A2:A10, SUMIFS returns the #VALUE! error — unlike SUMIF, it refuses to guess." }
+          { type: "p", text: "The average of 20100 across 3 orders is 6700 — the typical North invoice. Averages answer \"what is a normal order like?\" Totals answer \"how much altogether?\" Managers want both. You can now produce them with the same criteria structure." },
+          { type: "warning", text: "All criteria ranges must be the same size and shape as the sum range. If one pair runs `A2:A9` while another runs `A2:A10`, SUMIFS returns the #VALUE! error. Unlike SUMIF, it refuses to guess." }
         ]
       },
       {
         heading: "Date ranges: between two dates",
         blocks: [
-          { type: "p", text: "\"Total for March\" really means \"total where the date is on or after 1 March and on or before 31 March\". That is two conditions on the same date column — two pairs, using >= and <=. And because hard-coding dates inside formulas is fragile, join the operators to cells that hold the dates." },
+          { type: "p", text: "\"Total for March\" really means \"total where the date is on or after 1 March and on or before 31 March\". That is two conditions on the same date column." },
+          { type: "p", text: "So you need two pairs, using >= and <=. Hard-coding dates inside formulas is fragile. Instead, join the operators to cells that hold the dates." },
           {
             type: "grid",
             title: "Date-stamped sales for February and March",
@@ -105,7 +107,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             lang: "excel",
             text: "=SUMIFS(D2:D10, A2:A10, \">=\"&H2, A2:A10, \"<=\"&H3)"
           },
-          { type: "p", text: "The ampersand glues the operator text to the cell: \">=\"&H2 becomes \">=01-Mar-2026\" in Excel's eyes. The formula adds rows 7 to 10 — 2700 + 960 + 1300 + 1125 = 6085. Change H2 to 01-Feb and the same formula returns the February total, 63950, with no editing of the formula itself." },
+          { type: "p", text: "The ampersand glues the operator text to the cell. \">=\"&H2 becomes \">=01-Mar-2026\" in Excel's eyes. The formula adds rows 7 to 10: 2700 + 960 + 1300 + 1125 = 6085. Change H2 to 01-Feb and the same formula returns the February total, 63950. No editing needed." },
           { type: "tip", text: "This \">=\"&cell pattern is the single most reused trick in reporting. Keep the start and end dates in labelled cells near your report so anyone can change the period without touching a formula." }
         ]
       },
@@ -118,7 +120,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             lang: "excel",
             text: "=SUMIFS(D2:D10,\n        A2:A10, \"North\",\n        B2:B10, \"Staplers\",\n        A2:A10, \">=\"&H2,\n        A2:A10, \"<=\"&H3)"
           },
-          { type: "p", text: "The date column appears twice — once for the start test, once for the end test. That is perfectly normal: each pair is an independent condition, and several pairs may point at the same column. In the table above, the March North Stapler order (row 8, 1300) is the only match, so the formula returns 1300." },
+          { type: "p", text: "The date column appears twice — once for the start test, once for the end test. That is perfectly normal. Each pair is an independent condition, and several pairs may point at the same column. In the table above, only one row matches: the March North Stapler order (row 8, 1300). So the formula returns 1300." },
           {
             type: "ul",
             items: [
@@ -236,7 +238,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Interpret #N/A and fix the common causes",
       "Avoid the two classic mistakes: unlocked ranges and wrong column numbers"
     ],
-    intro: "You have a product name; you need its price. You have an employee code; you need the department. VLOOKUP is the classic Excel answer to \"find this in a list and bring back that\" — one of the most demanded skills in office job descriptions, and the function interviewers still ask about.\n\nVLOOKUP searches the first column of a table for your value, then returns whatever sits in a chosen column of the same row. Learn its rules carefully, because VLOOKUP is strict — three small details decide whether it works.",
+    keyIdea: "VLOOKUP finds your value in a table's first column and returns an answer from another column.",
+    intro: "You have a product name; you need its price. You have an employee code; you need the department. VLOOKUP is the classic answer: find this in a list and bring back that.\n\nIt is one of the most demanded office skills, and interviewers still ask about it. VLOOKUP searches the first column of a table for your value. Then it returns whatever sits in a chosen column of the same row. VLOOKUP is strict — three small details decide whether it works.",
     sections: [
       {
         heading: "The four arguments",
@@ -269,13 +272,13 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["Laptops", "42000"]
             ]
           },
-          { type: "p", text: "`=VLOOKUP(\"Staplers\", G2:H6, 2, FALSE)` returns 130. Excel finds Staplers in the first column (row 4 of the table) and walks across to column 2 — the price column. `col_index_num` 2 counts from the left edge of the selected table: here column G is 1 and column H is 2." }
+          { type: "p", text: "`=VLOOKUP(\"Staplers\", G2:H6, 2, FALSE)` returns 130. Excel finds Staplers in the first column and walks across to column 2 — the price column. The `col_index_num` counts from the left edge of the selected table. Here column G is 1 and column H is 2." }
         ]
       },
       {
         heading: "The rule that causes the most pain",
         blocks: [
-          { type: "p", text: "VLOOKUP can only look to its **right**. The value you search for must be in the first column of the table you select, and the answer must be in a column further right. There is no way to make plain VLOOKUP return something to the left of the search column." },
+          { type: "p", text: "VLOOKUP can only look to its **right**. The value you search for must be in the first column of your table. The answer must sit in a column further right. There is no way to make plain VLOOKUP return something to the left." },
           {
             type: "ul",
             items: [
@@ -291,13 +294,13 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       {
         heading: "Locking the table with $",
         blocks: [
-          { type: "p", text: "The price list lives in one place, but you want to fill the lookup formula down a whole invoice. Fill-down copies the formula and shifts every reference one row at a time — including your table, which then slides off the data. The fix is the dollar sign, which pins a reference in place." },
+          { type: "p", text: "The price list lives in one place, but you want to fill the formula down a whole invoice. Fill-down shifts every reference one row at a time — including your table. The table then slides off the data. The fix is the dollar sign, which pins a reference in place." },
           {
             type: "code",
             lang: "excel",
             text: "Unlocked (breaks when filled down):\n=VLOOKUP(B2, G2:H6, 2, FALSE)\n\nLocked (safe to fill down):\n=VLOOKUP(B2, $G$2:$H$6, 2, FALSE)"
           },
-          { type: "p", text: "$G$2:$H$6 means \"always G2:H6, no matter where the formula is copied\". The lookup value B2 has no dollars, so it correctly becomes B3, B4, B5 as the formula fills down. One part moves, one part stays — that is exactly what you want." },
+          { type: "p", text: "`$G$2:$H$6` means \"always G2:H6, no matter where the formula is copied\". The lookup value `B2` has no dollars, so it correctly becomes `B3`, `B4`, `B5` as the formula fills down. One part moves, one part stays. That is exactly what you want." },
           {
             type: "grid",
             title: "Invoice with the locked lookup",
@@ -436,7 +439,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Look left and right without rearranging your tables",
       "Explain when XLOOKUP is the better choice over VLOOKUP"
     ],
-    intro: "VLOOKUP has one blind spot — it cannot look left — and one bad habit: it counts columns by number. XLOOKUP fixes both, and more. It searches any column you name and returns from any other column you name, whatever their positions. The catch: XLOOKUP needs Microsoft 365 or Excel 2021 or later. In Excel 2019 or older the function simply does not exist.\n\nWe start with a quick look at HLOOKUP, VLOOKUP's sideways sibling, because it appears in older workbooks and interview questions. Then we spend the rest of the lesson on XLOOKUP, the modern replacement for the whole lookup family.",
+    keyIdea: "XLOOKUP searches one range and returns from another — any direction, with a built-in not-found message.",
+    intro: "VLOOKUP has one blind spot: it cannot look left. It also counts columns by number, which is easy to get wrong. XLOOKUP fixes both.\n\nXLOOKUP searches any column you name and returns from any other column. The catch: it needs Microsoft 365 or Excel 2021 or later. In Excel 2019 or older it simply does not exist. We start with a quick look at HLOOKUP, VLOOKUP's sideways sibling. Then the rest of the lesson is about XLOOKUP.",
     sections: [
       {
         heading: "HLOOKUP: the horizontal lookup",
@@ -456,7 +460,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["Target (₹)", "120000", "150000", "140000", "180000"]
             ]
           },
-          { type: "p", text: "`=HLOOKUP(\"Q2\", B1:E2, 2, FALSE)` returns 150000. Everything you learned about VLOOKUP applies — exact match with FALSE, locked table with $ — but the search runs across a row and the answer comes from a numbered row below. You will meet this layout in dashboards that show months or quarters as columns." },
+          { type: "p", text: "`=HLOOKUP(\"Q2\", B1:E2, 2, FALSE)` returns 150000. Everything you learned about VLOOKUP applies — exact match with FALSE, locked table with $. But the search runs across a row, and the answer comes from a numbered row below. You will meet this layout in dashboards that show months or quarters as columns." },
           { type: "p", text: "In practice, most teams turn horizontal data vertical before looking anything up. HLOOKUP is worth knowing; XLOOKUP makes even it unnecessary, as you will see next." }
         ]
       },
@@ -470,7 +474,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=XLOOKUP(\"Priya Nair\", B2:B6, A2:A6, \"Not found\")",
             explanation: "Searches the Name column B2:B6 for Priya Nair and returns the matching ID from A2:A6 — a column to the LEFT. The fourth argument is a built-in not-found message."
           },
-          { type: "p", text: "Notice what changed from VLOOKUP. Instead of one table and a column number, you name exactly two ranges: where to search and what to bring back. There is nothing to count, and the two ranges can point in any direction — left, right, up or down." },
+          { type: "p", text: "Notice what changed from VLOOKUP. You name exactly two ranges: where to search and what to bring back. There is no table and no column number to count. The two ranges can point in any direction — left, right, up or down." },
           {
             type: "grid",
             title: "Employee table (columns A to C)",
@@ -482,7 +486,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["EMP004", "Sneha Iyer", "Marketing"]
             ]
           },
-          { type: "p", text: "With a plain VLOOKUP, finding the ID from a name would be impossible — names sit to the right of IDs. XLOOKUP does not care: `=XLOOKUP(\"Priya Nair\", B2:B6, A2:A6, \"Not found\")` searches the Name column and returns EMP002 from the ID column to its left. The same function returns the department just as easily: `=XLOOKUP(\"EMP003\", A2:A6, C2:C6, \"Not found\")` gives Operations." }
+          { type: "p", text: "With a plain VLOOKUP, finding the ID from a name would be impossible. Names sit to the right of IDs. XLOOKUP does not care." },
+          { type: "p", text: "`=XLOOKUP(\"Priya Nair\", B2:B6, A2:A6, \"Not found\")` searches the Name column and returns EMP002 from the ID column to its left. The same function returns the department just as easily: `=XLOOKUP(\"EMP003\", A2:A6, C2:C6, \"Not found\")` gives Operations." }
         ]
       },
       {
@@ -496,7 +501,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               "**The fourth argument is the not-found fallback.** =XLOOKUP(A2, B2:B6, C2:C6, \"Not found\") shows that text when the lookup value is missing — no separate IFERROR wrapper needed."
             ]
           },
-          { type: "p", text: "Without the fourth argument, a missing lookup value still shows #N/A — XLOOKUP does not guess a fallback for you, it just makes one easy to add. In the employee table, `=XLOOKUP(\"EMP009\", A2:A6, C2:C6, \"Check the ID\")` returns the friendly text instead of an error." },
+          { type: "p", text: "Without the fourth argument, a missing lookup value still shows #N/A. XLOOKUP does not guess a fallback for you. It just makes one easy to add. In the employee table, `=XLOOKUP(\"EMP009\", A2:A6, C2:C6, \"Check the ID\")` returns the friendly text instead of an error." },
           {
             type: "grid",
             title: "A price lookup built three ways",
@@ -507,7 +512,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["XLOOKUP with fallback", "=XLOOKUP(A2, $G$2:$G$6, $H$2:$H$6, \"Not found\")", "Same formula — fallback built in"]
             ]
           },
-          { type: "p", text: "The XLOOKUP version says exactly what it does: search the products, return the prices, say \"Not found\" when there is no match. Six months later, anyone reading the formula understands it instantly — a real advantage when colleagues inherit your workbooks." }
+          { type: "p", text: "The XLOOKUP version says exactly what it does: search the products, return the prices, say \"Not found\" when there is no match. Six months later, anyone reading it understands instantly. That is a real advantage when colleagues inherit your workbooks." }
         ]
       },
       {
@@ -629,7 +634,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Explain why INDEX/MATCH survives column insertions that break VLOOKUP",
       "Build a lookup step by step, verifying MATCH first"
     ],
-    intro: "INDEX and MATCH are two simple functions that become powerful together. MATCH answers \"which position is this value in?\" and INDEX answers \"what is the value at this position?\". Joined together, they do everything VLOOKUP does — plus two things VLOOKUP cannot: look to the left, and survive structural changes to the sheet.\n\nThe technique works in every Excel version, which is why it remains the professional standard even after XLOOKUP arrived. Build it in two steps, exactly as this lesson shows, and it is also easier to debug than VLOOKUP.",
+    keyIdea: "MATCH finds a position; INDEX returns the value at that position. Together they beat VLOOKUP.",
+    intro: "INDEX and MATCH are two simple functions that become powerful together. MATCH answers: which position is this value in? INDEX answers: what is the value at this position?\n\nTogether they do everything VLOOKUP does. They also do two things VLOOKUP cannot: look to the left, and survive changes to the sheet. The technique works in every Excel version. That is why professionals still use it, even after XLOOKUP arrived. Build it in two steps, exactly as this lesson shows.",
     sections: [
       {
         heading: "MATCH: where is the value?",
@@ -652,8 +658,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["(omitted)", "Behaves like 1 — approximate!", "Never omit it by accident"]
             ]
           },
-          { type: "p", text: "In the Sunrise Traders price list (products in `G2:G6`: Notebooks, Pens, Staplers, Printers, Laptops), `=MATCH(\"Staplers\", G2:G6, 0)` returns 3 because Staplers is the third item in that range. If the product is not there, MATCH returns #N/A — the same \"not found\" signal as the lookups." },
-          { type: "warning", text: "The number MATCH returns is the position within the range you selected, not the row number of the sheet. \"Staplers\" is position 3 in G2:G6, even though it physically sits in row 4 of the sheet." }
+          { type: "p", text: "In the Sunrise Traders price list, the products in `G2:G6` are Notebooks, Pens, Staplers, Printers, Laptops. `=MATCH(\"Staplers\", G2:G6, 0)` returns 3 because Staplers is the third item. If the product is not there, MATCH returns #N/A — the same \"not found\" signal as the lookups." },
+          { type: "warning", text: "The number MATCH returns is the position within the range you selected, not the row number of the sheet. \"Staplers\" is position 3 in `G2:G6`, even though it sits in row 4 of the sheet." }
         ]
       },
       {
@@ -666,7 +672,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=INDEX(H2:H6, 3)",
             explanation: "Returns the 3rd value of the range H2:H6 — the price 130. INDEX does no searching at all; it just picks the item at a position."
           },
-          { type: "p", text: "On its own, INDEX is a plain \"give me the nth item\" function. `=INDEX(H2:H6, 3)` walks three items into the prices (45, 12, 130) and returns 130. Combine the two and INDEX stops being a hard-coded position — MATCH works out the position for you." }
+          { type: "p", text: "On its own, INDEX is a plain \"give me the nth item\" function. `=INDEX(H2:H6, 3)` walks three items into the prices (45, 12, 130) and returns 130. Combine the two, and the position is no longer hard-coded. MATCH works it out for you." }
         ]
       },
       {
@@ -690,7 +696,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=INDEX($H$2:$H$6, MATCH(A2, $G$2:$G$6, 0))",
             explanation: "MATCH finds the row position of the product in the product column; INDEX returns the price from that same position in the price column."
           },
-          { type: "p", text: "Read it from the inside out: \"the position of A2 within the products\" feeds \"the value at that position within the prices\". Note both ranges are locked with $, so the formula fills down safely — the same lesson you learned with VLOOKUP." }
+          { type: "p", text: "Read it from the inside out. \"The position of A2 within the products\" feeds \"the value at that position within the prices\". Both ranges are locked with $, so the formula fills down safely — the same lesson you learned with VLOOKUP." }
         ]
       },
       {
@@ -717,7 +723,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["Lookup", "Rahul Verma", "=INDEX(A2:A5, MATCH(B6, B2:B5, 0))"]
             ]
           },
-          { type: "p", text: "MATCH finds \"Rahul Verma\" at position 3 of the names; INDEX returns the 3rd ID, EMP003. The search column and the return column have no required order at all — that single property is why professionals keep this pair in their toolkit even in the XLOOKUP era." }
+          { type: "p", text: "MATCH finds \"Rahul Verma\" at position 3 of the names. INDEX returns the 3rd ID, EMP003. The search column and the return column have no required order at all. That single property is why professionals keep this pair, even in the XLOOKUP era." }
         ]
       }
     ],
@@ -827,7 +833,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Join text with CONCAT and the & operator",
       "Use SUBSTITUTE, FIND versus SEARCH, and TEXT for formatting numbers as text"
     ],
-    intro: "Real office data is messy. Names arrive with stray spaces, product codes mix letters and numbers, dates come as text, and everything is typed in a different case. Text functions are the cleaning tools: they cut, join, measure and standardise text so your reports look like they came from one careful clerk instead of five rushed ones.\n\nThese functions also prepare you for a fact you will meet in the date lesson: Excel treats text and numbers as different things, and half of all lookup failures are text problems in disguise.",
+    keyIdea: "Text functions cut, clean, join and reformat text so messy data becomes report-ready.",
+    intro: "Real office data is messy. Names arrive with stray spaces. Product codes mix letters and numbers. Dates come as text. Everything is typed in a different case.\n\nText functions are the cleaning tools. They cut, join, measure and standardise text. Your reports will look like one careful clerk wrote them. They also prepare you for a fact from the date lesson: Excel treats text and numbers as different things. Half of all lookup failures are text problems in disguise.",
     sections: [
       {
         heading: "LEFT, RIGHT, MID: cutting text into parts",
@@ -853,7 +860,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=RIGHT(\"STP-013-BLACK\", 5)",
             explanation: "Returns the last 5 characters — BLACK, the colour suffix of the product code."
           },
-          { type: "p", text: "Positions count characters from the left, starting at 1. In `STP-013-BLACK`: S is 1, T is 2, P is 3, the dash is 4, 0 is 5. That is why MID starts at 5 to grab the number block. Omitting the count in LEFT or RIGHT takes just one character: `=LEFT(\"STP-013\")` gives S." },
+          { type: "p", text: "Positions count characters from the left, starting at 1. In `STP-013-BLACK`: S is 1, T is 2, P is 3, the dash is 4, 0 is 5. That is why MID starts at 5 to grab the number block. Leave the count out of LEFT or RIGHT and you get one character: `=LEFT(\"STP-013\")` gives S." },
           { type: "p", text: "Where is this used? Splitting warehouse codes into family, item and colour; taking the city code off an invoice number; pulling the year out of an order reference like `ORD-2026-0142` with `=MID(\"ORD-2026-0142\", 5, 4)`." }
         ]
       },
@@ -874,9 +881,9 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=LEN(\"STP-013\")",
             explanation: "Counts every character, spaces included. STP-013 is 7 characters long."
           },
-          { type: "p", text: "TRIM is the single most valuable data-cleaning function in Excel. Invisible trailing spaces break VLOOKUP matches — remember the #N/A mystery from the lookup lesson. Running a TRIM column over imported names fixes most of them: `=TRIM(B2)` next to the raw import, then paste the results back as values." },
-          { type: "p", text: "LEN is the diagnostic partner. `=LEN(TRIM(B2))` tells you whether a name still has odd spacing, and `=LEN(A2)-LEN(SUBSTITUTE(A2, \" \", \"\"))` counts the spaces in A2 — a neat trick once you know SUBSTITUTE, coming up in a moment." },
-          { type: "warning", text: "TRIM removes the normal space character (code 32). Data pasted from web pages sometimes contains a non-breaking space (code 160) that TRIM leaves untouched. If TRIM seems to do nothing, that is usually why — lesson 13's CHAR function family and SUBSTITUTE handle the stubborn cases." }
+          { type: "p", text: "TRIM is the single most valuable data-cleaning function in Excel. Invisible trailing spaces break VLOOKUP matches — remember the #N/A mystery from the lookup lesson. A TRIM column over imported names fixes most of them. Put `=TRIM(B2)` next to the raw import, then paste the results back as values." },
+          { type: "p", text: "LEN is the diagnostic partner. `=LEN(TRIM(B2))` tells you whether a name still has odd spacing. And `=LEN(A2)-LEN(SUBSTITUTE(A2, \" \", \"\"))` counts the spaces in `A2` — a neat trick once you know SUBSTITUTE, coming up in a moment." },
+          { type: "warning", text: "TRIM removes the normal space character (code 32). Data pasted from web pages sometimes holds a non-breaking space (code 160), which TRIM leaves untouched. If TRIM seems to do nothing, that is usually why. Lesson 13's CHAR family and SUBSTITUTE handle the stubborn cases." }
         ]
       },
       {
@@ -900,8 +907,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["4", "sneha iyer", "=PROPER(TRIM(B4))", "Sneha Iyer"]
             ]
           },
-          { type: "p", text: "The nested pair `=PROPER(TRIM(B2))` is a standard cleaning formula: TRIM first fixes the spacing, PROPER then fixes the case. Note what happened in row 3 — TRIM also squeezed the double space between RAHUL and verma down to one before PROPER capitalised it. Cleaning functions chain like this all the time." },
-          { type: "p", text: "One caution: PROPER capitalises every word, so `=PROPER(\"l2a-3 staplers\")` produces \"L2A-3 Staplers\" — the letter after a dash or number also gets capitalised. Check PROPER's output on codes; UPPER and LOWER are predictable, PROPER is not." }
+          { type: "p", text: "The nested pair `=PROPER(TRIM(B2))` is a standard cleaning formula. TRIM first fixes the spacing. PROPER then fixes the case. Note row 3: TRIM also squeezed the double space between RAHUL and verma down to one, before PROPER capitalised it. Cleaning functions chain like this all the time." },
+          { type: "p", text: "One caution: PROPER capitalises every word. So `=PROPER(\"l2a-3 staplers\")` produces \"L2A-3 Staplers\" — the letter after a dash or number also gets capitalised. Check PROPER's output on codes. UPPER and LOWER are predictable; PROPER is not." }
         ]
       },
       {
@@ -924,7 +931,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["3", "Priya", "Nair", "=B3&\" \"&C3", "=UPPER(B3)&\" - \"&UPPER(C3)"]
             ]
           },
-          { type: "p", text: "The label column produces ARJUN - MEHTA and PRIYA - NAIR, ready for a report header. Joining is also how you build lookup-friendly keys: `=A2&\"-\"&B2` glues region and product into NORTH-NOTEBOOKS, which COUNTIF can then search for. Any text can be joined with a formula result, including numbers — but notice the next section for what happens to their formatting." }
+          { type: "p", text: "The label column produces ARJUN - MEHTA and PRIYA - NAIR, ready for a report header. Joining is also how you build lookup-friendly keys. `=A2&\"-\"&B2` glues region and product into NORTH-NOTEBOOKS, which COUNTIF can then search for." },
+          { type: "p", text: "Any text can be joined with a formula result, including numbers. But notice the next section for what happens to their formatting." }
         ]
       },
       {
@@ -937,7 +945,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=SUBSTITUTE(\"STP-013-BLACK\", \"-\", \" \")",
             explanation: "Replaces every dash with a space, giving STP 013 BLACK. The optional instance number replaces only that occurrence — the 2nd dash, for example."
           },
-          { type: "p", text: "SUBSTITUTE replaces known text everywhere it appears: standardise separators, strip unwanted characters, or swap an old product prefix for a new one. When you need \"remove all spaces\" you write `=SUBSTITUTE(A2, \" \", \"\")` — replacing spaces with nothing." },
+          { type: "p", text: "SUBSTITUTE replaces known text everywhere it appears. Use it to standardise separators, strip unwanted characters, or swap an old prefix for a new one. To \"remove all spaces\" you write `=SUBSTITUTE(A2, \" \", \"\")` — replacing spaces with nothing." },
           {
             type: "table",
             headers: ["Function", "Case sensitivity", "Wildcards", "Returns"],
@@ -946,7 +954,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["SEARCH", "Case-insensitive", "Allowed", "Position of the text, or #VALUE! if absent"]
             ]
           },
-          { type: "p", text: "Both return a position number you can feed into MID or LEFT. `=FIND(\"-\", \"STP-013-BLACK\")` returns 4 — the first dash sits at position 4 — so `=LEFT(\"STP-013-BLACK\", FIND(\"-\", \"STP-013-BLACK\")-1)` returns STP without hard-coding the 3. Use FIND when case matters (codes), SEARCH when it does not (typed names)." },
+          { type: "p", text: "Both return a position number you can feed into MID or LEFT. `=FIND(\"-\", \"STP-013-BLACK\")` returns 4 — the first dash sits at position 4. So `=LEFT(\"STP-013-BLACK\", FIND(\"-\", \"STP-013-BLACK\")-1)` returns STP without hard-coding the 3. Use FIND when case matters (codes). Use SEARCH when it does not (typed names)." },
           {
             type: "formula",
             name: "TEXT",
@@ -954,7 +962,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             example: "=TEXT(D2, \"dd-mmm-yyyy\")",
             explanation: "Converts a number or date into text wearing a specific format. A date of 14-Nov-2026 becomes the literal text \"14-Nov-2026\" that can be joined into a report title."
           },
-          { type: "p", text: "TEXT shines when a number must appear inside a sentence: `=\"Report for \"&TEXT(TODAY(), \"dd-mmm-yyyy\")` builds a title that updates itself. The format code does the styling — `\"#,##0.00\"` for thousand-separated money. Remember the trade-off from the ROUND lesson in reverse: TEXT returns **text**, so the result can no longer be added up. Format for display, TEXT only for labels." }
+          { type: "p", text: "TEXT shines when a number must appear inside a sentence. `=\"Report for \"&TEXT(TODAY(), \"dd-mmm-yyyy\")` builds a title that updates itself. The format code does the styling — `\"#,##0.00\"` for thousand-separated money." },
+          { type: "p", text: "Remember the trade-off from the ROUND lesson, in reverse. TEXT returns **text**, so the result can no longer be added up. Format for display, TEXT only for labels." }
         ]
       }
     ],

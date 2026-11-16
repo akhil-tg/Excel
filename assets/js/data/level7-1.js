@@ -27,19 +27,20 @@ window.LEVEL_META[7] = {
       "Apply conditional formatting so problems stand out on their own",
       "Connect four sheets into one system where a single edit updates everything"
     ],
-    intro: "You have learned the tools — now use them on a real job. In this project you build the HR system of Sunrise Traders, a wholesale office supplies company with six employees: Arjun Mehta, Priya Nair, Rahul Verma, Sneha Iyer, Vikram Singh and Divya Menon. The finished system has four sheets: an Employee Master where HR enters each person once, an Attendance Summary, a Salary Summary, and a small dashboard that answers the questions a manager actually asks — how many people sit in each department, who is still active, and what the monthly salary bill looks like.\n\nThis project introduces no new functions. Everything comes from Levels 2 to 6: data validation, VLOOKUP, COUNTIF, SUMIF and conditional formatting. Your job is to combine them so they work together, and that is exactly what real office Excel work is. The exercise workbook contains the starter files and a completed solution, so you can check every step. Everything here works in Excel 2010 and later.",
+    intro: "You have learned the tools. Now use them on a real job. In this project you build the HR system of Sunrise Traders, a wholesale office supplies company. It has six employees: Arjun Mehta, Priya Nair, Rahul Verma, Sneha Iyer, Vikram Singh and Divya Menon. The finished system has four sheets. HR types each person once in the Employee Master. Then an Attendance Summary and a Salary Summary fill themselves. A small dashboard answers the questions a manager asks: how many people sit in each department, who is still active, and what the monthly salary bill looks like.\n\nThis project introduces no new functions. Everything comes from Levels 2 to 6: data validation, VLOOKUP, COUNTIF, SUMIF and conditional formatting. Your job is to combine them so they work together. That is exactly what real office Excel work is. The exercise workbook has a starter file and a completed solution, so you can check every step. Everything here works in Excel 2010 and later.",
+    keyIdea: "You build a four-sheet HR system where every sheet fills itself from one employee master.",
     sections: [
       {
         heading: "What You Will Build",
         blocks: [
-          { type: "p", text: "The finished system does four things. HR types each employee once, in the Employee Master, and never types their name again — the other sheets pull it automatically. Department and Status cells only accept values from a dropdown, so nobody can type \"Sels\" or \"activee\" and silently break the counts. The Attendance Summary and Salary Summary calculate themselves as soon as you enter IDs and day counts. And the dashboard totals everything with one glance." },
+          { type: "p", text: "The finished system does four things. HR types each employee once in the Employee Master. The other sheets pull the name automatically after that. Department and Status cells accept only dropdown values. So nobody can type \"Sels\" or \"activee\" and silently break the counts. The Attendance Summary and Salary Summary calculate themselves. You just enter IDs and day counts. And the dashboard shows every total at one glance." },
           { type: "ul", items: [
             "**Employee Master** — one row per employee: ID, name, department, designation, join date, status and basic salary, with dropdowns on Department and Status.",
             "**Attendance Summary** — days present, absent and on leave per employee, with an automatic attendance percentage.",
             "**Salary Summary** — basic salary pulled from the master, plus HRA at 40% and a gross figure.",
             "**Dashboard** — headcount and salary cost per department, active headcount, and total payroll, all live."
           ] },
-          { type: "p", text: "This is the pattern behind almost every small-office Excel system: one master sheet that holds clean data, summary sheets that look values up, and a dashboard that counts and adds. Once you build it here, you can rebuild it for any business." }
+          { type: "p", text: "This is the pattern behind almost every small-office Excel system. One master sheet holds clean data. Summary sheets look values up. A dashboard counts and adds. Once you build it here, you can rebuild it for any business." }
         ]
       },
       {
@@ -90,7 +91,7 @@ window.LEVEL_META[7] = {
               ["E105", "Vikram Singh", "Sales", "Sales Manager", "05-Sep-19", "Active", "55000"],
               ["E106", "Divya Menon", "Sales", "Sales Executive", "18-Feb-23", "Resigned", "28000"]
             ] },
-          { type: "warning", text: "Apply the dropdowns down to row 11, not just row 7. If you stop at row 7, the first new hire you add will have no dropdown, and one mistyped department will throw off every count on the dashboard." }
+          { type: "warning", text: "Apply the dropdowns down to row 11, not just row 7. The first new hire past row 7 needs a dropdown too. One mistyped department there throws off every count on the dashboard." }
         ]
       },
       {
@@ -118,7 +119,7 @@ window.LEVEL_META[7] = {
             syntax: "=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])",
             example: "=VLOOKUP($A2,'Employee Master'!$A$2:$B$7,2,FALSE)",
             explanation: "Finds the ID from A2 in column A of the Employee Master and returns the value from the 2nd column of the range — the name. FALSE forces an exact match. The dollar signs lock the range so filling down does not slide it off the data." },
-          { type: "tip", text: "Type the ID in A2 first and get the VLOOKUP right before filling down. If B2 shows `#N/A`, the ID in A2 does not exist in the master — check for a typo or a stray space." }
+          { type: "tip", text: "Type the ID in A2 first. Get the VLOOKUP right before filling down. If B2 shows `#N/A`, the ID does not exist in the master. Check for a typo or a stray space." }
         ]
       },
       {
@@ -143,7 +144,7 @@ window.LEVEL_META[7] = {
               ["E105", "Vikram Singh", "Sales", "55000", "22000", "77000", ""],
               ["E106", "Divya Menon", "Sales", "28000", "11200", "39200", ""]
             ] },
-          { type: "p", text: "Two lookups, two different column numbers, one locked range — notice how only the third argument changes between `C2` and `D2`. That is the whole trick behind salary and payroll sheets. In the Payroll Calculator project we will extend this with PF and tax." }
+          { type: "p", text: "Two lookups, two column numbers, one locked range. Notice only the third argument changes between `C2` and `D2`. That is the whole trick behind salary and payroll sheets. The Payroll Calculator project extends this with PF and tax." }
         ]
       },
       {
@@ -189,13 +190,13 @@ window.LEVEL_META[7] = {
             "On the **Dashboard**, select `B4:B7` and apply **Conditional Formatting → Data Bars** so headcount gets a visible bar.",
             "Test everything: change Divya Menon's status to `Active` on the master. Her red highlight disappears, Active Employees flips to 5, and the Sales headcount bar stays at 3 — but the Salary Summary never changes, because she is still on the rolls. Change her department to `Stores` and watch the dashboard move both bars."
           ] },
-          { type: "tip", text: "That last test is the real lesson: you edited one cell and three different sheets responded. If something did not move, check that your COUNTIF and SUMIF ranges go down to row 11 and that you locked them with dollar signs." }
+          { type: "tip", text: "That last test is the real lesson. You edited one cell and three sheets responded. If something did not move, check two things. Make sure your COUNTIF and SUMIF ranges go down to row 11. And make sure you locked them with dollar signs." }
         ]
       },
       {
         heading: "Level Up Your System",
         blocks: [
-          { type: "p", text: "The workbook you just built is a working system, and the upgrade exercises below push it closer to what a real HR file looks like. Each one appears in the workbook panel with a hint and a worked solution." }
+          { type: "p", text: "The workbook you just built is a working system. The upgrade exercises below push it closer to a real HR file. Each one appears in the workbook panel with a hint and a worked solution." }
         ]
       },
       {
@@ -292,19 +293,21 @@ window.LEVEL_META[7] = {
       "Build a daily totals strip and a per-employee summary sheet",
       "Keep a 30-column register readable with freezing and colour rules"
     ],
-    intro: "Paper attendance registers still rule most Indian offices, but they are slow to total and impossible to analyse. In this project you build the Excel version for Sunrise Traders: one sheet where every employee's month is a row of single-letter codes, and the totals, percentages and weekend shading appear on their own.\n\nThe system has two sheets: an **Attendance Register** with a column for every day of November 2025, and a **Summary** that condenses the register into one line per employee. You will use COUNTIF heavily, meet one new idea — conditional formatting driven by a formula — and reuse everything else from Levels 3 to 6. Everything here works in Excel 2010 and later.",
+    intro: "Most Indian offices still use paper attendance registers. They are slow to total and hard to analyse. In this project you build the Excel version for Sunrise Traders. Each employee's month becomes one row of single-letter codes. Totals, percentages and weekend shading then appear on their own.\n\nThe system has two sheets. The **Attendance Register** has a column for every day of November 2025. The **Summary** condenses the register into one line per employee. You will use COUNTIF heavily. You will also meet one new idea: conditional formatting driven by a formula. Everything else comes from Levels 3 to 6. Everything here works in Excel 2010 and later.",
+    keyIdea: "You build a full-month attendance register that totals codes and shades weekends by itself.",
     sections: [
       {
         heading: "What You Will Build",
         blocks: [
-          { type: "p", text: "The register works like the paper one your office already knows, except the maths is done. HR types a code into each day cell — `P` for present, `A` for absent, `L` for paid leave, `WO` for week off and `H` for holiday — and the right-hand columns instantly show how many days each code was used, how many days are payable, and the attendance percentage. A strip under the register counts how many people were present on each individual day, which is the number an office manager actually needs at 9:05 am." },
+          { type: "p", text: "The register works like the paper one your office knows. But here the maths is done. HR types a code into each day cell. `P` means present, `A` absent, `L` paid leave, `WO` week off and `H` holiday. The right-hand columns instantly show how many days each code was used, how many days are payable, and the attendance percentage." },
+          { type: "p", text: "A strip under the register counts how many people were present on each individual day. That is the number an office manager actually needs at 9:05 am." },
           { type: "ul", items: [
             "**Attendance Register** — 6 employees × 30 day columns, with automatic totals in columns AG to AM.",
             "**Weekend shading** — the five Sunday columns glow grey so nobody marks a week off by mistake.",
             "**Daily totals strip** — present and absent counts for every date, row by row.",
             "**Summary sheet** — one clean line per employee pulled straight from the register."
           ] },
-          { type: "p", text: "November 2025 has 30 days and five Sundays: the 2nd, 9th, 16th, 23rd and 30th. Days 1 to 14 are already filled in the exercise file as a model; you complete the second half of the month yourself." }
+          { type: "p", text: "November 2025 has 30 days and five Sundays: the 2nd, 9th, 16th, 23rd and 30th. Days 1 to 14 are already filled in the exercise file. They are your model. You complete the second half of the month yourself." }
         ]
       },
       {
@@ -317,7 +320,7 @@ window.LEVEL_META[7] = {
             "**Conditional formatting** (Level 6) — both simple rules and one formula-based rule.",
             "**Cross-sheet references** (Level 5) — the Summary sheet reads the register directly."
           ] },
-          { type: "p", text: "The one genuinely new idea is a conditional formatting rule whose condition is a formula. Everything else should feel familiar — this project is about applying known tools to a much wider grid than you have used before." }
+          { type: "p", text: "The one genuinely new idea is a conditional formatting rule whose condition is a formula. Everything else should feel familiar. This project applies known tools to a much wider grid than you have used before." }
         ]
       },
       {
@@ -373,7 +376,7 @@ window.LEVEL_META[7] = {
             syntax: "=COUNTIF($C2:$AF2, \"P\")",
             example: "=COUNTIF($C2:$AF2,\"P\")",
             explanation: "The dollar signs before C and AF lock the columns but leave the row free. That means you can copy the formula safely both across the totals row and down the six employees, and the day range never slides off the register." },
-          { type: "p", text: "Check your row 2: Arjun Mehta should read 25 present, 0 absent, 0 leave, 5 week-offs, 0 holidays, 25 working days, 100%. Sneha Iyer in row 5 reads 20 present, 5 leave, 80%. If a number is off, the almost-always cause is a code typed without the dropdown — look for stray spaces in that employee's row." }
+          { type: "p", text: "Check your row 2. Arjun Mehta should read 25 present, 0 absent, 0 leave, 5 week-offs, 0 holidays, 25 working days, 100%. Sneha Iyer in row 5 reads 20 present, 5 leave, 80%. If a number is off, look for stray spaces in that employee's row. A code typed without the dropdown is the almost-always cause." }
         ]
       },
       {
@@ -391,7 +394,7 @@ window.LEVEL_META[7] = {
             syntax: "=OR(condition1, condition2, …)",
             example: "=OR(C$1=2,C$1=9,C$1=16,C$1=23,C$1=30)",
             explanation: "Excel evaluates this formula for every cell in the selection, adjusting the reference the same way it adjusts a copied formula. Because the row is locked with C$1, every cell in a column looks at its own day number in row 1 — and lights up when that day is a Sunday." },
-          { type: "tip", text: "The formula you type must be written for the top-left cell of the selection and use the right mix of $ locks. This one rule idea powers hundreds of real-world formats: overdue dates, weekend columns, duplicate rows." }
+          { type: "tip", text: "Type the formula for the top-left cell of the selection. Use the right mix of $ locks. This one rule idea powers hundreds of real-world formats: overdue dates, weekend columns, duplicate rows." }
         ]
       },
       {
@@ -416,7 +419,7 @@ window.LEVEL_META[7] = {
               ["E105", "Vikram Singh", "25", "0", "0", "25", "100%"],
               ["E106", "Divya Menon", "25", "0", "0", "25", "100%"]
             ] },
-          { type: "p", text: "Notice the Summary uses plain references like `='Attendance Register'!AG2` rather than re-counting. One source of truth, many views — the same principle as the employee system, and it keeps the two sheets forever in sync." }
+          { type: "p", text: "Notice the Summary uses plain references like `='Attendance Register'!AG2` instead of re-counting. One source of truth, many views. This is the same principle as the employee system. It keeps the two sheets forever in sync." }
         ]
       },
       {
@@ -435,7 +438,7 @@ window.LEVEL_META[7] = {
             "Compare the daily strip: your day 11 figures must read 5 present and 1 absent.",
             "On the Summary, click `C3` and confirm it references the register, not a re-count, then close the solution without saving."
           ] },
-          { type: "p", text: "The most common difference learners find is one Sunday column left unshaded — usually because the rule was typed for the wrong top-left cell. That single mistake is worth more than an hour of reading about mixed references." }
+          { type: "p", text: "The most common difference is one Sunday column left unshaded. That usually means the rule was typed for the wrong top-left cell. That single mistake is worth more than an hour of reading about mixed references." }
         ]
       }
     ],
@@ -528,18 +531,19 @@ window.LEVEL_META[7] = {
       "Create a payslip for any single employee using INDEX with MATCH",
       "Know when XLOOKUP replaces the INDEX/MATCH pattern"
     ],
-    intro: "Payroll is the calculation office Excel was born for. In this project you turn the Sunrise Traders employee master into a working monthly payroll: for each of the six employees the sheet computes HRA at 40% of basic, PF at 12% of basic, a simplified slab tax, and a net pay rounded to the rupee. Then you build a printable payslip that shows any one employee's full breakdown the moment you type their ID.\n\nThe payslip uses INDEX with MATCH to pull each figure — the lookup pair from Level 5 that works left, right and centre. If you are on Microsoft 365 or Excel 2021, you will also see how the single XLOOKUP function does the same job. The slab tax is the only genuinely new pattern, and it is just a nested IF from Level 4 with rupee amounts inside.",
+    intro: "Payroll is the calculation office Excel was born for. In this project you turn the Sunrise Traders employee master into a working monthly payroll. For each of the six employees, the sheet computes HRA at 40% of basic. It also computes PF at 12% of basic, a simplified slab tax, and a net pay rounded to the rupee. Then you build a printable payslip. Type an employee's ID and their full breakdown appears.\n\nThe payslip uses INDEX with MATCH to pull each figure. That is the lookup pair from Level 5, and it works in any direction. On Microsoft 365 or Excel 2021, you will also see how the single XLOOKUP function does the same job. The slab tax is the only genuinely new pattern. It is just a nested IF from Level 4 with rupee amounts inside.",
+    keyIdea: "You build a payroll calculator that pays staff with HRA, PF, slab tax and a payslip.",
     sections: [
       {
         heading: "What You Will Build",
         blocks: [
-          { type: "p", text: "Three sheets, one flow. HR never retypes a salary: the **Payroll** sheet reads basic pay from the **Employee Master**, applies the standard Indian salary components, and produces one net figure per person. The **Payslip** sheet is a formatted single-employee view — type `E101` in one cell and the whole slip fills in, ready to print and sign." },
+          { type: "p", text: "Three sheets, one flow. HR never retypes a salary. The **Payroll** sheet reads basic pay from the **Employee Master**. It applies the standard Indian salary components and produces one net figure per person. The **Payslip** sheet is a formatted view for one employee. Type `E101` in one cell and the whole slip fills in, ready to print and sign." },
           { type: "ul", items: [
             "**Employee Master** — the six Sunrise Traders employees with their basic salaries (already filled).",
             "**Payroll** — one row per employee: Basic, HRA 40%, PF 12%, Gross, slab Tax, Net.",
             "**Payslip** — a print-ready salary slip driven by a single Emp ID input cell."
           ] },
-          { type: "p", text: "The Indian terms, simply: **HRA** (House Rent Allowance) is a salary component meant to cover rent — many private companies set it at 40% of basic. **PF** (Provident Fund) is retirement savings deducted at 12% of basic. **Gross pay** is Basic + HRA + PF before tax, and **net pay** is what actually reaches the bank. This project uses simplified rules so the pattern is clear; a real payroll adds exemptions, a PF wage ceiling and state-level detail." }
+          { type: "p", text: "The Indian terms, simply: **HRA** (House Rent Allowance) covers rent. Many private companies set it at 40% of basic. **PF** (Provident Fund) is retirement savings deducted at 12% of basic. **Gross pay** is Basic + HRA + PF before tax. **Net pay** is what actually reaches the bank. This project uses simplified rules so the pattern is clear. A real payroll adds exemptions, a PF wage ceiling and state-level detail." }
         ]
       },
       {
@@ -596,7 +600,7 @@ window.LEVEL_META[7] = {
       {
         heading: "Build Section 2: The Slab Tax Formula",
         blocks: [
-          { type: "p", text: "India's income tax is charged in slabs: different rates on different slices of income, not one rate on the whole amount. We use a deliberately simple monthly version so you can see the machinery: no tax on the first ₹25,000 of monthly gross, 5% on the slice from ₹25,001 to ₹50,000, and 10% on everything above ₹50,000." },
+          { type: "p", text: "India's income tax is charged in slabs. Different rates apply to different slices of income, not one rate on the whole amount. We use a simple monthly version so you can see the machinery. No tax applies to the first ₹25,000 of monthly gross. The slice from ₹25,001 to ₹50,000 is taxed at 5%. Everything above ₹50,000 is taxed at 10%." },
           { type: "steps", items: [
             "In `G2` type the formula below and fill it down to `G7`.",
             "Format `G2:G7` the same way as the money columns.",
@@ -761,6 +765,7 @@ window.LEVEL_META[7] = {
       "Understand why every stock figure in the system traces back to one master"
     ],
     intro: "Every shop and warehouse runs on one question: how much do we have right now? In this project you build the stock system for Sunrise Traders, which buys and sells office supplies — Notebooks, Pens, Staplers, Printers and Laptops. Goods come **inward** from suppliers and go **outward** to customers through two registers, and a **Current Stock** sheet keeps a live balance for every item, warns you when stock falls below the reorder level, and totals the money value of everything on the shelves.\n\nThe heart of the project is one formula pattern: Closing Stock = Opening + Inward − Outward, where the inward and outward amounts come from SUMIFS scanning the registers. Everything else — validation, lookups, conditional formatting — is revision from Levels 3 to 6. Nothing here needs a newer Excel than 2010.",
+    keyIdea: "Closing stock is always Opening + Inward − Outward, computed live with SUMIFS.",
     sections: [
       {
         heading: "What You Will Build",
@@ -1003,6 +1008,7 @@ window.LEVEL_META[7] = {
       "Design a tracking file that keeps working as the log grows"
     ],
     intro: "Sunrise Traders sells to offices across four regions — North, South, East and West — through six salespeople. Every invoice lands in one log sheet, and this project turns that log into a management tool: monthly revenue with growth, each salesperson's achievement against target, a ranking of the team, and a chart the sales meeting can put on a screen.\n\nThis is the summary-layer project: no new Excel machinery at all, but two habits that separate working trackers from broken ones. First, a helper column converts messy daily dates into clean month labels so SUMIFS has something solid to match. Second, every formula scans a generous range like rows 2 to 200, so the tracker keeps working long after you stop maintaining it.",
+    keyIdea: "Helper columns and generous formula ranges keep a tracker working as the log grows.",
     sections: [
       {
         heading: "What You Will Build",

@@ -25,12 +25,13 @@ window.LEVEL_META[5] = {
       "Find any record in seconds using filters",
       "Count headcount by department with COUNTIF"
     ],
-    intro: "Every office runs on one central question: who works here, in which team, at what salary, and since when? Small companies answer this with a notebook or a Word file. Growing companies answer it with an Excel sheet that behaves like a database.\n\nIn this lesson you will build the employee master for Sunrise Traders, a retail and wholesale office supplies firm. Six employees work there today: Arjun Mehta, Priya Nair, Rahul Verma, Sneha Iyer, Vikram Singh and Divya Menon. This master sheet will feed everything later in this level: attendance, leave, payroll and reports. Build it well once, and every later lesson becomes easy.",
+    intro: "Who works here? Which team, what salary, since when? Small companies keep this in a notebook. Growing companies keep it in Excel.\n\nIn this lesson you build the employee master for Sunrise Traders, an office supplies firm. Six employees work there today: Arjun Mehta, Priya Nair, Rahul Verma, Sneha Iyer, Vikram Singh and Divya Menon. This one sheet will feed attendance, leave, payroll and reports. Build it well once, and every later lesson becomes easy.",
+    keyIdea: "One clean master table of employees feeds every other HR sheet you build later.",
     sections: [
       {
         heading: "Why a Database, Not Just a List",
         blocks: [
-          { type: "p", text: "A list is anything you type. A database is a list with rules. The rules are what let Excel answer questions like \"How many people are in Sales?\" or \"Who joined this year?\" without you re-reading every row." },
+          { type: "p", text: "A list is anything you type. A database is a list with rules. The rules let Excel answer questions fast. Ask \"How many people are in Sales?\" or \"Who joined this year?\" Excel counts, without you re-reading every row." },
           { type: "ul", items: [
             "**One header row** at the top, and data from row 2 downwards. Filters and formulas expect this shape.",
             "**No merged cells** anywhere in the data area. A merged cell belongs to one column only, so sorting, filtering and ranges all break around it.",
@@ -38,7 +39,7 @@ window.LEVEL_META[5] = {
             "**No blank rows or columns** inside the data. A blank row silently splits your table in two, and `COUNTIF` on the lower part stops working.",
             "**One value per cell.** Phone and email get their own columns; do not write \"98450 12345 / 98450 67890\" in one cell."
           ] },
-          { type: "p", text: "These are not style preferences. `COUNTIF`, `VLOOKUP`, filters and sorting all assume this shape. The fastest way to ruin a good sheet is to merge two header cells \"to make it look nice\"." }
+          { type: "p", text: "These are not style preferences. `COUNTIF`, `VLOOKUP`, filters and sorting all assume this shape. One merged header cell, added \"to make it look nice\", can ruin the whole sheet." }
         ]
       },
       {
@@ -64,13 +65,13 @@ window.LEVEL_META[5] = {
             ["EMP-005", "Vikram Singh", "Admin", "Office Administrator", "09-Feb-2022", "24000", "Active"],
             ["EMP-006", "Divya Menon", "HR", "HR Executive", "27-Sep-2022", "26000", "Active"]
           ] },
-          { type: "tip", text: "Type the Joining Date as a real date (12-Apr-2021), not text. Real dates can be sorted, filtered by year, and used in formulas like years of service. Text dates just sit there looking right and failing everywhere else." }
+          { type: "tip", text: "Type the Joining Date as a real date (12-Apr-2021), not text. Real dates sort, filter by year, and work in formulas like years of service. Text dates just sit there, looking right and failing everywhere else." }
         ]
       },
       {
         heading: "Dropdowns That Keep Data Clean",
         blocks: [
-          { type: "p", text: "Six people will type \"Sales\", \"sales\", \"Sales Dept\" and \"SLS\" in the same column unless you stop them. Every one of those spellings breaks `COUNTIF`. The fix is Data Validation, which turns the column into a dropdown list." },
+          { type: "p", text: "Six people typing in the same column will write \"Sales\", \"sales\", \"Sales Dept\" and \"SLS\". Every spelling breaks `COUNTIF`. The fix is Data Validation. It turns the column into a dropdown list." },
           { type: "steps", items: [
             "Select the Department cells, for example `C2:C200`.",
             "Go to the Data tab and click Data Validation.",
@@ -123,7 +124,7 @@ window.LEVEL_META[5] = {
             ["HR", "=COUNTIF($C$2:$C$200, \"HR\")", ""]
           ] },
           { type: "p", text: "Total active employees is just as simple: `=COUNTIF($I$2:$I$200, \"Active\")` returns 6 for Sunrise Traders today." },
-          { type: "p", text: "Finally, protect what you built. When an employee leaves, do not delete their row. Change Status to Inactive instead. The row still answers old payroll and leave questions, and your headcount stays correct because it counts Active employees." },
+          { type: "p", text: "Finally, protect what you built. When an employee leaves, do not delete their row. Change Status to Inactive instead. The row still answers old payroll and leave questions. Headcount stays correct too, because it counts only Active employees." },
           { type: "ul", items: [
             "Use Review, Protect Sheet with a password so formulas and headers cannot be edited by accident.",
             "Keep a backup copy of the master before any bulk change, such as a salary revision.",
@@ -179,7 +180,8 @@ window.LEVEL_META[5] = {
       "Shade weekends automatically with conditional formatting",
       "Summarise the whole month on a separate summary sheet"
     ],
-    intro: "HR keeps one register per month: who was present, absent, on leave, on holiday, or on a week off. Doing this by hand wastes hours and invites errors. In Excel, a register plus five COUNTIF formulas gives you every employee's full attendance picture in seconds.\n\nSunrise Traders marks attendance with single-letter codes: P for present, A for absent, L for leave, H for holiday and WO for week off. In this lesson you will build the October 2026 register for six employees and turn it into a monthly summary.",
+    intro: "HR keeps one register per month. Who was present, absent, on leave, on holiday, or on a week off? Doing this by hand wastes hours and invites errors. In Excel, a register plus five `COUNTIF` formulas gives the full picture in seconds.\n\nSunrise Traders marks attendance with single-letter codes. P is present, A is absent, L is leave, H is holiday and WO is week off. In this lesson you build the October 2026 register for six employees and turn it into a monthly summary.",
+    keyIdea: "Mark each day with one short code, and formulas count the whole month for you.",
     sections: [
       {
         heading: "Why Codes Beat Words",
@@ -210,8 +212,8 @@ window.LEVEL_META[5] = {
             ["EMP-002", "Priya Nair", "P", "P", "H"],
             ["EMP-003", "Rahul Verma", "P", "P", "H"]
           ] },
-          { type: "p", text: "Columns A and B hold the ID and name. Columns C to AG hold days 1 to 31 (C is day 1, so day 31 lands in column AG). Columns AH to AK hold the totals: P count, A count, L count and attendance percentage. Row 1 is a note cell with the month, row 2 is the header, and employees start in row 3." },
-          { type: "p", text: "Leave the weekend columns blank and shade them, so nobody is tempted to mark P on a Sunday. Holidays get an H inside the working-day area. October 2026 has four Sundays (4, 11, 18, 25), two week-off Saturdays (10 and 24, the 2nd and 4th Saturdays) and one holiday (2 October)." },
+          { type: "p", text: "Columns A and B hold the ID and name. Columns C to AG hold days 1 to 31. C is day 1, so day 31 lands in column AG. Columns AH to AK hold the totals: P count, A count, L count and attendance percentage. Row 1 is a note cell with the month. Row 2 is the header. Employees start in row 3." },
+          { type: "p", text: "Leave the weekend columns blank and shade them. Then nobody is tempted to mark P on a Sunday. Holidays get an H inside the working-day area. October 2026 has four Sundays (4, 11, 18, 25), two week-off Saturdays (10 and 24, the 2nd and 4th) and one holiday (2 October)." },
           { type: "steps", items: [
             "Select the day area, for example `C3:AG8`.",
             "Open Home, Conditional Formatting, New Rule, Use a formula.",
@@ -219,7 +221,7 @@ window.LEVEL_META[5] = {
             "Add a second rule with: `=OR(C$2=10,C$2=24)` for the 2nd and 4th Saturdays.",
             "Give both rules a light grey fill and click OK."
           ] },
-          { type: "p", text: "The formula `DATE(2026,10,C$2)` builds each day's real date from the day number in row 2, and `WEEKDAY(...,1)` returns 1 for Sundays. The shading moves with the day numbers, so next month you only change the day-number row and the DATE formula." }
+          { type: "p", text: "The formula `DATE(2026,10,C$2)` builds each day's real date from row 2. `WEEKDAY(...,1)` returns 1 for Sundays. The shading moves with the day numbers. Next month, change only the day-number row and the `DATE` formula." }
         ]
       },
       {
@@ -231,14 +233,14 @@ window.LEVEL_META[5] = {
             ["EMP-001", "Arjun Mehta", "=COUNTIF(C3:AG3, \"P\")", "=COUNTIF(C3:AG3, \"A\")", "=COUNTIF(C3:AG3, \"L\")", "=AH3/(AH3+AI3+AJ3)"],
             ["EMP-002", "Priya Nair", "=COUNTIF(C4:AG4, \"P\")", "=COUNTIF(C4:AG4, \"A\")", "=COUNTIF(C4:AG4, \"L\")", "=AH4/(AH4+AI4+AJ4)"]
           ] },
-          { type: "p", text: "For October 2026, the expected totals for every employee add up to 24 working days: 31 calendar days minus 4 Sundays, minus 2 week-off Saturdays, minus 1 holiday. Arjun Mehta shows 20 P, 2 A and 2 L, so his P + A + L is exactly 24. That is your built-in check: if any row does not add up to 24, a day is marked wrong or a weekend column was filled by mistake." }
+          { type: "p", text: "For October 2026, every employee's totals should add up to 24 working days. That is 31 calendar days minus 4 Sundays, minus 2 week-off Saturdays, minus 1 holiday. Arjun Mehta shows 20 P, 2 A and 2 L, so his P + A + L is exactly 24. This is your built-in check. If any row does not add up to 24, a day was marked wrong or a weekend column was filled by mistake." }
         ]
       },
       {
         heading: "Attendance Percentage Done Right",
         blocks: [
           { type: "formula", name: "Attendance %", syntax: "=P / (P + A + L)", example: "=AH3/(AH3+AI3+AJ3)", explanation: "Divides days present by days the employee was expected to work. Format the cell as a percentage." },
-          { type: "p", text: "The denominator is the part everyone gets wrong. Working days are the days that carry a P, an A or an L — not 31, not 30, not \"the days in the month\". H and WO columns are not working days, so they must stay out of the division." },
+          { type: "p", text: "The denominator is the part everyone gets wrong. Working days are only the days marked P, A or L. Not 31, not 30, not \"the days in the month\". H and WO columns are not working days. Keep them out of the division." },
           { type: "table", headers: ["Employee", "P", "A", "L", "Attendance %"], rows: [
             ["Arjun Mehta", "20", "2", "2", "83.3%"],
             ["Priya Nair", "22", "0", "2", "91.7%"],
@@ -247,7 +249,7 @@ window.LEVEL_META[5] = {
             ["Vikram Singh", "23", "1", "0", "95.8%"],
             ["Divya Menon", "20", "3", "1", "83.3%"]
           ] },
-          { type: "warning", text: "Dividing P by 31 flatters nobody correctly: it punishes employees for weekends and holidays they were never supposed to work. If your percentage looks suspiciously low, check that you are not dividing by the full month." }
+          { type: "warning", text: "Dividing P by 31 punishes employees for weekends and holidays they never had to work. If your percentage looks too low, check that you are not dividing by the full month." }
         ]
       },
       {
@@ -259,7 +261,7 @@ window.LEVEL_META[5] = {
             ["EMP-001", "Arjun Mehta", "=COUNTIF('Oct 2026'!$C3:$AG3, \"P\")", "=COUNTIF('Oct 2026'!$C3:$AG3, \"A\")", "=COUNTIF('Oct 2026'!$C3:$AG3, \"L\")", "=C3/(C3+D3+E3)"],
             ["EMP-002", "Priya Nair", "=COUNTIF('Oct 2026'!$C4:$AG4, \"P\")", "=COUNTIF('Oct 2026'!$C4:$AG4, \"A\")", "=COUNTIF('Oct 2026'!$C4:$AG4, \"L\")", "=C4/(C4+D4+E4)"]
           ] },
-          { type: "p", text: "The sheet name 'Oct 2026' contains a space, so it sits inside single quotes in the formula. The dollars lock the day columns C to AG but leave the row relative, so one formula per column fills down neatly. Keep the summary rows in the same employee order as the register, or use the lookup skills from Level 4 to pull each row by Emp ID instead." },
+          { type: "p", text: "The sheet name 'Oct 2026' contains a space, so it sits inside single quotes in the formula. The dollars lock the day columns C to AG but leave the row relative. One formula per column fills down neatly. Keep the summary rows in the same employee order as the register. Or use the lookup skills from Level 4 to pull each row by Emp ID instead." },
           { type: "tip", text: "Keep one register file per month (or one sheet tab per month) and an identical summary on each. At year end, twelve monthly summaries line up perfectly for annual review discussions." }
         ]
       }
@@ -311,7 +313,8 @@ window.LEVEL_META[5] = {
       "Update balances automatically with SUMIFS",
       "Flag over-limit requests with an IF check"
     ],
-    intro: "Leave is where handwritten office systems break first. Someone takes three days of casual leave in March, two more in September, and by December nobody is sure how many they have left. An Excel leave system solves this by keeping one log of requests and letting formulas maintain every balance.\n\nSunrise Traders gives each employee three types of leave per year. You will build the entitlement table, the request log, and a balance sheet that never needs manual updating.",
+    intro: "Leave is where handwritten office systems break first. Someone takes three casual leave days in March, two more in September. By December, nobody knows how many are left. Excel fixes this with one request log. Formulas keep every balance updated automatically.\n\nSunrise Traders gives each employee three types of leave per year. You will build the entitlement table, the request log and the balance sheet. Nothing in it needs manual updating.",
+    keyIdea: "Log every request once, and formulas keep every leave balance updated automatically.",
     sections: [
       {
         heading: "Leave Types and Entitlements",
@@ -321,13 +324,13 @@ window.LEVEL_META[5] = {
             ["Sick Leave", "7 days", "Illness, often needs a note for longer spells"],
             ["Earned Leave", "15 days", "Planned holidays, usually earned by service and taken in blocks"]
           ] },
-          { type: "p", text: "Entitlements are a company policy decision — the numbers above are simply Sunrise Traders' policy. The important design idea: store entitlements in one table, in one place. Never scatter them across emails and sticky notes, because the balance formula will read them from this table." },
+          { type: "p", text: "Entitlements are a company policy decision. The numbers above are simply Sunrise Traders' policy. Store them in one table, in one place. The balance formula will read them from this table. Never scatter them across emails and sticky notes." },
           { type: "grid", title: "Leave balances sheet — the three numbers that matter", rows: [
             ["Emp ID", "Name", "Casual Allowed", "Sick Allowed", "Earned Allowed", "Casual Taken", "Casual Balance"],
             ["EMP-001", "Arjun Mehta", "12", "7", "15", "=SUMIFS('Leave Log'!$G$2:$G$50, 'Leave Log'!$B$2:$B$50, A2, 'Leave Log'!$D$2:$D$50, \"Casual\")", "=C2-F2"],
             ["EMP-002", "Priya Nair", "12", "7", "15", "=SUMIFS('Leave Log'!$G$2:$G$50, 'Leave Log'!$B$2:$B$50, A3, 'Leave Log'!$D$2:$D$50, \"Casual\")", "=C3-F3"]
           ] },
-          { type: "p", text: "Entitlement, taken and balance: three columns, three numbers, one rule — Balance = Allowed - Taken. Nothing in this sheet is typed except the entitlements. Everything else is calculated, so the sheet is always current." }
+          { type: "p", text: "Entitlement, taken and balance: three columns, three numbers, one rule — `Balance = Allowed - Taken`. Nothing in this sheet is typed except the entitlements. Everything else is calculated, so the sheet is always current." }
         ]
       },
       {
@@ -352,8 +355,8 @@ window.LEVEL_META[5] = {
         heading: "Updating Balances with SUMIFS",
         blocks: [
           { type: "formula", name: "SUMIFS", syntax: "=SUMIFS(sum_range, criteria_range1, criteria1, criteria_range2, criteria2)", example: "=SUMIFS('Leave Log'!$G$2:$G$50, 'Leave Log'!$B$2:$B$50, A2, 'Leave Log'!$D$2:$D$50, \"Casual\")", explanation: "Adds the Days column from the Leave Log, but only for rows where the Emp ID matches this row AND the leave type is Casual. Two conditions, one total." },
-          { type: "p", text: "This is the heart of the system. The moment someone adds a new approved row to the log, every affected balance updates itself. There is no month-end ritual of \"updating the tracker\", because the tracker updates continuously." },
-          { type: "p", text: "For Priya Nair, the log shows a casual leave of 3 days (LV-014, 5 to 7 November 2026). If an earlier casual leave of 2 days exists, her Casual Taken is 5 and her balance is `=12-5`, that is 7 days. The formula never forgets a request; people do." },
+          { type: "p", text: "This is the heart of the system. Someone adds an approved row to the log, and every affected balance updates itself. There is no month-end ritual of \"updating the tracker\". The tracker updates continuously." },
+          { type: "p", text: "Priya Nair's log shows a casual leave of 3 days (LV-014, 5 to 7 November 2026). Suppose an earlier casual leave of 2 days exists. Her Casual Taken is then 5, and her balance is `=12-5`, that is 7 days. The formula never forgets a request; people do." },
           { type: "tip", text: "Extend the SUMIFS with a third condition, 'Leave Log'!$H$2:$H$50, \"Approved\", so rejected or pending requests never reduce a balance. Approve the row in the log, and the balance follows automatically." }
         ]
       },
@@ -361,9 +364,9 @@ window.LEVEL_META[5] = {
         heading: "The Balance Check with IF",
         blocks: [
           { type: "formula", name: "Over-limit flag", syntax: "=IF(taken > allowed, \"Over limit\", \"OK\")", example: "=IF(F2>C2, \"Over limit\", \"OK\")", explanation: "Compares days taken with days allowed for that leave type and raises a flag when the balance would go negative." },
-          { type: "p", text: "Use this check on the balances sheet as a standing alarm, and use the same idea before approving a request. Before approving Priya's 3-day casual leave, the checker compares taken-plus-new against the entitlement: 5 days is comfortably within 12, so the request is fine. If an employee with 2 casual days left applies for 4, the flag fires before the approval, not after." },
-          { type: "p", text: "The Earned Leave request of Sneha Iyer (LV-015, 2 to 9 December) is 8 days. Against an entitlement of 15 it is fine — but it is still Pending, so with the Status condition in place it does not touch her balance until a manager approves it." },
-          { type: "warning", text: "Text dates are the number-one cause of wrong leave balances. If 05-Nov-2026 sits in a cell as text, F2-E2+1 returns an error or nonsense. Enter both dates as real dates and let Excel's own format display them." }
+          { type: "p", text: "Use this check on the balances sheet as a standing alarm. Use the same idea before approving a request. Priya applies for 3 casual days. Taken-plus-new is 5, well within 12, so the request is fine. But an employee with 2 days left applying for 4 gets flagged before approval, not after." },
+          { type: "p", text: "Sneha Iyer's Earned Leave request (LV-015, 2 to 9 December) is 8 days. Against an entitlement of 15 it is fine. But it is still Pending. With the Status condition in place, it does not touch her balance until a manager approves it." },
+          { type: "warning", text: "Text dates are the number-one cause of wrong leave balances. If 05-Nov-2026 sits in a cell as text, `F2-E2+1` returns an error or nonsense. Enter both dates as real dates and let Excel's own format display them." }
         ]
       }
     ],
@@ -413,7 +416,8 @@ window.LEVEL_META[5] = {
       "Derive Gross and Net salary with correct rounding",
       "Lay out a printable payslip for one employee"
     ],
-    intro: "Payroll is the spreadsheet where small mistakes hurt the most, because every mistake reaches someone's bank account. The good news: salaries follow a fixed structure, which makes them perfect for formulas. Build the structure once and every month after that is a two-minute job.\n\nIn this lesson you will compute October 2026 salaries for the six Sunrise Traders employees. The Indian terms HRA, PF and GST-style deductions are explained simply as we go.",
+    intro: "Payroll is the spreadsheet where small mistakes hurt the most. Every mistake reaches someone's bank account. The good news: salaries follow a fixed structure. Formulas love that. Build the structure once, and every month after is a two-minute job.\n\nIn this lesson you compute October 2026 salaries for the six Sunrise Traders employees. Indian terms like HRA and PF are explained simply as we go.",
+    keyIdea: "Build the salary structure with formulas once, and monthly payroll becomes a two-minute job.",
     sections: [
       {
         heading: "The Salary Structure",
@@ -427,8 +431,8 @@ window.LEVEL_META[5] = {
             ["Professional Tax", "Flat 200 per month (a state tax)", "Deduction"],
             ["TDS", "Income tax estimate: 5% of Gross when Gross exceeds 40,000", "Deduction"]
           ] },
-          { type: "p", text: "Percent-based components are deliberate. When Basic rises in an appraisal, HRA, Special Allowance and PF all follow automatically because they are formulas, not typed numbers. A payroll where someone re-types every component is a payroll waiting for a mistake." },
-          { type: "p", text: "PF deserves one friendly explanation: 12% of Basic is deducted from salary, and the employer adds a matching amount on top. The deducted part shows in the payslip; the matching part never reduces your Net but builds your retirement fund." }
+          { type: "p", text: "Percent-based components are deliberate. When Basic rises after an appraisal, HRA, Special Allowance and PF follow automatically. They are formulas, not typed numbers. A payroll where someone re-types every component is a payroll waiting for a mistake." },
+          { type: "p", text: "PF deserves one friendly explanation. 12% of Basic is deducted from salary. The employer adds a matching amount on top. The deducted part shows in the payslip. The matching part builds your retirement fund without reducing Net." }
         ]
       },
       {
@@ -441,7 +445,7 @@ window.LEVEL_META[5] = {
             ["EMP-001", "Arjun Mehta", "25000", "=ROUND(C2*0.4, 0)", "1600", "=ROUND(C2*0.2, 0)", "=C2+D2+E2+F2", "=ROUND(C2*0.12, 0)", "200", "=IF(G2>40000, ROUND(G2*0.05, 0), 0)", "=H2+I2+J2", "=ROUND(G2-K2, 0)"],
             ["EMP-002", "Priya Nair", "40000", "=ROUND(C3*0.4, 0)", "1600", "=ROUND(C3*0.2, 0)", "=C3+D3+E3+F3", "=ROUND(C3*0.12, 0)", "200", "=IF(G3>40000, ROUND(G3*0.05, 0), 0)", "=H3+I3+J3", "=ROUND(G3-K3, 0)"]
           ] },
-          { type: "p", text: "For Arjun Mehta: Basic 25,000, HRA 10,000 (40%), Conveyance 1,600, Special 5,000 (20%), so Gross = `=C2+D2+E2+F2` = 41,600. Deductions: PF 3,000 (12% of Basic), Professional Tax 200, and TDS 2,080 because Gross 41,600 crosses the 40,000 line. Net = 41,600 - 5,280 = 36,320." },
+          { type: "p", text: "Take Arjun Mehta: Basic 25,000, HRA 10,000 (40%), Conveyance 1,600, Special 5,000 (20%). Gross is `=C2+D2+E2+F2` = 41,600. Deductions are PF 3,000 (12% of Basic), Professional Tax 200 and TDS 2,080. TDS applies because Gross 41,600 crosses the 40,000 line. Net is 41,600 - 5,280 = 36,320." },
           { type: "table", headers: ["Employee", "Basic", "Gross", "Deductions", "Net"], rows: [
             ["Arjun Mehta", "25000", "41600", "5280", "36320"],
             ["Priya Nair", "40000", "65600", "8280", "57320"],
@@ -462,7 +466,7 @@ window.LEVEL_META[5] = {
             "**Net** is what lands in the bank: `=ROUND(G2-K2, 0)`."
           ] },
           { type: "formula", name: "ROUND", syntax: "=ROUND(number, num_digits)", example: "=ROUND(G2*0.05, 0)", explanation: "Rounds to the given number of digits. With 0 digits, 2080.5 becomes 2081. The cell now truly holds the rounded value, not just a rounded display." },
-          { type: "p", text: "Here is the trap ROUND solves. Suppose TDS computes to 2,080.6. Without ROUND, the cell holds 2080.6 but displays 2,081. Every sum built on it carries the hidden 0.6, and your printed payslip total disagrees with your bank transfer by one or two rupees. Banks do not accept \"roughly correct\". ROUND makes the stored value and the displayed value identical." },
+          { type: "p", text: "Here is the trap ROUND solves. Suppose TDS computes to 2,080.6. Without ROUND, the cell holds 2080.6 but displays 2,081. Every sum built on it carries the hidden 0.6. Your printed payslip total then disagrees with your bank transfer by a rupee or two. Banks do not accept \"roughly correct\". ROUND makes the stored value and the displayed value identical." },
           { type: "tip", text: "Use =ROUND(x, 2) where paise matter, such as invoices, and =ROUND(x, 0) for salaries paid in whole rupees. Do not use the Decrease Decimal button for money — it changes only what is shown, not what is stored." }
         ]
       },
@@ -540,7 +544,8 @@ window.LEVEL_META[5] = {
       "Value the stock with quantity times unit cost",
       "Add reorder levels to prepare for automatic alerts"
     ],
-    intro: "Ask a stores person \"how many staplers do we have?\" and a paper notebook gives last week's answer. An Excel inventory gives right now's answer, because stock is calculated, not remembered.\n\nSunrise Traders stocks five products: Notebooks, Pens, Staplers, Printers and Laptops. The system has three sheets — an item master, an inward register for goods coming in, and an outward register for goods going out. All three live in the inventory-records workbook you will use in this lesson and the next.",
+    intro: "Ask a stores person \"how many staplers do we have?\" A paper notebook gives last week's answer. An Excel inventory gives right now's answer. Stock is calculated, not remembered.\n\nSunrise Traders stocks five products: Notebooks, Pens, Staplers, Printers and Laptops. The system has three sheets. An item master, an inward register for goods coming in, and an outward register for goods going out. All three live in the inventory-records workbook.",
+    keyIdea: "Current stock is never typed anywhere — it is always calculated from three linked sheets.",
     sections: [
       {
         heading: "Three Sheets That Run Stock",
@@ -550,7 +555,7 @@ window.LEVEL_META[5] = {
             ["Inward", "Every purchase or return that adds stock", "Stores, on every arrival"],
             ["Outward", "Every sale or issue that removes stock", "Stores, on every dispatch"]
           ] },
-          { type: "p", text: "The division of labour is the design decision. Current stock is never stored anywhere — it is calculated from the three sheets. That is why stock can never go stale: the formula re-counts every time you add a movement." },
+          { type: "p", text: "This division of labour is the design decision. Current stock is never stored anywhere — it is calculated from the three sheets. So stock can never go stale. The formula re-counts every time you add a movement." },
           { type: "tip", text: "Give every item a code (ITM-101, ITM-102) and log movements by code, not by name. Names get misspelled; codes do not. This is the same principle as Emp IDs in the employee database." }
         ]
       },
@@ -590,7 +595,7 @@ window.LEVEL_META[5] = {
             ["06-Oct-2026", "ITM-104", "2", "=VLOOKUP(B4, 'Item Master'!$A$2:$F$6, 6, FALSE)", "=C4*D4"],
             ["18-Oct-2026", "ITM-105", "1", "=VLOOKUP(B8, 'Item Master'!$A$2:$F$6, 6, FALSE)", "=C8*D8"]
           ] },
-          { type: "p", text: "Both registers share one shape, which keeps entry fast and formulas simple. In the outward register the Rate is pulled from the item master with VLOOKUP, so the value of goods going out is always at cost. That value column becomes the COGS figure in the financial reports lesson." },
+          { type: "p", text: "Both registers share one shape. That keeps entry fast and formulas simple. In the outward register, VLOOKUP pulls the Rate from the item master. So goods going out are always valued at cost. That value column becomes the COGS figure in the financial reports lesson." },
           { type: "warning", text: "Log movements on the day they happen. A register filled from memory at month end is an estimate, and every downstream number — stock, reorder alerts, profit — inherits the error." }
         ]
       },
@@ -665,13 +670,15 @@ window.LEVEL_META[5] = {
       "Identify fast and slow movers by monthly outward quantity",
       "Rank best sellers by value with RANK, LARGE and INDEX-MATCH"
     ],
-    intro: "Running out of Notebooks in the middle of a school season costs Sunrise Traders real sales. Ordering too early blocks money in shelves. The middle path is the reorder level: a stock point at which you must order again, watched by a formula that never forgets.\n\nIn this lesson you turn the inventory you built into a tracking system: automatic alerts, movement analysis, and a ranked list of what actually earns money.",
+    intro: "Running out of Notebooks in school season costs Sunrise Traders real sales. Ordering too early blocks money on shelves. The middle path is the reorder level. It is a stock point where you must order again. A formula watches it and never forgets.\n\nIn this lesson you turn your inventory into a tracking system. You add automatic alerts, movement analysis, and a ranked list of what actually earns money.",
+    keyIdea: "A reorder level plus an IF formula shouts ORDER NOW before stock runs out.",
     sections: [
       {
         heading: "Reorder Level: The Trigger Point",
         blocks: [
-          { type: "p", text: "A reorder level answers one question: at what remaining stock must the next order be placed so that new goods arrive before you run dry? It depends on how fast the item sells and how long the supplier takes to deliver. Sunrise Traders' levels: Notebooks 200, Pens 150, Staplers 20, Printers 8, Laptops 2." },
-          { type: "p", text: "Set the level once per item in the Item Master and review it a few times a year, or when a supplier changes delivery times. The daily comparison — current stock against the level — is the formula's job, not yours." }
+          { type: "p", text: "A reorder level answers one question. At what remaining stock must the next order go out, so that new goods arrive before you run dry? It depends on how fast the item sells and how long the supplier takes to deliver." },
+          { type: "p", text: "Sunrise Traders' levels: Notebooks 200, Pens 150, Staplers 20, Printers 8, Laptops 2." },
+          { type: "p", text: "Set the level once per item in the Item Master. Review it a few times a year, or when a supplier changes delivery times. The daily comparison — current stock against the level — is the formula's job, not yours." }
         ]
       },
       {
@@ -685,8 +692,8 @@ window.LEVEL_META[5] = {
             ["ITM-104", "Printer", "8", "8", "=IF(H5<=G5, \"ORDER NOW\", \"OK\")"],
             ["ITM-105", "Laptop", "2", "4", "=IF(H6<=G6, \"ORDER NOW\", \"OK\")"]
           ] },
-          { type: "p", text: "Notebooks at 195 against a level of 200 say ORDER NOW, and Printers sitting exactly at 8 also say ORDER NOW. That is why the comparison is `<=` and not `<`: at the reorder level you are already at the trigger, so the order must go out. Laptops at 4 against a level of 2 are still OK." },
-          { type: "warning", text: "Keep one standard alert phrase. If one row says ORDER NOW and another says ORDER NEXT, conditional formatting and filters will catch only one of them, because they match exact text. Copy the formula down; never retype it row by row." }
+          { type: "p", text: "Notebooks at 195 against a level of 200 say ORDER NOW. Printers sitting exactly at 8 also say ORDER NOW. That is why the comparison is `<=` and not `<`. At the reorder level you are already at the trigger, so the order must go out. Laptops at 4 against a level of 2 are still OK." },
+          { type: "warning", text: "Keep one standard alert phrase. If one row says ORDER NOW and another says ORDER NEXT, conditional formatting and filters catch only one of them. They match exact text. Copy the formula down; never retype it row by row." }
         ]
       },
       {
@@ -699,14 +706,14 @@ window.LEVEL_META[5] = {
             "Click OK. Every item at or below its reorder level now glows red automatically.",
             "Optionally add a whole-row rule with Use a formula: `=$I2=\"ORDER NOW\"` applied to `A2:I6`."
           ] },
-          { type: "p", text: "The alert is live. The moment an outward entry pushes Notebooks below 200, the row turns red with no human checking anything. This is the real payoff of calculating stock instead of typing it." },
+          { type: "p", text: "The alert is live. The moment an outward entry pushes Notebooks below 200, the row turns red. No human checks anything. This is the real payoff of calculating stock instead of typing it." },
           { type: "tip", text: "Print or screenshot the red list every Monday morning and compare it with the purchase register from the next lesson. Items that stay red for two weeks need a chasing call to the supplier, not another alert." }
         ]
       },
       {
         heading: "Fast and Slow Movers",
         blocks: [
-          { type: "p", text: "Reorder levels tell you when to buy; movement analysis tells you what to keep buying. A fast mover deserves shelf space and prompt reorders. A slow mover deserves a smaller reorder level and fewer orders." },
+          { type: "p", text: "Reorder levels tell you when to buy. Movement analysis tells you what to keep buying. A fast mover deserves shelf space and prompt reorders. A slow mover deserves a smaller reorder level and fewer orders." },
           { type: "formula", name: "Monthly outward by item", syntax: "=SUMIFS(outward qty, outward item codes, item)", example: "=SUMIFS(Outward!$C$2:$C$100, Outward!$B$2:$B$100, A2)", explanation: "Adds the October outward quantity for one item code. Sort or read this column to spot fast and slow movers instantly." },
           { type: "table", headers: ["Item", "Oct outward qty", "Oct outward value", "Verdict"], rows: [
             ["Pen", "140", "2100", "Fastest by quantity"],
@@ -721,11 +728,12 @@ window.LEVEL_META[5] = {
       {
         heading: "ABC Thinking: Rank Your Best Sellers",
         blocks: [
-          { type: "p", text: "Borrow a retail habit called ABC analysis: a few items earn most of the money (A items), a middle group earns some (B), and a long tail earns little (C). Rank the value column to see which group each item falls in." },
+          { type: "p", text: "Borrow a retail habit called ABC analysis. A few items earn most of the money (A items). A middle group earns some (B). A long tail earns little (C). Rank the value column to see which group each item falls in." },
           { type: "formula", name: "RANK", syntax: "=RANK(number, ref)", example: "=RANK(D2, $D$2:$D$6)", explanation: "Gives the position of this row's outward value within all five items: 1 for the biggest earner. The dollar signs fix the comparison range while the row moves." },
           { type: "formula", name: "Top seller by name", syntax: "=INDEX(names, MATCH(LARGE(values, 1), values, 0))", example: "=INDEX($B$2:$B$6, MATCH(LARGE($D$2:$D$6, 1), $D$2:$D$6, 0))", explanation: "LARGE finds the highest outward value, MATCH finds its position, INDEX returns the item name at that position. Change the 1 to a 2 to get the runner-up." },
-          { type: "p", text: "For October the ranking by value is: Laptop (1), Printer (2), Notebook (3), Pen (4), Stapler (5), and the top-seller formula returns Laptop. In practice you would run this on a real catalogue of hundreds of items, where the top 20 percent of codes routinely produce 70 to 80 percent of the value — that is the A group." },
-          { type: "p", text: "The action list writes itself: keep A items always in stock with generous reorder levels, review B items monthly, and shrink the reorder levels of C items before they turn into cash sitting on a shelf." }
+          { type: "p", text: "For October the ranking by value is: Laptop (1), Printer (2), Notebook (3), Pen (4), Stapler (5). The top-seller formula returns Laptop." },
+          { type: "p", text: "In practice you would run this on a real catalogue of hundreds of items. There, the top 20 percent of codes routinely produce 70 to 80 percent of the value. That is the A group." },
+          { type: "p", text: "The action list writes itself. Keep A items always in stock, with generous reorder levels. Review B items monthly. Shrink the reorder levels of C items, before they turn into cash sitting on a shelf." }
         ]
       }
     ],
@@ -778,6 +786,7 @@ window.LEVEL_META[5] = {
       "Track payment status from PO to payment"
     ],
     intro: "Every rupee Sunrise Traders spends starts as a purchase order. When the PO register is disciplined, three questions answer themselves instantly: what is ordered, what has arrived, and what is still unpaid.\n\nIn this lesson you build the October PO register, drive the numbers with formulas, and produce supplier-wise summaries that feed both the inventory system and the financial reports lesson.",
+    keyIdea: "A disciplined PO register instantly answers what is ordered, what arrived, and what is unpaid.",
     sections: [
       {
         heading: "The Purchase Order Register",

@@ -25,7 +25,8 @@ window.LEVEL_META[3] = {
       "Sort by cell colour and by your own custom lists",
       "Explain when sorting can break formulas and how Tables protect you"
     ],
-    intro: "Raw data rarely arrives in the order you need it. Your manager asks for the biggest orders first, a customer list in alphabetical order, or all West region rows grouped together. Sorting gives you all of this in seconds.\n\nBut sorting also rewrites the position of every row, and that has consequences for your formulas. In this lesson you will learn to sort quickly and safely, and to spot the situations where sorting causes damage.",
+    intro: "Data rarely arrives in the order you need. Your manager may want the biggest orders first, or names A to Z. Sorting does this in seconds.\n\nBut sorting moves every row. That can affect your formulas. Here you will learn to sort fast, sort safely, and spot when sorting can cause damage.",
+    keyIdea: "Sorting puts rows in order, but Excel sorts whole rows together so your data never gets mixed up.",
     sections: [
       {
         heading: "Why sorting matters in office work",
@@ -37,7 +38,7 @@ window.LEVEL_META[3] = {
             "**Show me all North region rows together.** Sort by Region and the regions group themselves.",
             "**Who is next in the alphabet?** Sort the customer column A to Z for a clean printed list."
           ] },
-          { type: "p", text: "One thing to understand before you touch anything: when you sort in Excel, entire rows move together. If row 5 contains one order, it stays a complete order after sorting — it just moves to a new row number. Excel does this automatically as long as it can see where your table starts and ends." }
+          { type: "p", text: "Here is the key rule: when you sort, whole rows move together. Row 5 holds one full order today. After sorting, it still holds that same order — just at a new row number. Excel keeps rows together automatically when it can see where your table starts and ends." }
         ]
       },
       {
@@ -49,8 +50,8 @@ window.LEVEL_META[3] = {
             "Go to the Data tab and click Sort A to Z (alphabetical, smallest to largest for numbers) or Sort Z to A (reverse, largest to smallest for numbers).",
             "Excel automatically expands the sort to cover the whole surrounding table, including the header row."
           ] },
-          { type: "warning", text: "If Excel shows a Sort Warning dialog saying \"What do you want to do?\", always choose **Expand the selection**. This appears when you selected a whole column or several columns yourself. Choosing \"Continue with the current selection\" sorts only the selected columns and leaves the rest of the row behind — the classic way to scramble a dataset so order IDs no longer match their products." },
-          { type: "p", text: "Excel normally detects your header row (Order ID, Region, Revenue and so on) and leaves it at the top. If your headers are formatted exactly like the data and Excel sorts them into the middle of the list, use the Sort dialog and tick **My data has headers**." }
+          { type: "warning", text: "If Excel shows a Sort Warning dialog, always choose **Expand the selection**. This happens when you selected a whole column yourself. \"Continue with the current selection\" sorts only that column. The rest of the row stays behind. Order IDs no longer match their products — the data is now scrambled." },
+          { type: "p", text: "Excel normally spots your header row and leaves it at the top. But sometimes it sorts the header into the data. If that happens, open Data > Sort and tick **My data has headers**." }
         ]
       },
       {
@@ -71,7 +72,7 @@ window.LEVEL_META[3] = {
               ["1001", "Arjun Mehta", "North", "Notebooks", "14400"],
               ["1002", "Priya Nair", "South", "Staplers", "6750"]
             ] },
-          { type: "p", text: "Notice the result: East comes first alphabetically, then North with the laptop order (₹3,52,000) above the notebook order (₹14,400), then South. The order of levels matters — swap the two levels and you get the biggest orders first, with regions only deciding ties." },
+          { type: "p", text: "Read the result. East comes first, then North, then South. Inside North, the laptop order (₹3,52,000) sits above the notebook order (₹14,400). The order of levels matters. Swap the two levels and you get the biggest orders first, with regions only breaking ties." },
           { type: "tip", text: "Sort levels are applied top to bottom. The first level defines the main grouping; every extra level only breaks ties inside the group above it." }
         ]
       },
@@ -79,8 +80,9 @@ window.LEVEL_META[3] = {
         heading: "Sort by colour and custom lists",
         blocks: [
           { type: "p", text: "Two more options inside the Sort dialog are useful in daily work." },
-          { type: "p", text: "**Sort by colour.** If you use conditional formatting or manual fills to mark rows, open Data > Sort, set Sort On to **Cell Colour** (or Font Colour), and choose which colour should come first. For example, sort all red-highlighted overdue invoices to the top. Only one colour per sort level, so add more levels for a second colour." },
-          { type: "p", text: "**Custom lists.** Alphabetical order is wrong for some data. Months belong in Jan, Feb, Mar order, and priorities belong in High, Medium, Low order. In the Sort dialog, set Order to **Custom List**, pick a built-in list (months, days), or create your own — type High, Medium, Low on separate lines and click Add. Sunrise Traders, for example, could define a list of its four regions so reports always read North, South, East, West in the same fixed order." }
+          { type: "p", text: "**Sort by colour.** Maybe you marked some rows with a fill colour. Open Data > Sort and set Sort On to **Cell Colour** (or Font Colour). Then pick which colour comes first. For example, put red overdue invoices at the top. One sort level handles one colour only. Add more levels for a second colour." },
+          { type: "p", text: "**Custom lists.** Alphabetical order is wrong for some data. Months should read Jan, Feb, Mar. Priorities should read High, Medium, Low. In the Sort dialog, set Order to **Custom List**. Pick a built-in list like months or days, or make your own." },
+          { type: "p", text: "To make your own, type High, Medium, Low on separate lines and click Add. Sunrise Traders could define its four regions this way. Reports would then always read North, South, East, West in the same order." }
         ]
       },
       {
@@ -92,7 +94,7 @@ window.LEVEL_META[3] = {
             "**Lookup ranges without anchors.** `=VLOOKUP(A2, D2:G50, 3, 0)` uses a range that starts at row 2. Sorting the sheet does not change the range address, but the data inside it moves, so results can shift in confusing ways. Anchor important lookup tables with `=VLOOKUP(A2, $D$2:$G$50, 3, 0)` or better, keep them on a separate sheet.",
             "**Sorting part of a table.** A one-column sort with \"Continue with the current selection\" tears rows apart. This is data damage, not a formula problem, and it is the most common sorting accident in real offices."
           ] },
-          { type: "p", text: "Excel Tables (next lesson) reduce this risk. A Table always sorts as one unit — rows can never be torn apart — and calculated columns use structured references that move correctly with their rows. Formulas that must survive sorting are the ones that reference a Table with anchored, structured ranges instead of loose cell addresses." },
+          { type: "p", text: "Excel Tables (next lesson) reduce this risk. A Table always sorts as one unit, so rows can never be torn apart. Its formulas use structured references that move correctly with their rows. If a formula must survive sorting, build it on a Table, not on loose cell addresses." },
           { type: "quote", text: "Sort answers \"in what order should I read this?\". Filters answer \"which rows belong to this question?\". Formulas should not depend on either." }
         ]
       }
@@ -222,7 +224,8 @@ window.LEVEL_META[3] = {
       "Use SUBTOTAL so totals follow the filter",
       "Copy only the visible, filtered rows"
     ],
-    intro: "A report with 500 rows contains maybe 20 rows that matter right now: one region, one product, one month. Filtering temporarily hides the rows you do not need so you can focus, print or copy exactly the rows that answer the question.\n\nFiltering never deletes anything. The hidden rows are still in the file, and one click brings them all back. That safety is why filtering is the daily workhorse of every data job.",
+    intro: "A 500-row report may hold only 20 rows you need right now. Filtering hides the rest. You can then focus, print or copy just the rows that matter.\n\nFiltering never deletes anything. The hidden rows stay in the file. One click brings them all back. That safety makes filtering a daily tool in every data job.",
+    keyIdea: "Filtering hides the rows you do not need; nothing is deleted and one click brings them back.",
     sections: [
       {
         heading: "Turning the filter on and off",
@@ -234,8 +237,8 @@ window.LEVEL_META[3] = {
             "Click an arrow, tick only the values you want to see, and click OK.",
             "Press [[Ctrl]] + [[Shift]] + [[L]] again to remove the filter completely."
           ] },
-          { type: "p", text: "When a filter is active, Excel turns the row numbers on the left blue and shows the hidden row numbers in the sequence — for example 1, 2, 9, 10 — a clear sign that rows are hidden, not gone." },
-          { type: "warning", text: "A filter hides rows; it does not delete them. But many Excel operations only touch visible cells, and others touch everything. Always check the blue row numbers before you copy, print or delete, and remove the filter when you are finished so nobody else opens the file thinking data is missing." }
+          { type: "p", text: "When a filter is on, the row numbers on the left turn blue. Hidden row numbers are skipped, like 1, 2, 9, 10. That is your sign that rows are hidden, not gone." },
+          { type: "warning", text: "A filter hides rows; it does not delete them. But some Excel operations touch only visible cells, and others touch everything. Check the blue row numbers before you copy, print or delete. When you finish, remove the filter so nobody thinks data is missing." }
         ]
       },
       {
@@ -249,28 +252,28 @@ window.LEVEL_META[3] = {
               ["Numbers (Revenue, Units)", "Greater Than, Between, Top 10, Above Average", "Revenue Greater Than 20000 shows big orders"],
               ["Dates (Order Date, Due Date)", "Tomorrow, This Week, This Month, Last Year, Before", "Due Date Before today shows overdue invoices"]
             ] },
-          { type: "p", text: "The **Top 10** option is more flexible than its name: it can show the top or bottom 10, 5 or 25 items, or the top 10 percent. Date filters are calculated live — a filter set to \"This Month\" shows different rows next month without any change to the filter itself." },
+          { type: "p", text: "The **Top 10** option is flexible. It can show the top or bottom 5, 10 or 25 items, or the top 10 percent. Date filters also update live. \"This Month\" shows different rows next month, with no change to the filter." },
           { type: "tip", text: "Use the search box in the dropdown when a column has hundreds of values, such as customer names. Type \"priya\" and only matching values stay ticked — far faster than scrolling." }
         ]
       },
       {
         heading: "Filtering several columns at once",
         blocks: [
-          { type: "p", text: "Filters on different columns work together. Each column filter hides rows, so applying filters on two columns shows only rows that satisfy **both** conditions. Filter Region = West, then filter Product = Laptops, and you see only laptop orders from the West region." },
+          { type: "p", text: "Filters on different columns work together. Each filter hides more rows. Two filters show only rows that meet **both** conditions. Filter Region = West, then Product = Laptops. You now see only laptop orders from the West." },
           { type: "grid", title: "A 12-row order list filtered to Region = West and Product = Laptops — only matching rows remain visible",
             rows: [
               ["Order ID", "Salesperson", "Region", "Product", "Revenue"],
               ["1007", "Sneha Iyer", "West", "Laptops", "176000"],
               ["1012", "Priya Nair", "West", "Laptops", "88000"]
             ] },
-          { type: "p", text: "A filtered column shows a funnel icon instead of a plain arrow, so you can always see which columns are doing work. To remove the condition from one column, open its dropdown and click **Clear Filter**. To clear every filter at once, use Data > Clear. To remove filtering entirely, press [[Ctrl]] + [[Shift]] + [[L]] again." },
-          { type: "p", text: "Know the difference: **Clear** keeps the dropdown arrows but shows all rows again. **Removing the filter** ([[Ctrl]] + [[Shift]] + [[L]]) takes the arrows away completely. In offices, \"the filter is still on\" is a frequent cause of confused reports — someone cleared one column but not the others." }
+          { type: "p", text: "A filtered column shows a funnel icon instead of a plain arrow. So you can always see which columns are filtered. To clear one column, open its dropdown and click **Clear Filter**. To clear every filter, use Data > Clear. To remove filtering fully, press [[Ctrl]] + [[Shift]] + [[L]] again." },
+          { type: "p", text: "Know the difference. **Clear** keeps the arrows but shows all rows again. **Removing the filter** ([[Ctrl]] + [[Shift]] + [[L]]) takes the arrows away too. \"The filter is still on\" causes many confused reports. Someone cleared one column but forgot the others." }
         ]
       },
       {
         heading: "SUBTOTAL: totals that follow the filter",
         blocks: [
-          { type: "p", text: "Here is a question every analyst meets in week one: \"the sheet shows ₹3,52,000 in the total cell, but the filtered rows only add up to ₹2,64,000\". The reason is that `=SUM()` ignores filters — it always sums everything, visible or hidden." },
+          { type: "p", text: "Every analyst meets this in week one. The total cell shows ₹3,52,000. But the filtered rows add up to only ₹2,64,000. The reason: `=SUM()` ignores filters. It always adds everything, visible or hidden." },
           { type: "formula", name: "SUBTOTAL",
             syntax: "=SUBTOTAL(function_number, range)",
             example: "=SUBTOTAL(9, G2:G200)",
@@ -283,20 +286,21 @@ window.LEVEL_META[3] = {
               ["2", "COUNT of visible numbers", "=SUBTOTAL(2, F2:F200)"],
               ["3", "COUNTA of visible non-blank cells", "=SUBTOTAL(3, A2:A200)"]
             ] },
-          { type: "p", text: "Put a `=SUBTOTAL(9, ...)` in a cell above your data and it becomes a live dashboard: filter to North region and it shows North revenue, filter to March and it shows March revenue. Excel Tables do this automatically in their totals row, which is one more reason Tables are worth using." }
+          { type: "p", text: "Put a `=SUBTOTAL(9, ...)` above your data. It becomes a live dashboard. Filter to North and it shows North revenue. Filter to March and it shows March revenue. Excel Tables do this automatically in their totals row — one more reason to use Tables." }
         ]
       },
       {
         heading: "Copying only the filtered rows",
         blocks: [
-          { type: "p", text: "A very common task: filter to the rows you need, then copy them into a new sheet or an email. The good news is that Excel behaves well here. When a filter is active, selecting a range and copying takes **only the visible cells** — hidden rows are skipped. Paste into a blank sheet and you get a clean extract of exactly the filtered rows, headers included if you selected them." },
+          { type: "p", text: "Here is a very common task: filter to the rows you need, then copy them to a new sheet or an email. Excel behaves well here." },
+          { type: "p", text: "When a filter is active, copying takes **only the visible cells**. Hidden rows are skipped. Paste into a blank sheet and you get a clean extract of the filtered rows. Headers come too, if you selected them." },
           { type: "steps", items: [
             "Apply the filter so only the rows you want are visible.",
             "Select the data including the header row (click the first header cell, then [[Ctrl]] + [[Shift]] + [[End]] works well for wide tables).",
             "Press [[Ctrl]] + [[C]] to copy — the marching-ants border skips hidden rows.",
             "Click a cell in the destination sheet and press [[Ctrl]] + [[V]]. The paste contains only visible rows."
           ] },
-          { type: "warning", text: "The visible-cells rule applies to filtered (hidden-by-filter) rows. If you manually hid rows with right-click > Hide, copying a plain selection includes them unless you first press [[Alt]] + [[;]] (Alt plus semicolon) to select visible cells only." }
+          { type: "warning", text: "This rule applies to rows hidden by a filter only. If you hid rows manually with right-click > Hide, a normal copy includes them. First press [[Alt]] + [[;]] to select visible cells only." }
         ]
       }
     ],
@@ -425,7 +429,8 @@ window.LEVEL_META[3] = {
       "Rename a Table, use the totals row and built-in filtering",
       "Convert a Table back to a normal range"
     ],
-    intro: "So far you have worked with plain ranges: `A1:G200`, frozen headers, manually copied formulas. Excel Tables upgrade a range into a self-managing object that grows when your data grows, fills formulas down automatically and gives your formulas readable names.\n\nTables are the single habit that separates people who fight Excel from people who work quickly with it. Every report you build from now on should start with one.",
+    intro: "So far you have used plain ranges like `A1:G200`. You copied formulas by hand and froze headers yourself. An Excel Table does this work for you. It grows with your data and fills formulas down automatically.\n\nTables are the one habit that separates fast users from frustrated ones. Start every new report with a Table.",
+    keyIdea: "A Table (Ctrl + T) is a smart range that grows by itself and fills formulas down for you.",
     sections: [
       {
         heading: "Creating a Table",
@@ -443,7 +448,7 @@ window.LEVEL_META[3] = {
               ["1002", "Priya Nair", "South", "Staplers", "6750"],
               ["1003", "Rahul Verma", "North", "Laptops", "352000"]
             ] },
-          { type: "warning", text: "Tables and merged cells do not mix. If your data contains merged cells, unmerge them first (select the range, then Alt + H + M + U). Merged cells break sorting, filtering and Table behaviour." }
+          { type: "warning", text: "Tables and merged cells do not mix. Unmerge first: select the range, then press Alt + H + M + U. Merged cells break sorting, filtering and Tables." }
         ]
       },
       {
@@ -455,7 +460,7 @@ window.LEVEL_META[3] = {
             "**Formulas fill themselves.** Type a formula once in any column of a Table and it copies down the whole column instantly (a \"calculated column\"). Add a new row and the formula is already there waiting for you.",
             "**Headers stay visible and usable.** Filter arrows appear on every column, and column headers are always treated as proper headers, not as data."
           ] },
-          { type: "p", text: "In practice this means a weekly update becomes: paste the new rows at the bottom of the Table, and everything downstream — totals, charts, validation, formatting — already includes them. That is why every template worth copying uses Tables at its core." }
+          { type: "p", text: "In practice, a weekly update becomes simple. Paste new rows at the bottom of the Table. Totals, charts, validation and formatting already include them. That is why every good template is built on Tables." }
         ]
       },
       {
@@ -472,7 +477,7 @@ window.LEVEL_META[3] = {
             "`=COUNTIFS(Sales[Product], \"Laptops\", Sales[Units], \">10\")` — count laptop orders of more than 10 units.",
             "`=Sales[@Revenue]` — the Revenue value on the current row (the `@` means \"this row\"), perfect inside a calculated column such as `=[@Units]*120`."
           ] },
-          { type: "p", text: "Compare `=SUM(Sales[Revenue])` with `=SUM(Sheet1!G2:G200)`. The first one tells any reader exactly what it totals, and it never breaks when rows are added. The second one is a mystery that must be maintained by hand. This is also the fix for the sorting risks from the previous lesson: formulas built on Tables sort and move correctly." }
+          { type: "p", text: "Compare `=SUM(Sales[Revenue])` with `=SUM(Sheet1!G2:G200)`. The first tells every reader exactly what it totals. It never breaks when rows are added. The second is a mystery you must maintain by hand. This also fixes the sorting risks from the last lesson: formulas built on Tables sort and move correctly." }
         ]
       },
       {
@@ -485,15 +490,17 @@ window.LEVEL_META[3] = {
             "Press [[Enter]]. Every formula that used Table1 now reads Sales automatically."
           ] },
           { type: "warning", text: "Table names must start with a letter, contain no spaces (use SalesData or Sales_Data), and must be unique in the workbook. If the name box looks greyed out, you are in edit mode or the cell is not inside a Table." },
-          { type: "p", text: "The **totals row** is a switch, not a formula you type: tick Total Row on the Table Design tab and a row appears under the Table. Click any cell in it and choose from a dropdown — Sum, Average, Count. Excel writes a SUBTOTAL formula for you, so the totals row respects filtering automatically, exactly as you learned in the filtering lesson." },
-          { type: "p", text: "Also on Table Design: the **banded rows** checkbox creates the alternating shading, and the gallery lets you pick a style that matches your company look. The shading is formatting logic, not manual fills, so it keeps working as rows are added." }
+          { type: "p", text: "The **totals row** is a switch, not a formula you type. Tick Total Row on the Table Design tab and a row appears under the Table." },
+          { type: "p", text: "Click any cell in that row and pick from a dropdown: Sum, Average, Count. Excel writes a SUBTOTAL formula for you. So the totals row follows filters automatically, just like the filtering lesson showed." },
+          { type: "p", text: "Table Design has more. The **banded rows** tick box makes the alternating shading. The gallery lets you pick a style that matches your company look. The shading is automatic logic, not manual fills, so it keeps working as rows are added." }
         ]
       },
       {
         heading: "Filtering comes free, and leaving Tables behind",
         blocks: [
-          { type: "p", text: "Every Table arrives with filter arrows already switched on — everything from the filtering lesson works immediately. One Table-only bonus: the dropdown of a Table column also has **Sort by Color** and text shortcuts, and the Table remembers filters per column." },
-          { type: "p", text: "Sometimes you need a plain range again — for example to hand a file to an old system, or to use features that behave oddly inside Tables. Click in the Table, Table Design > Convert to Range, confirm, and the formatting logic and structured references become normal formatting and normal cell addresses. Formulas such as `=SUM(Sales[Revenue])` are rewritten to regular ranges like `=SUM($G$2:$G$200)`, so nothing shows an error — but you lose the auto-expansion. Convert back only with a reason." },
+          { type: "p", text: "Every Table comes with filter arrows already on. Everything from the filtering lesson works right away. Tables add one bonus: their dropdowns also offer **Sort by Color** and text shortcuts, and the Table remembers filters per column." },
+          { type: "p", text: "Sometimes you need a plain range again — for example, for an old system or a feature that misbehaves inside Tables. Click in the Table, then Table Design > Convert to Range, and confirm." },
+          { type: "p", text: "The formatting logic and structured references become normal formatting and normal cell addresses. `=SUM(Sales[Revenue])` is rewritten to a range like `=SUM($G$2:$G$200)`, so nothing shows an error. But you lose the auto-expansion. Convert back only with a good reason." },
           { type: "tip", text: "When a chart, pivot table or validation list points at a Table, it follows the Table as it grows. Point them at `Sales` instead of `G2:G200` and your reports maintain themselves." }
         ]
       }
@@ -623,13 +630,15 @@ window.LEVEL_META[3] = {
       "Copy validation to other cells and find invalid data already in the sheet",
       "Explain how dropdowns prevent report errors"
     ],
-    intro: "In Level 2 you built reports with SUMIF and VLOOKUP. You already know their silent weakness: if someone types \"north\" instead of North, or \"Sneha Iyer \" with an extra space, the report quietly misses those rows. No error appears — the numbers are just wrong.\n\nData validation attacks the problem at the source. It controls what a person is allowed to type into a cell: a dropdown of approved values, a number within limits, a date in range. Clean data in, trustworthy reports out.",
+    intro: "In Level 2 you built reports with SUMIF and VLOOKUP. They have a hidden weakness. If someone types \"north\" instead of North, the report quietly misses that row. No error appears — the numbers are just wrong.\n\nData validation stops the problem at the source. It controls what a person can type: a dropdown of approved values, a number within limits, a date in range. Clean data in, trustworthy reports out.",
+    keyIdea: "Validation controls what people can type into a cell, so bad data never enters your sheet.",
     sections: [
       {
         heading: "What data validation is for",
         blocks: [
-          { type: "p", text: "Data validation lives on the Data tab > Data Validation. It is a rule attached to a cell: anything typed that breaks the rule is rejected or questioned at the moment of typing. It does not check data that is already there (you will see how to find that later in this lesson), and it does not survive being pasted over — but for every value typed by hand, it works." },
-          { type: "p", text: "Think of the Sunrise Traders order log. Four people type orders into one sheet. Validation guarantees that Region is always one of North, South, East, West, that Units is a positive whole number, and that the Order Date is a real date. Your SUMIF-by-region report now adds up to the company total, every single day." }
+          { type: "p", text: "You will find it on the Data tab > Data Validation. A validation rule is attached to a cell. Anything typed against the rule is rejected or questioned right away." },
+          { type: "p", text: "Two limits to know. It does not check data already in the sheet (you will fix that later in this lesson). And it does not survive a paste over the cell. For every value typed by hand, it works." },
+          { type: "p", text: "Think of the Sunrise Traders order log. Four people type orders into one sheet. Validation makes sure Region is always North, South, East or West. Units is always a positive whole number. Order Date is always a real date. Now your SUMIF report adds up correctly, every single day." }
         ]
       },
       {
@@ -649,8 +658,8 @@ window.LEVEL_META[3] = {
               ["Date", "Valid dates within a window", "Order Date between 01-Jan-2026 and 31-Dec-2026"],
               ["Text length", "Number of characters", "Product code exactly 8 characters"]
             ] },
-          { type: "p", text: "Two small but powerful options: Allow > **List** builds dropdowns (next section), and the Settings tab has a **Ignore blank** tick box — usually leave it ticked so empty cells are allowed while the column is being filled in." },
-          { type: "tip", text: "Text length validation is a simple guard for code-like fields, such as an 8-character SKU. It will not stop typos that happen to be 8 characters, but it stops the common paste errors where half a code or a whole sentence lands in the column." }
+          { type: "p", text: "Two small but powerful options. Allow > **List** builds dropdowns (next section). And the Settings tab has an **Ignore blank** tick box. Usually leave it ticked, so empty cells are allowed while the column is being filled." },
+          { type: "tip", text: "Text length validation is a simple guard for codes, such as an 8-character SKU. It cannot stop typos that are also 8 characters. But it stops half a code, or a whole sentence, landing in the column." }
         ]
       },
       {
@@ -667,15 +676,15 @@ window.LEVEL_META[3] = {
               ["1001", "[North v]", "Notebooks", "120"],
               ["1002", "[South v]", "Staplers", "45"]
             ] },
-          { type: "p", text: "A rule worth building into every template: keep the list values in a hidden or dedicated sheet (call it Lists), name the range (for example RegionList) and use `=RegionList` as the source. Named lists survive copying, sorting and sheet reorganising far better than raw addresses." },
-          { type: "warning", text: "In older Excel versions, a list source pointing directly at another sheet is not allowed — the fix is exactly this named-range approach, which works in every version. Modern Excel accepts cross-sheet ranges directly, but the named range is still the tidier habit." }
+          { type: "p", text: "Build this rule into every template. Keep the list values on a hidden or dedicated sheet called Lists. Name the range, for example RegionList, and use `=RegionList` as the source. Named lists survive copying and sorting far better than raw addresses." },
+          { type: "warning", text: "In older Excel versions, a list source cannot point directly at another sheet. The named-range approach is the fix, and it works in every version. Modern Excel accepts cross-sheet ranges, but a named range is still the tidier habit." }
         ]
       },
       {
         heading: "Input messages and error alerts",
         blocks: [
           { type: "p", text: "Validation has two helper tabs that turn a silent rule into a guided one." },
-          { type: "p", text: "**Input Message** shows a small yellow note when the cell is selected — for example \"Choose one of the four regions\". Use it like a caption for the person filling the sheet. Keep it short; it appears every time the cell is selected." },
+          { type: "p", text: "**Input Message** shows a small yellow note when the cell is selected. For example: \"Choose one of the four regions\". It is a caption for the person filling the sheet. Keep it short — it appears every time the cell is selected." },
           { type: "p", text: "**Error Alert** decides what happens when someone breaks the rule:" },
           { type: "table",
             headers: ["Style", "Behaviour", "When to use"],
@@ -684,7 +693,8 @@ window.LEVEL_META[3] = {
               ["Warning", "Asks \"Continue?\" and allows the entry anyway", "Rare exceptions that a supervisor can approve"],
               ["Information", "Explains and accepts the entry", "Gentle guidance, not enforcement"]
             ] },
-          { type: "p", text: "Write a useful error message. \"Units must be a whole number between 1 and 10000\" teaches; the default \"This value doesn't match the data validation restrictions defined for this cell\" does not. If you untick Show error alert after validation entirely, the rule still exists but typing anything is accepted — you effectively keep only the dropdown arrow." }
+          { type: "p", text: "Write a useful error message. \"Units must be a whole number between 1 and 10000\" teaches. The default message does not." },
+          { type: "p", text: "If you untick Show error alert after validation entirely, the rule still exists. But any typing is accepted — you effectively keep only the dropdown arrow." }
         ]
       },
       {
@@ -696,14 +706,14 @@ window.LEVEL_META[3] = {
             "**Audit existing data.** Data > Data Validation dropdown > Circle Invalid Data draws red ovals around every existing value that breaks the selected cells' rules. Fix them (often with the cleaning tools later in this level), then choose Clear Validation Circles.",
             "**Remove or widen it.** Select cells, Data Validation, and click Clear All to remove rules; or select the whole sheet ([[Ctrl]] + [[A]]) before opening the dialog to review every rule in one place."
           ] },
-          { type: "warning", text: "Validation does not survive a normal paste. If someone pastes rows from another file over your validated columns, the pasted values arrive with no rules and can reintroduce \"north\" and 0-unit orders. Audit with Circle Invalid Data after every big paste." }
+          { type: "warning", text: "Validation does not survive a normal paste. Someone pastes rows from another file over your columns. The pasted values arrive with no rules. They can reintroduce \"north\" and 0-unit orders. Run Circle Invalid Data after every big paste." }
         ]
       },
       {
         heading: "Why dropdowns prevent report errors",
         blocks: [
-          { type: "p", text: "Connect this to Level 2. `=SUMIF(D2:D500, \"North\", G2:G500)` misses every row where the region was typed as \"north\", \"N\", \"North \" or \"Nrth\". Each of those typos survives silently — the row looks normal, the report is short by a few thousand rupees, and nobody finds out until the numbers do not match finance." },
-          { type: "p", text: "With a dropdown, all four typists pick from the same four values, so the criterion \"North\" matches every North row. The same logic protects VLOOKUP: a lookup on Product only works if the product names match the lookup table exactly. Validation is cheaper than cleaning: five minutes of setup prevents hours of monthly repair." },
+          { type: "p", text: "Connect this to Level 2. `=SUMIF(D2:D500, \"North\", G2:G500)` misses rows where the region is \"north\", \"N\", \"North \" or \"Nrth\". Each typo survives silently. The row looks normal. The report is short by a few thousand rupees. Nobody notices until the numbers do not match finance." },
+          { type: "p", text: "With a dropdown, all four typists pick from the same four values. The criterion \"North\" then matches every North row. The same logic protects VLOOKUP. A lookup works only if names match the lookup table exactly. Validation is cheaper than cleaning: five minutes of setup saves hours of monthly repair." },
           { type: "quote", text: "Reports are only as good as the data entry behind them. Validation is the cheapest data quality tool Excel has." }
         ]
       }
@@ -826,13 +836,15 @@ window.LEVEL_META[3] = {
       "Manage overlapping rules with priority and Stop If True",
       "Write a formula rule such as =$F2=\"Overdue\" to highlight whole rows"
     ],
-    intro: "Conditional formatting is colour that thinks. Instead of you scanning 800 rows for big orders, overdue invoices or failing targets, Excel colours the cells that match a rule — and re-colours them automatically whenever the data changes.\n\nThis is the visual layer on top of everything in this level: sort the data and the colours follow, filter it and only the visible survivors are coloured, put the data in a Table and new rows are coloured by the same rules with zero effort.",
+    intro: "Conditional formatting is colour that thinks. You do not scan 800 rows for big orders or overdue invoices. Excel colours the cells that match a rule. When the data changes, the colours update themselves.\n\nIt is the visual layer on top of this whole level. Sort the data and the colours follow. Filter it and only visible rows stay coloured. New rows in a Table get coloured too, with zero effort.",
+    keyIdea: "Conditional formatting colours cells by rule, and the colours update themselves when the data changes.",
     sections: [
       {
         heading: "How conditional formatting differs from manual fills",
         blocks: [
-          { type: "p", text: "A manual fill (the paint-bucket colour) is just paint: it stays whether the value deserves it or not, and it must be repainted by hand when data changes. Conditional formatting is a rule attached to a range. Every time Excel recalculates, it re-evaluates the rule and applies the format only where the rule is true right now." },
-          { type: "p", text: "That difference is the whole point in office work: yesterday's red rows that were fixed turn back to normal automatically. Nobody has to remember to un-highlight anything. The controls live on Home > Conditional Formatting." }
+          { type: "p", text: "A manual fill (the paint-bucket colour) is just paint. It stays even when the value no longer deserves it. You must repaint it by hand when data changes." },
+          { type: "p", text: "Conditional formatting is a rule attached to a range. Every time Excel recalculates, it re-checks the rule. The format applies only where the rule is true right now." },
+          { type: "p", text: "That difference matters in daily work. Yesterday's red rows turn back to normal automatically once they are fixed. Nobody has to remember to un-highlight anything. The controls live on Home > Conditional Formatting." }
         ]
       },
       {
@@ -860,7 +872,7 @@ window.LEVEL_META[3] = {
               ["1007", "Laptops", "176000"],
               ["1015", "Printers", "26400"]
             ] },
-          { type: "p", text: "In the rendered sheet, rows 2 and 5 (the laptop order ₹3,52,000 and the printer order ₹26,400) would appear with the highlight fill, while the notebook and the ₹1,76,000 orders stay plain. The highlight moves by itself if the values change." },
+          { type: "p", text: "In the rendered sheet, rows 2 and 5 get the highlight fill — the ₹3,52,000 laptop order and the ₹26,400 printer order. The notebook and the ₹1,76,000 order stay plain. Change a value and the highlight moves by itself." },
           { type: "tip", text: "Highlight Cells Rules and Top/Bottom rules are the everyday 90 percent. Formula rules (last section) cover the special cases — start simple and only go formula-based when a preset cannot express the condition." }
         ]
       },
@@ -874,7 +886,7 @@ window.LEVEL_META[3] = {
             "**Above Average** — every order better than the mean, which adapts as the data grows.",
             "**Below Average** — underperformers; combine with a red text format for a quick watch list."
           ] },
-          { type: "p", text: "A sales manager's view in ten seconds: select the Revenue column, apply Top 10 Items with a green fill, and the star orders glow without touching the sort order — the rest of the sheet stays in its natural order for reading." }
+          { type: "p", text: "A sales manager gets the view in ten seconds. Select the Revenue column. Apply Top 10 Items with a green fill. The star orders glow, and the sort order is untouched for reading." }
         ]
       },
       {
@@ -886,21 +898,21 @@ window.LEVEL_META[3] = {
             "**Color Scales** — a gradient across the range, for example red for low through yellow to green for high. A whole column becomes a heat map; great for month-by-month performance grids.",
             "**Icon Sets** — arrows, traffic lights, flags or rating stars next to each value based on thresholds. For example, a three-arrow set on Units shows up-arrows for high quantities and down-arrows for low ones."
           ] },
-          { type: "p", text: "All three live in the same Conditional Formatting menu. Each dialog allows threshold tweaks — for example, an icon set rule can be edited so the green arrow only appears above a specific target value rather than the default percentile split." },
-          { type: "warning", text: "Restraint is a professional skill. A sheet with data bars, two colour scales, five icon sets and four highlight fills is harder to read than no formatting at all. One or two well-chosen rules per sheet, and consistent meanings (red = problem everywhere in the workbook) beat a rainbow." }
+          { type: "p", text: "All three live in the same Conditional Formatting menu. Each dialog allows threshold tweaks. For example, edit an icon set rule so the green arrow appears only above a target value, not the default percentile split." },
+          { type: "warning", text: "Restraint is a professional skill. A sheet with data bars, two colour scales, five icon sets and four fills is harder to read than no formatting at all. Use one or two rules per sheet. Keep meanings consistent — red means problem everywhere in the workbook." }
         ]
       },
       {
         heading: "Managing rules: priority and Stop If True",
         blocks: [
-          { type: "p", text: "Real sheets accumulate rules. Home > Conditional Formatting > Manage Rules shows every rule for the selected range or the whole sheet, in priority order from top to bottom. When two rules both match a cell, the rule higher in the list wins for any conflicting format." },
+          { type: "p", text: "Real sheets gather many rules. Open Home > Conditional Formatting > Manage Rules. It shows every rule, in priority order from top to bottom. When two rules match one cell, the rule higher in the list wins." },
           { type: "ul", items: [
             "**Reorder with the arrows** — move the rule that should win to the top.",
             "**Edit a rule** to change its condition, format or the range it applies to (the Applies To column).",
             "**Stop If True** — when a higher rule matches and has Stop If True ticked, lower rules are not even evaluated for that cell. Use it, for example, so that \"red = overdue\" rows are never additionally painted by a data bar rule.",
             "**Delete** rules you no longer need; leftover rules on wide ranges slow big files down."
           ] },
-          { type: "p", text: "One classic cleanup: someone selects entire columns (like `A:Z`) when creating rules, so the Applies To range is millions of rows. Edit the rule and set Applies To to the real data range — the file gets faster immediately." }
+          { type: "p", text: "Here is a classic cleanup. Someone selected whole columns like `A:Z` when creating a rule. The Applies To range is then millions of rows. Edit the rule and set Applies To to the real data range. The file gets faster immediately." }
         ]
       },
       {
@@ -913,7 +925,8 @@ window.LEVEL_META[3] = {
             "Enter the formula with the first row of the selection: `=$F2=\"Overdue\"`.",
             "Set a format (light red fill) and click OK."
           ] },
-          { type: "p", text: "Why the dollar sign only on the column: the rule is evaluated for every cell in the selection. For cell `C7` the formula becomes `$F7=\"Overdue\"` — the **column is locked** to F so every cell in the row looks at its own row's Status, while the row reference stays relative so it slides down correctly. With `$F$2` (both locked) every cell would look only at `F2` and the whole sheet would light up or not as one block." },
+          { type: "p", text: "Why the dollar sign on the column only? The rule runs for every cell in the selection. For cell `C7` the formula becomes `$F7=\"Overdue\"`. The **column is locked** to F, so every cell in a row reads that row's own Status." },
+          { type: "p", text: "The row reference stays relative, so the rule slides down correctly. With `$F$2` (both locked), every cell would look only at `F2`. The whole sheet would then light up or not as one block." },
           { type: "formula", name: "Formula rule with AND",
             syntax: "=AND(condition1, condition2)",
             example: "=AND($E2<TODAY(), $F2=\"Unpaid\")",
@@ -926,8 +939,8 @@ window.LEVEL_META[3] = {
               ["INV-2043", "Rahul Verma", "352000", "20-Feb-2026", "Paid"],
               ["INV-2044", "Sneha Iyer", "8800", "28-Feb-2026", "Overdue"]
             ] },
-          { type: "p", text: "Rows 3 and 5 (Priya Nair and Sneha Iyer) colour across the entire row, because their Status column says Overdue. When Sneha pays and the status changes to Paid, her row decolours itself — no repainting, ever." },
-          { type: "warning", text: "Formula rules are the easiest place to get the anchor wrong. Before trusting the rule, check three cells: the first data row should colour correctly, a row further down should follow its own values, and a cell in the middle columns (like C10) must look at F10, not F2." }
+          { type: "p", text: "Rows 3 and 5 (Priya Nair and Sneha Iyer) colour across the whole row. Their Status column says Overdue. When Sneha pays, the status changes to Paid and her row decolours itself. No repainting, ever." },
+          { type: "warning", text: "Formula rules are the easiest place to get the anchor wrong. Check three cells before you trust the rule. The first data row should colour correctly. A row further down should follow its own values. A middle cell like `C10` must look at `F10`, not `F2`." }
         ]
       }
     ],

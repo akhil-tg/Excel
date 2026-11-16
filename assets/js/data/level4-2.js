@@ -15,7 +15,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Color-code status automatically with conditional formatting",
       "Add sparklines to show each month's trend"
     ],
-    intro: "A KPI, or key performance indicator, is the small set of numbers a manager checks first. Not twenty numbers: three to five. For a sales team like Sunrise Traders, the core KPI is simple: revenue this month versus revenue target. Everything in this lesson is built around making that one comparison impossible to misread.\n\nYou will work in `kpi-report-data.xlsx`. The Exercise sheet lists the twelve months of 2025 in rows 2 to 13, with the month name in column A, the revenue target in column B and the actual revenue in column C. Your job is to add achievement percentages, automatic status colors and sparkline trends, ending with a page a manager can read in thirty seconds.",
+    intro: "A KPI, or key performance indicator, is a number a manager checks first. Not twenty numbers: three to five. For a sales team like Sunrise Traders, the core KPI is simple. It is revenue this month versus revenue target. This lesson makes that one comparison impossible to misread.\n\nYou will work in `kpi-report-data.xlsx`. The Exercise sheet lists the twelve months of 2025 in rows 2 to 13. Column A has the month name, column B the target, column C the actual revenue. You will add achievement percentages, automatic status colors and sparklines. The result is a page a manager can read in thirty seconds.",
+    keyIdea: "A KPI report compares actual revenue against target, and colors and trends make the result clear.",
     sections: [
       {
         heading: "What makes a good KPI",
@@ -35,14 +36,16 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             ["MoM growth", "0%", "+4.1%", "Direction of travel versus last month"]
           ] },
           { type: "p", text: "Notice that \"Achievement %\" is itself a KPI built from two others. Derived KPIs like this are the most useful kind, because they combine a number and its target into a single comparable figure." },
-          { type: "p", text: "Beware of vanity metrics: numbers that always look good and therefore tell you nothing. \"Total revenue since the company started\" only ever goes up. \"Calls made\" measures effort, not results. A useful test is to imagine both possible outcomes of a month: if the number would not change any decision in either case, it does not belong on the KPI page. Agree the final KPI list with the manager who reads it, in one short conversation, before building anything. KPIs chosen by the reader get read; KPIs chosen because they were easy to calculate get ignored." }
+          { type: "p", text: "Beware of vanity metrics: numbers that always look good and tell you nothing. \"Total revenue since the company started\" only ever goes up. \"Calls made\" measures effort, not results." },
+          { type: "p", text: "Here is a useful test. Imagine both possible outcomes of a month. If the number would not change any decision, it does not belong on the KPI page. Agree the final list with the manager who reads it, before building anything. KPIs chosen by the reader get read; KPIs chosen because they were easy get ignored." }
         ]
       },
       {
         heading: "The KPI summary layout",
         blocks: [
-          { type: "p", text: "A KPI row always follows the same shape: name, target, actual, achievement, status. Keep that column order consistent across every report you build, and readers never have to relearn your layout." },
-          { type: "p", text: "The layout works because it follows the reader's questions in order. \"What are we measuring?\" is answered by the name. \"What should it be?\" by the target. \"What is it?\" by the actual. \"Did we make it?\" by the achievement. \"How bad is the miss?\" by the status color. When you design any new report block, walk through the questions the reader will ask in sequence and give each one a column; layouts built this way feel obvious to read and take minutes to explain." },
+          { type: "p", text: "A KPI row always follows the same shape: name, target, actual, achievement, status. Keep that order in every report you build. Readers then never have to relearn your layout." },
+          { type: "p", text: "The layout works because it follows the reader's questions in order. \"What are we measuring?\" is answered by the name. \"What should it be?\" by the target. \"What is it?\" by the actual." },
+          { type: "p", text: "\"Did we make it?\" is answered by the achievement. \"How bad is the miss?\" by the status color. When you design any new report block, give each reader question a column. Layouts built this way feel obvious to read." },
           { type: "grid", title: "The KPI layout with formulas, January row",
             rows: [
               ["Month", "Target", "Actual", "Achievement %", "Status"],
@@ -54,15 +57,16 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             syntax: "=Actual/Target",
             example: "=C2/B2",
             explanation: "Divides the actual revenue by the target. Format the cell as a percentage with one decimal. 108.4% means the target was beaten by 8.4%." },
-          { type: "p", text: "Type `=C2/B2` in `D2`, format it as a percentage with one decimal place, and fill it down to `D13`. Every month now shows achievement on the same scale, which is exactly what makes months comparable." },
-          { type: "p", text: "A percentage column also survives changes that would break absolute comparisons. If management raises the monthly target in July from ₹5,00,000 to ₹5,50,000, the rupee figures in columns B and C stop being comparable with earlier months, but achievement percentages keep their meaning: 103% in March and 103% in August both mean \"slightly over target\". That scale-free quality is why managers quote achievement, not raw revenue, when they compare across months or across teams with different targets." },
-          { type: "warning", text: "If `D2` suddenly shows ##### or a date-like value such as 0.5 changing into something odd, the cell format is wrong, not the formula. Press [[Ctrl]] + [[1]], choose Percentage, and set the decimals to 1." }
+          { type: "p", text: "Type `=C2/B2` in `D2`. Format it as a percentage with one decimal place and fill it down to `D13`. Every month now shows achievement on the same scale. That is what makes months comparable." },
+          { type: "p", text: "A percentage column also survives changes that would break absolute comparisons. Say management raises the monthly target in July from ₹5,00,000 to ₹5,50,000. The rupee figures in columns B and C stop being comparable with earlier months. But achievement percentages keep their meaning: 103% in March and 103% in August both mean \"slightly over target\"." },
+          { type: "p", text: "That scale-free quality is why managers quote achievement, not raw revenue, when they compare months or teams with different targets." },
+          { type: "warning", text: "If `D2` suddenly shows ##### or a strange value, the cell format is wrong, not the formula. Press [[Ctrl]] + [[1]], choose Percentage, and set the decimals to 1." }
         ]
       },
       {
         heading: "Status colors with conditional formatting",
         blocks: [
-          { type: "p", text: "The status column should never be typed by hand. Manual colors go stale the moment next month's numbers arrive. Conditional formatting applies the color from the value, so the report recolors itself every refresh." },
+          { type: "p", text: "The status column should never be colored by hand. Manual colors go stale the moment next month's numbers arrive. Conditional formatting applies the color from the value, so the report recolors itself every refresh." },
           { type: "steps", items: [
             "Select `D2:D13`, the achievement column.",
             "On the Home tab, click Conditional Formatting > New Rule.",
@@ -72,9 +76,10 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             "Add a third rule: Cell Value less than 0.9, format with red fill.",
             "Click OK and check that January turns green and the weaker months turn amber or red."
           ] },
-          { type: "p", text: "The thresholds are a business decision, not an Excel decision. Common practice for monthly revenue is 100% and above green, 90% to 99.9% amber, below 90% red. Agree the bands with your manager once and apply them consistently in every report." },
-          { type: "p", text: "Rule order matters when bands overlap. Excel evaluates conditional formatting rules from top to bottom and, by default, applies the first rule that matches. Build the three rules in the order green, amber, red, and make the band edges exact: green means greater than or equal to 1, amber means between 0.9 and 0.9999, red means less than 0.9. A value of exactly 90% then falls into amber, never red, because the amber rule catches it. If a rule ever seems to be ignored, open Conditional Formatting > Manage Rules and check the order and the applies-to range." },
-          { type: "tip", text: "You can also use Conditional Formatting > Icon Sets for arrows or traffic lights next to the percentage. If you use icon sets, choose Show Icon Only in the rule settings when the number is already visible in the next column." }
+          { type: "p", text: "The thresholds are a business decision, not an Excel decision. Common practice for monthly revenue is green at 100% and above, amber from 90% to 99.9%, red below 90%. Agree the bands with your manager once. Then apply them in every report." },
+          { type: "p", text: "Rule order matters when bands overlap. Excel checks the rules from top to bottom and applies the first one that matches. Build them in the order green, amber, red, and make the edges exact: green means greater than or equal to 1, amber means between 0.9 and 0.9999, red means less than 0.9." },
+          { type: "p", text: "A value of exactly 90% then falls into amber, never red, because the amber rule catches it first. If a rule seems ignored, open Conditional Formatting > Manage Rules. Check the order and the applies-to range." },
+          { type: "tip", text: "You can also use Conditional Formatting > Icon Sets for arrows or traffic lights next to the percentage. If you do, choose Show Icon Only in the rule settings when the number is already visible in the next column." }
         ]
       },
       {
@@ -187,6 +192,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Keep raw data on a separate sheet and name sheets sensibly"
     ],
     intro: "Every office has a monthly report ritual: the numbers go from the raw system export to a page the manager signs off. The analysts who do this well are not the ones with the most formulas, but the ones with a clean structure: raw data on one sheet, the report on another, and every number on the report traceable to the data.\n\nYou will build that structure for Sunrise Traders in `dashboard-data.xlsx`. The Data sheet holds the raw transactions for 2025 as a Table named `DataTable`, with columns Date, Region, Salesperson, Product, Units and Revenue and just over 300 rows. If your copy is not formatted as a Table yet, click inside the data and press [[Ctrl]] + [[T]] first.",
+    keyIdea: "Keep raw data on its own sheet, and make every report number traceable back to it.",
     sections: [
       {
         heading: "The structure of a report page",
@@ -344,6 +350,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Give the dashboard a clean, professional look"
     ],
     intro: "A dashboard is a single screen that answers the reader's questions before they have to ask. The difference between a good dashboard and a bad one is almost never the Excel skill involved; it is the planning. Good dashboards are designed on paper first, with a specific reader and three specific questions in mind.\n\nIn this lesson you will build a mini dashboard for Sunrise Traders in `dashboard-data.xlsx`, using the same raw `DataTable` from the reporting lesson, the pivots and slicers from earlier in this level, and a row of KPI cards. By the end you will have a one-page, filter-driven view of the year. Keep the first version deliberately small: four KPI cards, two charts, two slicers and a timeline is already a complete, useful page, and the discipline of keeping it small is itself part of the skill.",
+    keyIdea: "Design the dashboard on paper first, for one reader and three specific questions.",
     sections: [
       {
         heading: "Plan before you build",
@@ -521,6 +528,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Export a report to PDF and run a pre-delivery checklist"
     ],
     intro: "The last mile of analysis is delivery. A manager does not see your `SUMIFS` or your careful pivots; they see the page. Fonts, alignment, number formats and print setup decide whether your month of work looks trustworthy or thrown together. Excel gives you all of these tools in a few menus, and using them takes minutes.\n\nThis lesson finishes the Sunrise Traders report in `dashboard-data.xlsx`. You will take the Report sheet you structured in the monthly reporting lesson and make it presentable on screen, on paper and as a PDF.",
+    keyIdea: "Delivery is the last mile: clean fonts, print setup and a PDF make your work look trustworthy.",
     sections: [
       {
         heading: "Fonts, sizes and alignment",

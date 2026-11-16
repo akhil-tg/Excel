@@ -15,7 +15,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Count duplicates with COUNTIF",
       "Build a safe backup habit before any deletion"
     ],
-    intro: "Duplicate rows are silent poison for a business file. The customer list shows Arjun Mehta three times, so the mail merge sends him three emails, the COUNTA-based headcount is wrong, and a SUMIF over the data double-counts his orders.\n\nThis lesson gives you a safe routine: first find and understand the duplicates, then decide what \"duplicate\" really means for your table, and only then delete — with a backup taken first.",
+    intro: "Duplicate rows quietly poison a business file. Arjun Mehta appears three times. The mail merge sends him three emails. Counts and SUMIF totals go wrong.\n\nThis lesson gives you a safe routine. First find and understand the duplicates. Then decide what \"duplicate\" really means for your table. Then delete — with a backup taken first.",
+    keyIdea: "Highlight duplicates first, decide what counts as one, take a backup, then delete.",
     sections: [
       {
         heading: "First, look before you delete",
@@ -35,8 +36,9 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
               ["Priya Nair", "priya.nair@sunrise.in", "South"],
               ["Rahul Verma", "rahul.verma@sunrise.in", "East"]
             ] },
-          { type: "p", text: "In this mini-example, rows 2 and 3 highlight — the same customer entered twice. Rows 4 and 5 stay clean. Seeing the duplicates also tells you something important: are they **full-row duplicates** (every column identical, safe to delete outright) or **partial duplicates** (same name but one row has a newer address, so the \"newer\" row should win)?" },
-          { type: "tip", text: "Switch the Duplicate Values dialog from Duplicate to Unique to highlight the opposite — the values that appear exactly once. That is a quick way to spot typos that almost match: a customer who appears once with a misspelled email is more dangerous than an exact repeat." }
+          { type: "p", text: "In this mini-example, rows 2 and 3 highlight — the same customer entered twice. Rows 4 and 5 stay clean." },
+          { type: "p", text: "Seeing the duplicates teaches you something important. Are they **full-row duplicates** (every column identical, safe to delete)? Or **partial duplicates** (same name, but one row has a newer address, so the newer row should win)?" },
+          { type: "tip", text: "Switch the dialog from Duplicate to Unique to highlight the opposite — values that appear exactly once. This is a quick way to spot near-miss typos. A customer with a misspelled email is more dangerous than an exact repeat." }
         ]
       },
       {
@@ -47,8 +49,9 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             syntax: "=COUNTIF(range, criteria)",
             example: "=COUNTIF($B$2:$B$500, B2)",
             explanation: "Counts how many cells in B2:B500 are equal to B2. Anchored with $ so the range stays fixed while the formula fills down: a value appearing three times shows 3 on all three of its rows." },
-          { type: "p", text: "Two uses in practice. To get the **total number of repeat rows** for a status report: filter the helper column to values greater than 1 and read `=SUBTOTAL(2, H2:H500)` (counts visible numbers), or simply subtract: `=COUNTA(B2:B500)-SUMPRODUCT((COUNTIF(B2:B500,B2:B500)=1)*1)` is overkill — a count of rows where the helper is 1 tells you how many unique entries exist. For day-to-day work, the helper column plus a filter is enough: filter to values above 1, inspect those rows, and decide row by row." },
-          { type: "p", text: "The helper column also answers the partial-duplicate question: sort by the email column and the helper column side by side, and identical values with **different** other columns are easy to compare and merge by hand." }
+          { type: "p", text: "Two uses in practice. For the **total number of repeat rows** in a status report: filter the helper column to values greater than 1, then read `=SUBTOTAL(2, H2:H500)`, which counts visible numbers." },
+          { type: "p", text: "A count of rows where the helper equals 1 also tells you how many unique entries exist. Formulas like `=COUNTA(B2:B500)-SUMPRODUCT((COUNTIF(B2:B500,B2:B500)=1)*1)` are overkill. For day-to-day work, the helper column plus a filter is enough: filter to values above 1, inspect those rows, and decide row by row." },
+          { type: "p", text: "The helper column also answers the partial-duplicate question. Sort by the email column and the helper column together. Identical emails with **different** other columns are then easy to compare and merge by hand." }
         ]
       },
       {
@@ -79,7 +82,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
             "Remove duplicates, verify the result (compare row counts, spot-check highlighted values).",
             "Only when everything checks out, delete the backup sheet — or keep it until the next full save cycle if your data is critical."
           ] },
-          { type: "p", text: "Ctrl + Z also undoes a Remove Duplicates immediately, but not after you have saved, closed and reopened the file. The backup sheet is the version that survives anything, including the moment your manager says \"actually, send me the version from this morning\"." },
+          { type: "p", text: "Ctrl + Z also undoes a Remove Duplicates right away. But it stops working after you save, close and reopen the file. The backup sheet survives anything — even the moment your manager says \"actually, send me the version from this morning\"." },
           { type: "quote", text: "Deleting data is the one spreadsheet action you cannot reason your way out of later. A backup sheet is cheaper than any recovery." }
         ]
       }
@@ -208,7 +211,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Split full names into first and last name columns",
       "Know when Flash Fill is the faster alternative"
     ],
-    intro: "Data arrives joined together more often than you would expect: full names in one cell, addresses crammed into a single field, and — most famously — a whole column of \"numbers\" that Excel refuses to sum because they are actually text.\n\nText to Columns is the built-in splitting tool, and its third page hides one of the most valuable fixes in office Excel: converting text numbers into real ones. This lesson covers both, plus Flash Fill as the modern shortcut.",
+    intro: "Data often arrives joined together. Full names sit in one cell. Addresses cram into one field. And a whole column of \"numbers\" will not sum — because Excel sees them as text.\n\nText to Columns is the built-in splitting tool. Its last page hides a famous fix: turning text numbers into real numbers. This lesson covers both, plus Flash Fill as the fast alternative.",
+    keyIdea: "Text to Columns splits one column into many, and it also fixes numbers stuck as text.",
     sections: [
       {
         heading: "Delimited split: commas, spaces and tabs",
@@ -392,7 +396,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Use Go To Special to select blanks, constants and formulas, and fill blanks quickly",
       "Replace safely inside formulas"
     ],
-    intro: "Every dataset you inherit has something wrong in bulk: a supplier renamed with two spellings, \"N.A\" where numbers should be, region codes that changed last quarter. Editing hundreds of cells by hand is not work — it is punishment.\n\nFind and Replace fixes hundreds of cells in seconds, and Go To Special — its often-overlooked partner — selects exactly the cells you need to fix: all blanks, all formulas, all constants. Together they are the fastest bulk-editing tools in Excel.",
+    intro: "Every dataset you inherit has something wrong in bulk. A supplier spelled two ways. \"N.A\" where numbers should be. Region codes that changed last quarter. Fixing hundreds of cells by hand is punishment.\n\nFind and Replace fixes hundreds of cells in seconds. Its partner Go To Special selects exactly the cells you need: all blanks, all formulas, all constants. Together they are the fastest bulk-editing tools in Excel.",
+    keyIdea: "Find and Replace fixes hundreds of cells in seconds — always read the replacement count before accepting.",
     sections: [
       {
         heading: "Find and Replace basics",
@@ -593,7 +598,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Run a final checklist before trusting a cleaned dataset",
       "Know when a job has outgrown formulas and needs Power Query"
     ],
-    intro: "This lesson puts everything from this level together into one professional routine. You receive a customer list like the ones that actually arrive by email: names typed five different ways, stray spaces, dates as text, numbers as text, duplicates everywhere.\n\nThe discipline is the same whether the file has 50 rows or 50,000: inspect first, fix in a planned order, verify at the end. Follow this workflow and the data cleaning workbook becomes a template you can reuse on every messy file you meet.",
+    intro: "This lesson joins everything from this level into one routine. The customer list arrives the way real files do. Names typed five different ways. Stray spaces. Dates as text. Numbers as text. Duplicates everywhere.\n\nThe discipline is the same for 50 rows or 50,000. Inspect first. Fix in a planned order. Verify at the end. This workflow becomes a template you can reuse on every messy file.",
+    keyIdea: "Inspect first, fix in a planned order, then verify — never trust data that only looks clean.",
     sections: [
       {
         heading: "Step 0: inspect before you touch anything",
@@ -814,7 +820,8 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Switch calculation to manual when a big file becomes slow",
       "Count records and slice data sensibly with filters"
     ],
-    intro: "From here on, the files get serious: the workbook for this lesson has 1,000 rows of sales data, and real jobs start at 50,000. Everything you learned still works — but at this size, small habits decide whether Excel feels fast or frozen.\n\nThis lesson is a survival kit for big files: keep your bearings, move without scrolling, stop Excel from recalculating what you are not looking at, and slice data down to the rows that matter.",
+    intro: "From here on, the files get serious. This lesson's workbook holds 1,000 rows of sales data. Real jobs start at 50,000. Everything you learned still works. But at this size, small habits decide whether Excel feels fast or frozen.\n\nThis lesson is a survival kit for big files. Keep your bearings. Move without scrolling. Stop Excel recalculating what you cannot see. Slice data down to the rows that matter.",
+    keyIdea: "Freeze the headers, jump with shortcuts, and switch calculation to Manual when a big file crawls.",
     sections: [
       {
         heading: "Freeze panes: never lose your headers",

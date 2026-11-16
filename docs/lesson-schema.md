@@ -52,6 +52,8 @@ in a `-2` file. Do not define anything else globally.
                                      // "" means works in every modern Excel (2010 and later)
   objectives: ["…"],                 // 3-5 short "After this lesson you can…" items (no leading verb bullet)
   intro: "…\n\n…",                   // 2 short paragraphs separated by \n\n
+  keyIdea: "…",                      // ONE simple sentence (max 20 words) — the single main takeaway,
+                                     // rendered as a teal "Key idea" callout at the top of the lesson
   sections: [ SECTION, … ],          // 3-6 sections
   mistakes: [ { wrong: "…", right: "…", why: "…" } ],   // 2-4
   shortcuts: [ { keys: "Ctrl + Z", action: "…" } ],     // 0-8, only ones actually taught

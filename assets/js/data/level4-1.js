@@ -25,12 +25,13 @@ window.LEVEL_META[4] = {
       "Format charts quickly with styles and colors",
       "Add sparklines to show trends inside a single cell"
     ],
-    intro: "A table of 250 rows tells you everything and shows you nothing. A chart shows the one thing your manager needs to see: which region is winning, whether sales are growing, which product carries the business. That is why every monthly review meeting starts with charts, not with raw data.\n\nIn this lesson you will use the sales dataset of Sunrise Traders, a retail and wholesale office supplies company. The workbook `sales-data.xlsx` has 250 rows on the Sales Data sheet, with columns Date, Region, Salesperson, Product, Units and Revenue, formatted as a Table named `SalesTable`. You already know how to build summaries with `SUMIFS` from Level 3, so here you will summarise first and chart second, which is the habit of every good analyst.",
+    intro: "A table of numbers hides the story. A chart shows the story in seconds. Your manager sees at a glance which region is winning and whether sales are growing. That is why every review meeting starts with charts.\n\nIn this lesson you will use the sales data of Sunrise Traders, an office supplies company. The workbook `sales-data.xlsx` has 250 rows on the Sales Data sheet. The columns are Date, Region, Salesperson, Product, Units and Revenue. The data is a Table named `SalesTable`. You already know `SUMIFS` from Level 3. So we will summarise first, then chart the summary.",
+    keyIdea: "Charts turn 250 rows of data into one picture your manager can read in seconds.",
     sections: [
       {
         heading: "Why a picture beats a table",
         blocks: [
-          { type: "p", text: "Excel charts exist for one reason: to answer a question at a glance. Before you insert any chart, ask yourself what question you are answering. The question decides the chart type, not the other way round." },
+          { type: "p", text: "Excel charts answer one question at a glance. Before you insert a chart, ask: what question am I answering? The question decides the chart type, not the other way round." },
           { type: "ul", items: [
             "**Which region sold more?** You are comparing categories, so a column chart is right.",
             "**Is revenue growing month by month?** That is a trend over time, so a line chart is right.",
@@ -38,13 +39,14 @@ window.LEVEL_META[4] = {
             "**Which salesperson hit target?** You are ranking a list, so a sorted column chart or a bar chart is right."
           ] },
           { type: "p", text: "If you start from the question, you will rarely pick the wrong chart. If you start from whatever chart looks pretty, your report will confuse people even when the data is correct." },
-          { type: "p", text: "Think about where charts actually appear in office life. The weekly team meeting opens with a trend line. The monthly review deck leads with a revenue-by-region column chart. A performance dashboard keeps a row of small charts under the KPI numbers. In all three places, the chart is not decoration: it is the fastest way for a busy reader to form a judgement, and the reader forms it in about three seconds. Your job is to make those three seconds count." }
+          { type: "p", text: "Charts appear everywhere in office life. The weekly team meeting opens with a trend line. The monthly review deck leads with a revenue-by-region column chart. A dashboard keeps small charts under the KPI numbers." },
+          { type: "p", text: "Charts are not decoration. They are the fastest way for a busy reader to judge the business. A reader decides in about three seconds. Your job is to make those three seconds count." }
         ]
       },
       {
         heading: "Creating your first chart",
         blocks: [
-          { type: "p", text: "Excel cannot chart 250 raw rows into something meaningful by itself. You first build a small summary table, then chart that summary. On the Sales Data sheet, type `Region` in `H1` and `Revenue` in `I1`, the four region names in `H2:H5`, and this formula in `I2`:" },
+          { type: "p", text: "Excel cannot make sense of 250 raw rows on its own. First build a small summary table, then chart it. On the Sales Data sheet, type `Region` in `H1` and `Revenue` in `I1`. Type the four region names in `H2:H5` and this formula in `I2`:" },
           { type: "formula", name: "SUMIFS summary for the chart",
             syntax: "=SUMIFS(sum_range, criteria_range, criteria)",
             example: "=SUMIFS(SalesTable[Revenue], SalesTable[Region], H2)",
@@ -65,10 +67,12 @@ window.LEVEL_META[4] = {
             "Drag the corner handle to resize it. Drag the border to move it.",
             "Click outside the chart to deselect it."
           ] },
-          { type: "p", text: "When a chart is selected, two extra tabs appear on the ribbon: Chart Design and Format. Use Chart Design to change the chart type, swap rows and columns, or pick a style. Use Format only for colors and shapes." },
-          { type: "p", text: "One more thing worth understanding early: the chart is linked to the cells, not a copy of them. Change a figure in the summary table, or refresh the source data behind a `SUMIFS`, and the chart redraws itself. This is why the chart must point at a small, stable summary range like `H1:I5` and not at 250 transaction rows. Small summary, clean chart, always current." },
-          { type: "tip", text: "Select the summary range and press [[Alt]] + [[F1]] to drop a chart of it straight onto the sheet. Press [[F11]] instead to place the chart on its own full-page chart sheet, which is handy when the chart is the main output of a report." },
-          { type: "p", text: "Handle charts with care once they exist. Click the chart border to move the whole object; click inside on a column or line to select that series for formatting. Resize only from the corner handles, which keep the proportions, and avoid stretching from the side handles, which distorts text inside the chart. When a report holds several charts, move and size them against the cell grid so edges line up; hold [[Alt]] while dragging to snap to it." }
+          { type: "p", text: "When you select a chart, two new tabs appear: Chart Design and Format. Use Chart Design to change the chart type or pick a style. Use Format only for colors and shapes." },
+          { type: "p", text: "Here is an important fact: the chart is linked to the cells, not a copy of them. Change a figure in the summary table and the chart redraws itself." },
+          { type: "p", text: "This is why the chart must point at a small summary range like `H1:I5`, not at 250 transaction rows. Small summary, clean chart, always current." },
+          { type: "tip", text: "Select the summary range and press [[Alt]] + [[F1]] to drop a chart straight onto the sheet. Press [[F11]] instead to place the chart on its own full-page chart sheet. That is handy when the chart is the main output of a report." },
+          { type: "p", text: "Handle charts with care. Click the chart border to move the whole object. Click inside on a column or line to select that series for formatting. Resize only from the corner handles; they keep the proportions." },
+          { type: "p", text: "Side handles stretch the chart and distort the text inside. When a report holds several charts, line them up with the cell grid. Hold [[Alt]] while dragging to snap to the grid." }
         ]
       },
       {
@@ -82,9 +86,12 @@ window.LEVEL_META[4] = {
             ["Combo", "Two measures with different scales", "Revenue as columns, units sold as a line"]
           ] },
           { type: "p", text: "**Column charts** are the safe default for comparisons. One column per region, tallest column = best region. Readers understand them without explanation, which matters in a meeting." },
-          { type: "p", text: "Two column-chart habits raise quality immediately. Sort the categories by value before charting, so the columns fall from tallest to shortest and the ranking is obvious without reading a single label. And keep the value axis starting at zero: a column chart with a truncated axis makes a 5% difference look like a 50% difference, which reads as exaggeration rather than insight." },
-          { type: "p", text: "**Line charts** are for time. Put dates or month names on the horizontal axis and the measure on the vertical axis. The slope of the line tells the story: rising is growth, falling is trouble. Never use a line chart for unrelated categories such as products, because the connecting lines imply an order that does not exist." },
-          { type: "p", text: "**Pie charts** show how a total is divided. One pie, one measure, one period. Keep it to 5 or 6 slices maximum; with 12 products the slices become unreadable slivers. If you have more categories, use a column chart instead. A pie of Sunrise Traders revenue by product with five products works well." },
+          { type: "p", text: "Two habits make column charts better at once. First, sort the categories by value before charting. The columns then fall from tallest to shortest, and the ranking is obvious without reading labels." },
+          { type: "p", text: "Second, keep the value axis starting at zero. A cut-off axis makes a 5% difference look like 50%. That reads as exaggeration, not insight." },
+          { type: "p", text: "**Line charts** are for time. Put dates or month names on the horizontal axis and the measure on the vertical axis. The line tells the story: rising is growth, falling is trouble." },
+          { type: "p", text: "Never use a line chart for unrelated categories such as products. The connecting lines imply an order that does not exist." },
+          { type: "p", text: "**Pie charts** show how a total is divided. One pie, one measure, one period. Keep it to 5 or 6 slices at most. With 12 products, the slices become unreadable slivers." },
+          { type: "p", text: "With more categories, use a column chart instead. A pie of Sunrise Traders revenue by product works well, because there are only five products." },
           { type: "p", text: "**Bar charts** are column charts turned sideways. Use them when category names are long, such as `Priya Nair` or `Rahul Verma`, because horizontal bars leave room for the full label." },
           { type: "p", text: "**Combo charts** show two different measures together. A classic Sunrise Traders view: revenue as columns and units sold as a line, because rupees and units are on completely different scales." },
           { type: "steps", items: [
@@ -115,16 +122,17 @@ window.LEVEL_META[4] = {
             "Tick Data Labels if managers need exact figures.",
             "Untick Legend when there is only one series; a lone legend is clutter."
           ] },
-          { type: "p", text: "For colors and styles, use the Chart Styles gallery on the Chart Design tab instead of formatting each part by hand. If you need finer control, press [[Ctrl]] + [[1]] with an element selected to open the Format pane, where you can set fill, border and number formats for that element." },
-          { type: "tip", text: "Change the color of a single column to highlight it: click the series once to select all columns, click again on one column to select only it, then use Format > Shape Fill. Highlighting the weakest region in a different color is a simple way to focus a discussion." },
-          { type: "p", text: "Two small habits make charts look professional: keep one consistent color per series across all charts in a report, and delete anything that does not help read the chart, such as heavy borders, vertical gridlines and unnecessary legends." },
-          { type: "p", text: "Watch the axis scale when you compare charts. Two revenue charts side by side, one scaled from 0 to 10 lakh and the other from 4 to 6 lakh, will look completely different even if they show the same data. Excel usually chooses the scale automatically, so glance at the axis numbers before you present: a fair comparison needs comparable axes." }
+          { type: "p", text: "For colors and styles, use the Chart Styles gallery on the Chart Design tab. It is faster than formatting each part by hand. Need finer control? Select an element and press [[Ctrl]] + [[1]] to open the Format pane. There you can set fill, border and number formats." },
+          { type: "tip", text: "You can highlight a single column. Click the series once to select all columns. Click again on one column to select only it. Then use Format > Shape Fill. Highlighting the weakest region is a simple way to focus a discussion." },
+          { type: "p", text: "Two small habits make charts look professional. Keep one color per series across all charts in a report. Delete anything that does not help the reader, such as heavy borders and extra legends." },
+          { type: "p", text: "Watch the axis scale when you compare charts. Two revenue charts can look completely different even with the same data. One may run from 0 to 10 lakh, the other from 4 to 6 lakh." },
+          { type: "p", text: "Excel usually picks the scale automatically. So glance at the axis numbers before you present. A fair comparison needs comparable axes." }
         ]
       },
       {
         heading: "Sparklines: tiny charts in a cell",
         blocks: [
-          { type: "p", text: "A sparkline is a miniature chart that lives inside a single cell. It is perfect for a row-per-item summary where you want to see each item's trend without inserting twelve full charts." },
+          { type: "p", text: "A sparkline is a tiny chart inside a single cell. Use it to show each item's trend in a row-per-item summary, without inserting twelve full charts." },
           { type: "steps", items: [
             "Put the twelve monthly revenue figures in a row or column, for example `C2:N2` for one region.",
             "Click the cell where you want the sparkline, for example `P2`.",
@@ -132,8 +140,9 @@ window.LEVEL_META[4] = {
             "In the Data Range box type `C2:N2` and click OK.",
             "Fill the sparkline down for the other regions."
           ] },
-          { type: "p", text: "Sparklines update when the numbers change, print with the sheet, and can be formatted with markers for high and low points from the Sparkline tab that appears when they are selected. Use them in KPI tables and month summaries; you will meet them again in the KPI reporting lesson." },
-          { type: "p", text: "Excel offers three sparkline types from the same Insert menu. Line is the default and best for trends. Column shows each period as a tiny bar, good for spotting a single unusually strong month. Win/Loss shows only up or down markers, designed for sequences of wins and losses. For revenue and sales reporting, line sparklines cover almost every need." }
+          { type: "p", text: "Sparklines update when the numbers change. They print with the sheet. Select one and the Sparkline tab lets you mark high and low points. Use them in KPI tables and month summaries. You will meet them again in the KPI reporting lesson." },
+          { type: "p", text: "Excel offers three sparkline types from the same Insert menu. Line is the default and best for trends. Column shows each period as a tiny bar. It is good for spotting one unusually strong month." },
+          { type: "p", text: "Win/Loss shows only up or down markers, for sequences of wins and losses. For revenue and sales reporting, line sparklines cover almost every need." }
         ]
       }
     ],
@@ -203,26 +212,29 @@ window.LEVEL_META[4] = {
       "Switch a value field between Sum, Count and Average",
       "Refresh a PivotTable after the source data changes"
     ],
-    intro: "Ask ten questions of your data and a PivotTable answers them all without a single formula. Drag Region into rows and you get revenue by region. Drag Product there instead and you get revenue by product. Add months and you get revenue by month and product. Analysts love PivotTables because a summary that takes twenty `SUMIFS` formulas takes twenty seconds of dragging.\n\nThe second reason is safety. A PivotTable never touches your raw data. It reads the source and writes its own summary area, so sorting, filtering and rearranging the pivot leave the 250 rows of Sunrise Traders sales data exactly as they were. In this lesson you will build your first pivots from the `SalesTable` in `sales-data.xlsx`.",
+    intro: "A PivotTable answers many questions without a single formula. Drag Region into rows and you get revenue by region. Drag Product there instead and you get revenue by product. Add months and you get both together. Analysts love them because a summary of twenty `SUMIFS` formulas takes twenty seconds of dragging.\n\nThere is a second reason: safety. A PivotTable never touches your raw data. It reads the source and writes its own summary area. Sorting, filtering and rearranging the pivot leave the 250 rows of Sunrise Traders sales data exactly as they were. In this lesson you will build your first pivots from the `SalesTable` in `sales-data.xlsx`.",
+    keyIdea: "A PivotTable is a summary table you build by dragging field names — Excel does all the counting and adding.",
     sections: [
       {
         heading: "What a PivotTable is and why analysts use it",
         blocks: [
-          { type: "p", text: "A PivotTable is an automatic summary of a dataset. You choose which fields to group by and which numbers to add up, and Excel builds the cross-tab for you. The name comes from the fact that you can pivot, or rotate, the layout: move a field from rows to columns and the whole summary reorganises instantly." },
+          { type: "p", text: "A PivotTable is an automatic summary of a dataset. You choose which fields to group by and which numbers to add up. Excel builds the whole table for you." },
           { type: "ul", items: [
             "**Speed**: one revenue-by-region-and-product summary would take many `SUMIFS` formulas; a pivot takes seconds.",
             "**Flexibility**: change your mind about the breakdown and just drag a different field in.",
             "**Safety**: the pivot is a separate summary; your raw rows are never modified.",
             "**Freshness**: one Refresh command pulls in any new or changed source rows."
           ] },
-          { type: "p", text: "Typical office use: every month-end you get the transactions export, and the review meeting needs revenue by region, by product and by salesperson. With a pivot, all three views live on one sheet and update from the same source." },
-          { type: "p", text: "Compare that with the formula approach from Level 3. A `SUMIFS` summary is excellent when the layout is fixed and final, but every new breakdown is a new block of formulas, and every change of mind is an hour of editing. A pivot answers the \"what if we looked at it by...?\" questions in real time, which is exactly how analysis happens in a meeting. Many analysts use both: pivots to explore, `SUMIFS` for the fixed report layout that gets published every month." }
+          { type: "p", text: "The name comes from pivoting, or rotating, the layout. Move a field from rows to columns and the summary reorganises instantly." },
+          { type: "p", text: "Here is a typical office use. Every month-end you get the transactions export. The review meeting needs revenue by region, by product and by salesperson. With a pivot, all three views live on one sheet." },
+          { type: "p", text: "Compare that with the formula approach from Level 3. A `SUMIFS` summary is excellent when the layout is fixed and final. But every new breakdown is a new block of formulas, and every change of mind is an hour of editing." },
+          { type: "p", text: "A pivot answers the \"what if we looked at it by...?\" questions in real time. That is exactly how analysis happens in a meeting. Many analysts use both: pivots to explore, `SUMIFS` for the fixed report layout published every month." }
         ]
       },
       {
         heading: "Creating a PivotTable from a Table",
         blocks: [
-          { type: "p", text: "Your data should be an Excel Table first, as `SalesTable` already is. Tables grow automatically when you add rows, which means the pivot picks up new data on refresh without any re-selection." },
+          { type: "p", text: "Your data should be an Excel Table first, as `SalesTable` already is. Tables grow automatically when you add rows. So the pivot picks up new data on refresh, without any re-selection." },
           { type: "steps", items: [
             "Open sales-data.xlsx and click any cell inside the Sales Data table.",
             "On the Insert tab, click PivotTable.",
@@ -230,9 +242,10 @@ window.LEVEL_META[4] = {
             "Choose New Worksheet so the pivot gets its own clean sheet.",
             "Click OK. Excel creates a blank pivot placeholder on the left and the PivotTable Fields pane on the right."
           ] },
-          { type: "p", text: "The Fields pane lists every column of the table: Date, Region, Salesperson, Product, Units and Revenue. Below it are four drop areas: Filters, Columns, Rows and Values. Everything you build happens by dragging fields between this list and those areas." },
+          { type: "p", text: "The Fields pane lists every column of the table: Date, Region, Salesperson, Product, Units and Revenue. Below it are four drop areas: Filters, Columns, Rows and Values. You build everything by dragging fields between them." },
           { type: "tip", text: "If the Fields pane disappears, click anywhere inside the pivot and it comes back. Renaming the new sheet to something like \"PT Revenue\" right away keeps big workbooks easy to navigate." },
-          { type: "p", text: "When a pivot first takes shape it reads \"Row Labels\" and \"Sum of Revenue\", which is Excel's wording, not yours. Click the cell that says Row Labels and type \"Region\". Rename value headers the same way through Value Field Settings, using names a manager would write, such as \"Revenue (₹)\". Renamed headers survive refreshes and make the pivot readable to someone who has never seen it before." }
+          { type: "p", text: "A new pivot reads \"Row Labels\" and \"Sum of Revenue\". That is Excel's wording, not yours. Click the cell that says Row Labels and type \"Region\"." },
+          { type: "p", text: "Rename value headers the same way through Value Field Settings. Use names a manager would write, such as \"Revenue (₹)\". Renamed headers survive refreshes and make the pivot readable to anyone." }
         ]
       },
       {
@@ -254,15 +267,17 @@ window.LEVEL_META[4] = {
               ["West", "₹6,40,000"],
               ["Grand Total", "₹24,80,000"]
             ] },
-          { type: "p", text: "Now drag **Product** to Columns as well. You get a cross-tab: regions downwards, products sideways, each cell answering \"how much revenue did the North make from Printers?\". Finally drag **Salesperson** to Filters and a filter dropdown appears above the pivot, letting you view one person's numbers without changing the layout." },
-          { type: "p", text: "A useful habit: put the field with the fewest items in Columns and the field with more items in Rows. Five products across the top stays readable; twelve months across the top is often too wide." },
-          { type: "p", text: "You can stack more than one field in an area. Drop Salesperson under Region in Rows and the pivot lists the four salespeople inside each region, collapsible with the minus buttons beside each region name. Two fields in Values work the same way: Sum of Revenue next to Sum of Units in one pivot. Excel adds automatic subtotals for outer row fields, so each region shows its own total above its salespeople. Start with one field per area while learning, then add the second only when the question needs it." }
+          { type: "p", text: "Now drag **Product** to Columns as well. You get a cross-tab: regions downwards, products sideways. Each cell answers \"how much revenue did the North make from Printers?\". Finally drag **Salesperson** to Filters. A filter dropdown appears above the pivot, so you can view one person's numbers." },
+          { type: "p", text: "A useful habit: put the field with fewer items in Columns and the one with more items in Rows. Five products across the top stays readable. Twelve months across the top is often too wide." },
+          { type: "p", text: "You can stack more than one field in an area. Drop Salesperson under Region in Rows. The pivot lists the four salespeople inside each region, collapsible with the minus buttons." },
+          { type: "p", text: "Two fields in Values work the same way: Sum of Revenue next to Sum of Units in one pivot. Excel adds automatic subtotals for outer row fields. Start with one field per area while learning, then add a second only when the question needs it." }
         ]
       },
       {
         heading: "Sum, Count and Average: changing the calculation",
         blocks: [
-          { type: "p", text: "By default Excel sums numeric fields in Values. But if the field contains text or blank cells, the pivot silently switches to Count, which surprises many beginners: the value header suddenly reads \"Count of Revenue\" instead of \"Sum of Revenue\". Count merely counts rows; it does not add anything." },
+          { type: "p", text: "By default Excel sums numeric fields in Values. But if the field contains text or blank cells, the pivot quietly switches to Count. Many beginners are surprised when the header reads \"Count of Revenue\" instead of \"Sum of Revenue\"." },
+          { type: "p", text: "Count merely counts rows. It does not add anything." },
           { type: "steps", items: [
             "Right-click any number inside the Values area.",
             "Choose Value Field Settings.",
@@ -270,20 +285,24 @@ window.LEVEL_META[4] = {
             "Type a clear Custom Name, for example \"Average Units\", so the pivot header means something.",
             "Click OK."
           ] },
-          { type: "p", text: "When is each calculation right? Use **Sum** for money and units: total revenue, total units. Use **Count** when the question is \"how many transactions?\". Use **Average** for typical values: average order size per region. For example, put Units in Values twice, once as Sum of Units and once, via Value Field Settings, as Average Units, and you can see both volume and typical order size side by side." },
-          { type: "p", text: "A worked example makes the difference concrete. Suppose the North sold 3,800 units across 95 transactions. Sum of Units says 3,800, Count of Units says 95 (the number of rows with a units value), and Average of Units says 40, the typical order size. Three different numbers from the same column, each answering a different question. Choosing the calculation is therefore a business decision, not an Excel setting: ask what the reader needs to learn before you right-click." },
-          { type: "p", text: "Number formatting belongs in the same dialog. In Value Field Settings, click the Number Format button and choose Currency with the ₹ symbol and no decimals. This formatting lives inside the pivot field, so it survives refreshes, moves and layout changes." },
-          { type: "warning", text: "Do not format pivot numbers by selecting the cells and applying a cell format. The moment you refresh, move or restructure the pivot, those hand-applied formats land on the wrong cells. Always set number formats through Value Field Settings > Number Format." }
+          { type: "p", text: "When is each calculation right? Use **Sum** for money and units: total revenue, total units. Use **Count** when the question is \"how many transactions?\". Use **Average** for typical values, such as average order size per region." },
+          { type: "p", text: "For example, put Units in Values twice. Set one copy to Sum of Units and the other to Average Units. Now you can see volume and typical order size side by side." },
+          { type: "p", text: "A worked example makes the difference concrete. Suppose the North sold 3,800 units across 95 transactions. Sum of Units says 3,800. Count of Units says 95, the number of rows. Average of Units says 40, the typical order size." },
+          { type: "p", text: "Three different numbers from the same column, each answering a different question. So choosing the calculation is a business decision, not an Excel setting. Ask what the reader needs to know before you right-click." },
+          { type: "p", text: "Number formatting belongs in the same dialog. In Value Field Settings, click Number Format and choose Currency with the ₹ symbol and no decimals. This format lives inside the pivot field. So it survives refreshes, moves and layout changes." },
+          { type: "warning", text: "Do not format pivot numbers by selecting the cells and applying a cell format. When you refresh or move the pivot, those hand-applied formats land on the wrong cells. Always use Value Field Settings > Number Format." }
         ]
       },
       {
         heading: "Refresh, and your data stays untouched",
         blocks: [
-          { type: "p", text: "A PivotTable is a snapshot of the source at the moment it was built. If you add rows to `SalesTable`, edit revenue figures or correct a region name, the pivot does not change until you refresh it. Click inside the pivot and press PivotTable Analyze > Refresh, or right-click the pivot and choose Refresh. The shortcut is [[Alt]] + [[F5]]." },
-          { type: "p", text: "Because `SalesTable` is a Table, any rows you append below it are included in the table automatically, and the next refresh pulls them into the pivot. That is the full update cycle for a monthly report: paste the new month's rows into the source table, refresh the pivots, done." },
-          { type: "p", text: "Sorting the pivot, filtering it, collapsing and expanding groups, even deleting the pivot sheet entirely: none of it affects the source rows. The pivot only reads. The one thing you cannot do is type directly into the values area; Excel blocks it, because pivot cells are calculated, not stored." },
-          { type: "tip", text: "If a pivot looks wrong after a data edit, refresh first before debugging. Nine out of ten \"my pivot is broken\" moments are simply a stale snapshot waiting for a refresh." },
-          { type: "p", text: "When a workbook holds several pivots, refresh them all at once with Data > Refresh All on the ribbon's Data tab. This matters in monthly reporting, where five pivots fed by one table must show the same version of the truth. If one pivot is refreshed and another is not, the two views disagree, and that discrepancy is far more damaging in a meeting than being a day late." }
+          { type: "p", text: "A PivotTable is a snapshot of the source at the moment it was built. If you add rows to `SalesTable` or edit revenue figures, the pivot does not change until you refresh it." },
+          { type: "p", text: "Click inside the pivot and press PivotTable Analyze > Refresh. Or right-click the pivot and choose Refresh. The shortcut is [[Alt]] + [[F5]]." },
+          { type: "p", text: "Because `SalesTable` is a Table, new rows are included automatically. The next refresh pulls them into the pivot. So the monthly update cycle is simple: paste the new month's rows, refresh the pivots, done." },
+          { type: "p", text: "Sorting, filtering, collapsing groups, even deleting the pivot sheet: none of it affects the source rows. The pivot only reads. One thing you cannot do is type into the values area. Excel blocks it, because pivot cells are calculated, not stored." },
+          { type: "tip", text: "If a pivot looks wrong after a data edit, refresh first. Nine out of ten \"my pivot is broken\" moments are just a stale snapshot waiting for a refresh." },
+          { type: "p", text: "When a workbook holds several pivots, refresh them all at once with Data > Refresh All. This matters in monthly reporting. Five pivots fed by one table must show the same version of the truth." },
+          { type: "p", text: "If one pivot is refreshed and another is not, the two views disagree. In a meeting, that is far more damaging than being a day late." }
         ]
       }
     ],
@@ -356,29 +375,32 @@ window.LEVEL_META[4] = {
       "Create a calculated field from existing fields",
       "Sort, filter and drill down into pivot values"
     ],
-    intro: "A PivotTable with 250 dates down the side is useless. Grouped by month it becomes a one-page story of the year. Grouping, Show Values As and calculated fields turn a basic pivot into real analysis: not just \"how much?\" but \"what share?\", \"how has it accumulated?\" and \"what is the average price?\".\n\nThis lesson continues with the same `sales-data.xlsx` workbook and the `SalesTable` you pivoted in the previous lesson. Every feature here is built on top of a pivot you already know how to create.",
+    intro: "A PivotTable with 250 dates down the side is useless. Grouped by month, it becomes a one-page story of the year. Grouping, Show Values As and calculated fields turn a basic pivot into real analysis. Not just \"how much?\" but \"what share?\" and \"how has it accumulated?\".\n\nThis lesson continues with the same `sales-data.xlsx` workbook and the `SalesTable` you pivoted in the previous lesson. Every feature here builds on a pivot you already know how to create.",
+    keyIdea: "Grouping, Show Values As and calculated fields turn a plain PivotTable into real analysis.",
     sections: [
       {
         heading: "Grouping dates by month, quarter and year",
         blocks: [
-          { type: "p", text: "Put **Date** in Rows and the pivot lists every individual date, one row per transaction day. Right-click any date cell and choose Group. Excel opens a grouping dialog offering Seconds up to Years; select Months, Quarters and Years together and click OK." },
-          { type: "p", text: "The pivot now shows years, quarters and months in a hierarchy. Click the collapse buttons (the minus signs) to see only quarters, or expand to drill into a month's days. This grouped date field is the backbone of monthly reporting: 250 rows become 12 meaningful lines." },
-          { type: "warning", text: "In newer Excel versions, date fields are sometimes grouped automatically into Years, Quarters and Months the moment you drag them to Rows. That is fine; use the resulting hierarchy as it is, or right-click > Group to change the levels. If grouping fails with an error, the dates are probably stored as text; clean the column first so every value is a real date." },
-          { type: "tip", text: "Group by Months only and different years will merge together (all Januaries become one row). If you want January 2025 separate from January 2026, group by both Months and Years." },
-          { type: "p", text: "Read a grouped pivot the way a manager would. With Date grouped by Months and Revenue in Values, each row is a month and the eye immediately finds the strongest and weakest months. With Region in Columns, each month splits into four regions, and you can see whether a weak month was weak everywhere or only in one region. Grouping does not just shrink the table; it decides what level of story the table can tell. Before every review meeting, group to the level the meeting discusses: months for a monthly review, quarters for a board summary, days only when investigating a specific week." }
+          { type: "p", text: "Put **Date** in Rows and the pivot lists every individual date, one row per transaction day. Right-click any date cell and choose Group. A dialog opens, offering options from Seconds up to Years. Select Months, Quarters and Years together and click OK." },
+          { type: "p", text: "The pivot now shows years, quarters and months in a hierarchy. Click the minus buttons to collapse to quarters, or expand to drill into a month. This grouped date field is the backbone of monthly reporting. 250 rows become 12 meaningful lines." },
+          { type: "warning", text: "In newer Excel versions, dates are sometimes grouped automatically the moment you drag them to Rows. That is fine; use the hierarchy as it is, or right-click > Group to change the levels. If grouping fails with an error, the dates are probably stored as text. Clean the column first so every value is a real date." },
+          { type: "tip", text: "Group by Months only and different years merge together; all Januaries become one row. To keep January 2025 separate from January 2026, group by both Months and Years." },
+          { type: "p", text: "Read a grouped pivot the way a manager would. With Date grouped by Months and Revenue in Values, each row is a month. The eye finds the strongest and weakest months at once. With Region in Columns, you can see whether a weak month was weak everywhere or only in one region." },
+          { type: "p", text: "Grouping does not just shrink the table. It decides what level of story the table can tell. Before a review meeting, group to the level the meeting discusses: months for a monthly review, quarters for a board summary, days only when investigating a specific week." }
         ]
       },
       {
         heading: "Grouping numbers into ranges",
         blocks: [
-          { type: "p", text: "The same trick works on numeric fields. Suppose you want to know whether big orders or small orders drive the business. Put **Units** in Rows and Revenue in Values, then right-click a units value and choose Group." },
+          { type: "p", text: "The same trick works on numbers. Suppose you want to know whether big orders or small orders drive the business. Put **Units** in Rows and Revenue in Values. Then right-click a units value and choose Group." },
           { type: "ul", items: [
             "**Starting at**: the smallest value of the first range, for example 0.",
             "**Ending at**: the largest value of the last range, for example 100.",
             "**By**: the width of each range, for example 10, which creates 0-9, 10-19, 20-29 and so on."
           ] },
-          { type: "p", text: "The pivot now answers a different kind of question: how much revenue comes from orders of 0-9 units versus 10-19 units? If a large share of revenue comes from small frequent orders, that changes how Sunrise Traders should think about delivery costs." },
-          { type: "p", text: "Choose the range width to match the business question. Grouping Units by 10 gives ten or so ranges, which suits an exploratory look at order sizes. Grouping by 50 gives a coarse picture for a slide in a board pack. You can regroup at any time: right-click a grouped value, choose Group again, change the settings, or click Ungroup to return to individual values. Nothing in the source data is affected by any of it." }
+          { type: "p", text: "The pivot now answers a different question: how much revenue comes from orders of 0-9 units versus 10-19 units? If small frequent orders bring in a large share, that changes how Sunrise Traders thinks about delivery costs." },
+          { type: "p", text: "Choose the range width to match the question. Grouping Units by 10 gives about ten ranges, which suits exploring order sizes. Grouping by 50 gives a coarse picture for a board pack slide." },
+          { type: "p", text: "You can regroup at any time. Right-click a grouped value, choose Group again and change the settings. Or click Ungroup to return to individual values. Nothing in the source data is affected." }
         ]
       },
       {
@@ -406,13 +428,14 @@ window.LEVEL_META[4] = {
               ["West", "₹6,40,000", "25.8%", "₹24,80,000"]
             ] },
           { type: "p", text: "The running total in a month pivot is effectively your year-to-date line, month after month. Managers read it as: by June we had already banked half the year." },
-          { type: "p", text: "Pick the Show Values As option by asking what the 100% should be. % of Grand Total answers \"how big is this piece of everything?\". % of Column Total answers \"how is this column split?\". % of Row Total answers the mirror question for a row. There is also Difference From, which shows each month against a chosen base month instead of a share. The values underneath never change; only the lens does. Keeping the plain sum in one column and a Show Values As copy beside it is the safest layout, because the reader can always check the raw number." }
+          { type: "p", text: "Pick the Show Values As option by asking: what should the 100% be? % of Grand Total answers \"how big is this piece of everything?\". % of Column Total answers \"how is this column split?\". % of Row Total answers the same question for a row." },
+          { type: "p", text: "There is also Difference From. It shows each month against a chosen base month instead of a share. The values underneath never change; only the lens does. Keep the plain sum in one column and a Show Values As copy beside it, so the reader can always check the raw number." }
         ]
       },
       {
         heading: "Calculated fields: new numbers from existing fields",
         blocks: [
-          { type: "p", text: "A calculated field is a formula you add to the pivot itself, built from the source fields. It appears in the Values area like any other field. Use it when a ratio or difference should be computed from the grouped totals, not row by row." },
+          { type: "p", text: "A calculated field is a formula you add to the pivot itself. It is built from the source fields and appears in the Values area like any other field. Use it when a ratio should come from the grouped totals, not row by row." },
           { type: "steps", items: [
             "Click inside the pivot.",
             "On the PivotTable Analyze tab, choose Fields, Items & Sets > Calculated Field.",
@@ -425,19 +448,22 @@ window.LEVEL_META[4] = {
             syntax: "=Revenue/Units",
             example: "=Revenue/Units",
             explanation: "For each region the pivot computes total revenue divided by total units, giving the blended average price per unit sold in that region." },
-          { type: "p", text: "Understand what the field does: it works on the sums. `=Revenue/Units` on a region row gives total revenue over total units, which is the correct blended average. But a formula like `=Revenue/250` hard-codes a row count and breaks when data changes, so build calculated fields only from other fields." },
+          { type: "p", text: "Understand what the field does: it works on the sums. On a region row, `=Revenue/Units` gives total revenue over total units. That is the correct blended average price." },
+          { type: "p", text: "But a formula like `=Revenue/250` hard-codes a row count and breaks when data changes. So build calculated fields only from other fields." },
           { type: "warning", text: "Calculated fields cannot use cell references, named ranges or worksheet functions that need ranges. They combine pivot fields with basic arithmetic only. For anything more complex, compute a helper column in the source Table instead." },
-          { type: "p", text: "Calculated fields are managed from the same dialog. Open Fields, Items & Sets > Calculated Field, choose the field's name in the dropdown, and modify or delete it. A common refinement for Sunrise Traders is a field named \"Rev per Order\" with `=Revenue/Count of Revenue`-style logic; note that a plain field-to-field division such as `=Revenue/Units` is the reliable pattern, because calculated fields always compute from the grouped sums of the fields you name. If a calculation needs to respect individual rows, for example a discount applied per transaction, do it in the source Table column instead, so each row carries its own result before the pivot sums it." }
+          { type: "p", text: "Calculated fields are managed from the same dialog. Open Fields, Items & Sets > Calculated Field, choose the field's name in the dropdown, and modify or delete it." },
+          { type: "p", text: "A common refinement for Sunrise Traders is a field named \"Rev per Order\". A plain field-to-field formula such as `=Revenue/Units` is the reliable pattern. Calculated fields always compute from the grouped sums of the fields you name. If a calculation needs to respect individual rows, for example a per-transaction discount, do it in a source Table column instead. Each row then carries its own result before the pivot sums it." }
         ]
       },
       {
         heading: "Sort, filter and drill down",
         blocks: [
-          { type: "p", text: "**Sorting by value**: right-click any value cell and choose Sort > Largest to Smallest. The rows reorder by revenue, so the best region or product jumps to the top. Sorting by the label (A to Z) is available in the same menu." },
-          { type: "p", text: "**Value filters**: click the Row Labels dropdown > Value Filters > Top 10. Change 10 to 3 and you instantly see the top three products by revenue. Label filters do the same for names, for example Region begins with N. Slicers, which you will meet in the next lesson, are simply a button-based way to filter." },
-          { type: "p", text: "**Drill down**: double-click any value cell, for example the East region total. Excel inserts a new sheet containing exactly the source rows behind that number: every East transaction that makes up the ₹6,05,000. This is the fastest way in any review meeting to answer \"show me the rows behind that figure\"." },
-          { type: "warning", text: "The drill-down sheet is a copy, not a live view. It does not update when the source changes, and deleting rows on it does nothing to the pivot or the source. Treat it as a temporary extract and delete the sheet when you are done." },
-          { type: "p", text: "Two housekeeping details keep pivots tidy. First, if the pivot shows a \"(blank)\" row, some source rows have an empty cell in that field; clean the source, refresh, and the blank row disappears. Second, after filtering a pivot for one view, remember to clear the filter before building the next view, or you will analyse a subset while believing you see everything. Filtering is invisible in the numbers themselves; only the filter dropdowns and icons reveal that a subset is on screen." }
+          { type: "p", text: "**Sorting by value**: right-click any value cell and choose Sort > Largest to Smallest. The rows reorder by revenue, so the best region jumps to the top. Sorting by label (A to Z) is in the same menu." },
+          { type: "p", text: "**Value filters**: click the Row Labels dropdown > Value Filters > Top 10. Change 10 to 3 and you see the top three products by revenue. Label filters do the same for names, for example Region begins with N. Slicers, in the next lesson, are simply button-based filters." },
+          { type: "p", text: "**Drill down**: double-click any value cell, for example the East region total. Excel inserts a new sheet with exactly the source rows behind that number: every East transaction in the ₹6,05,000. This is the fastest way to answer \"show me the rows behind that figure\"." },
+          { type: "warning", text: "The drill-down sheet is a copy, not a live view. It does not update when the source changes. Deleting rows on it does nothing to the pivot or the source. Treat it as a temporary extract and delete the sheet when done." },
+          { type: "p", text: "Two housekeeping details keep pivots tidy. First, a \"(blank)\" row means some source rows have an empty cell in that field. Clean the source, refresh, and the blank row disappears." },
+          { type: "p", text: "Second, after filtering a pivot, clear the filter before building the next view. Otherwise you will analyse a subset while believing you see everything. Only the filter dropdowns and icons reveal that a subset is on screen." }
         ]
       }
     ],
@@ -507,12 +533,13 @@ window.LEVEL_META[4] = {
       "Connect one slicer to several PivotTables with Report Connections",
       "Assemble a simple interactive report page"
     ],
-    intro: "So far your pivots answer questions, but the person reading them still has to open filter dropdowns and click tiny menus. Slicers turn filtering into big friendly buttons that anyone can use in a meeting, and timelines do the same for dates. PivotCharts add the visual layer on top. Together they turn a static pivot into an interactive report.\n\nThis lesson uses `sales-data.xlsx` again. Everything builds on the pivoting and grouping skills from the last two lessons. Note that timelines require Excel 2013 or later; slicers work from Excel 2010.",
+    intro: "Your pivots answer questions, but the reader still has to open filter dropdowns and click tiny menus. Slicers turn filtering into big, friendly buttons that anyone can use. Timelines do the same for dates. PivotCharts add the visual layer on top. Together they turn a static pivot into an interactive report.\n\nThis lesson uses `sales-data.xlsx` again. Everything builds on the pivoting and grouping skills from the last two lessons. Timelines need Excel 2013 or later; slicers work from Excel 2010.",
+    keyIdea: "Slicers turn pivot filtering into big buttons, and PivotCharts keep the picture in sync with the numbers.",
     sections: [
       {
         heading: "From pivot to PivotChart",
         blocks: [
-          { type: "p", text: "A PivotChart is a chart bound to a PivotTable. Change the pivot, and the chart changes with it; filter the pivot, and the chart filters too. You never build the chart series by hand." },
+          { type: "p", text: "A PivotChart is a chart bound to a PivotTable. Change the pivot and the chart changes with it. Filter the pivot and the chart filters too. You never build the chart series by hand." },
           { type: "steps", items: [
             "Build or open a pivot, for example Sum of Revenue with Date grouped by month in Rows and Region in Columns.",
             "Click inside the pivot.",
@@ -520,17 +547,20 @@ window.LEVEL_META[4] = {
             "Choose Clustered Column and click OK.",
             "The chart appears beside the pivot, already titled \"Sum of Revenue\". Edit the title to say something meaningful, such as \"Monthly revenue by region, 2025\"."
           ] },
-          { type: "p", text: "The pivot and the chart are two views of the same fields. Drag a new field into Columns on the pivot and the chart re-plot instantly. Filter the pivot and the chart shrinks to match. This is the key difference from the ordinary charts of the first lesson: a PivotChart cannot drift out of sync with its numbers." },
-          { type: "p", text: "A few PivotChart quirks are worth knowing before a meeting. The chart shows small field buttons for filtering directly on the plot area; useful for exploring, but cluttered for presentation, so right-click a button and choose Hide All Field Buttons on Chart before showing it. Collapsed pivot groups collapse in the chart too, so a date hierarchy collapsed to quarters shows a shorter, cleaner chart. And if you later move or resize the pivot, the chart follows its data, not its position: reposition both deliberately when you lay out a report page." },
-          { type: "p", text: "When should you use an ordinary chart instead? When the summary behind the chart is fixed, small and formula-driven, such as a `SUMIFS` region summary, an ordinary chart is simpler and has no pivot buttons to hide. PivotCharts earn their keep when the reader is meant to filter and explore; ordinary charts earn theirs when the view is final." },
-          { type: "p", text: "One warning: not every chart type is available as a PivotChart. Column, bar, line, pie and area work fine, but scatter and bubble charts are not offered, because a pivot's category structure does not fit them. For those rare cases, chart a `SUMIFS` summary instead." }
+          { type: "p", text: "The pivot and the chart are two views of the same fields. Drag a new field into Columns and the chart re-plots instantly. Filter the pivot and the chart shrinks to match." },
+          { type: "p", text: "This is the key difference from the ordinary charts of the first lesson. A PivotChart cannot drift out of sync with its numbers." },
+          { type: "p", text: "A few PivotChart quirks are worth knowing before a meeting. The chart shows small field buttons on the plot area. They are useful for exploring but cluttered for presentation. Right-click one and choose Hide All Field Buttons on Chart before showing it." },
+          { type: "p", text: "Collapsed pivot groups collapse in the chart too, so a date hierarchy collapsed to quarters shows a shorter, cleaner chart. If you move or resize the pivot, the chart follows its data, not its position. So reposition both deliberately when you lay out a report page." },
+          { type: "p", text: "When should you use an ordinary chart instead? Use one when the summary is fixed and formula-driven, such as a `SUMIFS` region summary. An ordinary chart is simpler and has no pivot buttons to hide. PivotCharts are best when the reader will filter and explore." },
+          { type: "p", text: "One warning: not every chart type works as a PivotChart. Column, bar, line, pie and area work fine. Scatter and bubble are not offered, because a pivot's category structure does not fit them. For those cases, chart a `SUMIFS` summary instead." }
         ]
       },
       {
         heading: "Slicers: filtering with buttons",
         blocks: [
-          { type: "p", text: "A slicer is a floating panel of filter buttons for one field. Instead of opening the Row Labels dropdown and hunting through a menu, you click a button. In a review meeting this is the difference between fumbling with Excel and steering the discussion." },
-          { type: "p", text: "Slicers also remove the biggest usability gap of filter dropdowns: visibility of state. A dropdown filter hides inside a small icon, and a reader can easily miss that a pivot is filtered at all. A slicer shows its selection as pressed buttons in plain sight, which keeps everyone in the room honestly informed about what is on screen. That transparency, more than the speed, is why slicers became the standard control in shared reports." },
+          { type: "p", text: "A slicer is a floating panel of filter buttons for one field. Instead of hunting through a dropdown menu, you click a button. In a review meeting, this is the difference between fumbling with Excel and steering the discussion." },
+          { type: "p", text: "Slicers also fix a big problem with dropdowns: you cannot see the filter state. A dropdown filter hides inside a small icon, and a reader can easily miss that the pivot is filtered at all." },
+          { type: "p", text: "A slicer shows its selection as pressed buttons in plain sight. Everyone in the room can see what is on screen. That transparency, more than the speed, made slicers the standard in shared reports." },
           { type: "steps", items: [
             "Click inside the pivot.",
             "On the PivotTable Analyze tab (or Insert tab), click Slicer.",
@@ -540,8 +570,9 @@ window.LEVEL_META[4] = {
             "Click the Clear Filter icon at the top-right corner of a slicer to reset it."
           ] },
           { type: "p", text: "Slicers show their state clearly: selected buttons are highlighted, and unavailable combinations are grayed out. That visible state is worth a lot when someone else takes over your file." },
-          { type: "tip", text: "Format a slicer to fit your report: select it and use the Slicer tab to pick a style and set Columns to 2 or 3 so tall lists become compact grids. Resize and position slicers beside the pivot, and turn off the sheet gridlines so they sit on a clean background." },
-          { type: "p", text: "Give each slicer a clear caption when the field name is not self-explanatory: with the slicer selected, the Slicer tab has a Caption box, and renaming \"Salesperson\" to \"Filter by person\" takes two seconds. Multi-select behaviour is worth practising until it is reflex: plain clicks replace the selection, [[Ctrl]] + click adds to it, and clicking the selected button again deselects it. After any exploration session, the clear-filter icon at the slicer's top-right corner is the fastest reset." }
+          { type: "tip", text: "Format a slicer to fit your report. Select it and use the Slicer tab to pick a style. Set Columns to 2 or 3 so tall lists become compact grids. Resize and position slicers beside the pivot, and turn off the sheet gridlines." },
+          { type: "p", text: "Give each slicer a clear caption when the field name is not self-explanatory. With the slicer selected, the Slicer tab has a Caption box. Renaming \"Salesperson\" to \"Filter by person\" takes two seconds." },
+          { type: "p", text: "Practise multi-select until it is reflex. A plain click replaces the selection. [[Ctrl]] + click adds to it. Clicking the selected button again deselects it. After exploring, the clear-filter icon at the top-right corner is the fastest reset." }
         ]
       },
       {
@@ -555,16 +586,17 @@ window.LEVEL_META[4] = {
             "In the timeline strip, switch the level dropdown between Years, Quarters and Months.",
             "Drag the window across the strip to select, say, April to June, and watch the pivot and PivotChart update."
           ] },
-          { type: "p", text: "The timeline only appears for pivots that contain a real date field. If Insert Timeline is grayed out, your dates are text or the Date field is not in the pivot yet; fix that first. Timelines need Excel 2013 or later." },
-          { type: "p", text: "Timelines and slicers work together naturally. In a sales review, a typical flow is: set the period on the timeline first, then click through regions on the slicer while the discussion moves. Because both controls stay visible on the sheet, the person driving Excel can respond to any question in the room, such as \"what was the South doing in the second quarter?\", in two clicks and without leaving the report page. That responsiveness is what makes a pivot-based report feel interactive rather than static." },
-          { type: "warning", text: "Before you send any interactive file to a manager, click the Clear Filter button on every slicer and timeline. A file that opens showing only \"West, Staplers, March\" looks broken to the next reader, even though it is just a leftover filter." },
-          { type: "p", text: "One detail makes timelines feel professional: match the timeline's default level to the reporting rhythm. If your meetings discuss months, set the level dropdown to Months before saving; a quarterly default in a monthly meeting forces everyone to fumble with the dropdown at the start of every session. The level choice is saved with the file, so setting it once per report is enough." }
+          { type: "p", text: "The timeline only appears for pivots that contain a real date field. If Insert Timeline is grayed out, your dates are text, or the Date field is not in the pivot yet. Fix that first. Timelines need Excel 2013 or later." },
+          { type: "p", text: "Timelines and slicers work together naturally. In a sales review, set the period on the timeline first, then click through regions on the slicer as the discussion moves." },
+          { type: "p", text: "Both controls stay visible on the sheet, so the person driving Excel can answer any question in two clicks. For example: \"what was the South doing in the second quarter?\". That responsiveness is what makes a pivot-based report feel interactive." },
+          { type: "warning", text: "Before you send any interactive file to a manager, click Clear Filter on every slicer and timeline. A file that opens showing only \"West, Staplers, March\" looks broken to the next reader, even though it is just a leftover filter." },
+          { type: "p", text: "One detail makes timelines feel professional: match the default level to your reporting rhythm. If your meetings discuss months, set the level dropdown to Months before saving. A quarterly default forces everyone to fumble at the start of every meeting. The choice is saved with the file, so setting it once is enough." }
         ]
       },
       {
         heading: "One slicer, many pivots: Report Connections",
         blocks: [
-          { type: "p", text: "A serious report page usually has more than one pivot: revenue by month, revenue by product, and a KPI table. You do not want three separate slicers for Region. Connect one slicer to all of them and a single click filters the entire page." },
+          { type: "p", text: "A serious report page usually has more than one pivot: revenue by month, revenue by product, and a KPI table. You do not want three separate slicers for Region. Connect one slicer to all of them. Then a single click filters the entire page." },
           { type: "steps", items: [
             "Place two or three pivots on the same sheet, built from the same source table `SalesTable`.",
             "Insert one slicer for Region.",
@@ -572,8 +604,9 @@ window.LEVEL_META[4] = {
             "Tick every pivot that should obey the slicer and click OK.",
             "Click a region button: all connected pivots filter together."
           ] },
-          { type: "p", text: "Connections only work between pivots that share the same source data, which is another reason to keep one clean Table as your single source of truth. A slicer connected to pivots from different tables cannot sync them." },
-          { type: "p", text: "Prepare an interactive report for handover the way you would prepare a projector. Refresh every pivot so the numbers are current, clear all slicers and timelines, and check that each pivot's grand total matches the expected full-year figure. Save, then reopen the file once to see exactly what the next person will see: an unfiltered, up-to-date report page with buttons ready to use. This two-minute ritual is the difference between a file that impresses and a file that raises questions before the meeting starts." },
+          { type: "p", text: "Connections only work between pivots that share the same source data. That is one more reason to keep one clean Table as your single source of truth. A slicer connected to pivots from different tables cannot sync them." },
+          { type: "p", text: "Prepare an interactive report for handover the way you would prepare a projector. Refresh every pivot so the numbers are current. Clear all slicers and timelines. Check that each grand total matches the expected full-year figure." },
+          { type: "p", text: "Save, then reopen the file once to see exactly what the next person will see: an unfiltered, up-to-date report page. This two-minute ritual is the difference between a file that impresses and a file that raises questions." },
           { type: "grid", title: "A simple interactive report layout on one sheet",
             rows: [
               ["SUNRISE TRADERS — SALES REPORT", "", "", "", ""],
@@ -581,8 +614,9 @@ window.LEVEL_META[4] = {
               ["Pivot 1: Revenue by month", "", "Pivot 2: Revenue by product", "", ""],
               ["PivotChart: monthly trend", "", "Pivot 3: KPI summary", "", ""]
             ] },
-          { type: "p", text: "That one-page layout is a real deliverable: title on top, slicers and timeline in one control strip, and every table and chart obeying them. You will refine this pattern into a full dashboard in the dashboard design lesson later in this level." },
-          { type: "p", text: "Build the page in this order and it falls into place: pivots first, so you know their size; PivotCharts second, aligned beside them; slicers and timeline last, sized to fill the leftover strip. Trying to place slicers first always ends with moving everything twice. Leave one empty row between blocks as breathing room, and keep the pivot sheets themselves available in the workbook, because a reader who wants the detail will drill down from the pivot anyway." }
+          { type: "p", text: "That one-page layout is a real deliverable: title on top, one control strip for slicers and timeline, and every table and chart obeying them. You will refine this pattern into a full dashboard later in this level." },
+          { type: "p", text: "Build the page in this order and it falls into place. Pivots first, so you know their size. PivotCharts second, aligned beside them. Slicers and timeline last, sized to fill the leftover strip." },
+          { type: "p", text: "Placing slicers first always ends with moving everything twice. Leave one empty row between blocks as breathing room. And keep the pivot sheets in the workbook, because a reader who wants detail will drill down from the pivot." }
         ]
       }
     ],

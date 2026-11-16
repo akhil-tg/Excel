@@ -15,6 +15,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Copy formatting quickly with the Format Painter"
     ],
     intro: "Formatting is the difference between a sheet only you can read and a report your whole office can read. The numbers are the same; the presentation decides whether people trust and use your work.\n\nThis lesson covers everyday formatting from the Home tab: fonts, colours, borders, alignment and the tools that apply them fast. Your target: a sheet that looks like a neat office document, not a wall of numbers.",
+    keyIdea: "Formatting does not change the numbers, but it decides whether people trust your sheet.",
     sections: [
       {
         heading: "Font basics: bold, italic, underline and size",
@@ -140,6 +141,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Understand that formatting changes appearance, never the stored value"
     ],
     intro: "The number 12500 can legitimately appear as 12,500.00, ₹12,500, 12500.00 and 1.25E+04 — same value, different clothes. Number formatting is how you choose the clothes without touching the value.\n\nThis lesson walks through the Format Cells dialog and the everyday formats office work needs. You will also learn the distinction professionals rely on: the display changes, the stored number never does.",
+    keyIdea: "Number formatting changes only how a value looks — the stored number never changes.",
     sections: [
       {
         heading: "The Format Cells dialog: your control room",
@@ -270,6 +272,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Edit formulas and display all formulas on a sheet"
     ],
     intro: "This is the lesson where Excel stops being a typewriter and starts being a calculator. Everything from here on — functions, references, reports — builds on one small rule: a formula begins with the equals sign.\n\nYou will write your first real formulas, understand why Excel sometimes gives a \"surprising\" answer (order of operations), and meet `SUM`, the most used function in the world of work.",
+    keyIdea: "Every formula starts with =; type that first and Excel knows maths follows.",
     sections: [
       {
         heading: "Every formula starts with =",
@@ -425,6 +428,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Choose the right reference type for rates, tax and conversion cells"
     ],
     intro: "You already know formulas adjust when copied — `=B2*C2` becomes `=B3*C3` in the next row. That automatic shifting is brilliant most of the time and wrong some of the time. This lesson teaches you the other half: how to nail part of a formula to one cell so it **never** moves.\n\nThis is the skill that separates people who copy a tax rate formula to 500 rows and get 500 wrong answers, from people who get it right the first time.",
+    keyIdea: "The $ sign in $G$1 locks a reference, so it stays fixed when you copy the formula.",
     sections: [
       {
         heading: "Relative references: shifting with the copy",
@@ -565,6 +569,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Enter today's date and time instantly"
     ],
     intro: "Watch an experienced Excel user work: hands barely leave the keyboard. Data flies in, ranges select themselves, formats snap on. That speed is not talent — it is two dozen shortcuts used until they are automatic.\n\nThis lesson collects the shortcuts that matter most in real office jobs, grouped by purpose, with honest advice on which to learn first. You already met many of them in earlier lessons; now they live in one reference table.",
+    keyIdea: "Speed comes from a few dozen shortcuts used daily, not from memorising one giant list.",
     sections: [
       {
         heading: "Why shortcuts matter in office jobs",
@@ -701,6 +706,7 @@ window.LEVEL_LESSONS = window.LEVEL_LESSONS || {};
       "Apply an absolute reference to a savings-rate cell"
     ],
     intro: "Time to put every Level 1 skill into one real piece of work. You will build a complete weekly budget for a small office: data entry, currency formatting, SUM totals, a balance calculation, and an absolute-referenced savings rate.\n\nNothing here is new — that is the point. A project stitches separate skills into one confident workflow. Work in the formula-basics workbook (Exercise sheet) or in your own blank workbook, and take your time. Aim for a sheet you would be happy to hand to a manager.",
+    keyIdea: "A real project stitches separate skills into one confident, end-to-end workflow.",
     sections: [
       {
         heading: "The plan: what you are building",

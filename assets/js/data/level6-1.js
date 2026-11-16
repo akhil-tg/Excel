@@ -25,26 +25,27 @@ window.LEVEL_META[6] = {
       "Read any long formula from the inside out",
       "Build a complex formula in helper cells first, then combine it into one cell"
     ],
-    intro: "Until now you have mostly used one function at a time. Real office work is messier: a bonus depends on the sales score AND the attendance, an invoice is overdue only if TODAY is past the due date, and a lookup should show a friendly message instead of #N/A. One lonely function cannot handle questions like that — but several functions joined together can.\n\nIn this lesson you learn the three habits professionals use to stay in control: combining functions that work well together, reading a long formula from the inside out, and building complicated formulas in small pieces first. Master these and no formula in any workbook will scare you.",
+    intro: "Until now, you have used one function at a time. Real office work is messier. A bonus depends on the sales score AND the attendance. An invoice is overdue only if today's date is past the due date.\n\nOne function cannot handle such questions. Several functions joined together can. In this lesson, you learn the three habits professionals use. Combine functions that work well together. Read long formulas from the inside out. Build tricky formulas in small pieces first. Master these habits, and no formula in any workbook will scare you.",
+    keyIdea: "Nest simple functions together to answer multi-condition questions, and build big formulas in helper cells first.",
     sections: [
       {
         heading: "Why real formulas need more than one function",
         blocks: [
-          { type: "p", text: "A formula is nested when one function sits inside another. The inner function calculates first, and its result is used by the outer function. Think of it like packing a box inside a box: Excel opens the outer box and finds the inner one already solved." },
-          { type: "p", text: "At Sunrise Traders, almost every real question needs this. \"Should Rahul get the quarterly bonus?\" needs his score, his attendance and a rule. \"Is invoice INV-2041 overdue?\" needs today's date and the due date. You could answer with several separate cells, and sometimes you should — but often one well-built formula is cleaner, and you can copy it down a whole column in seconds." },
+          { type: "p", text: "A formula is nested when one function sits inside another. The inner function runs first. The outer function then uses its result. Think of it like a box inside a box. Excel opens the outer box and finds the inner one already solved." },
+          { type: "p", text: "At Sunrise Traders, almost every real question needs this. \"Should Rahul get the quarterly bonus?\" needs his score, his attendance and a rule. \"Is invoice INV-2041 overdue?\" needs today's date and the due date. You could answer with several separate cells. Sometimes you should. But often one well-built formula is cleaner. You can copy it down a whole column in seconds." },
           { type: "table", headers: ["Combination", "What it solves", "You will use it for"], rows: [
             ["IF + AND / OR", "One decision that depends on several tests", "Bonus rules, pass/fail, approval checks"],
             ["IFERROR + VLOOKUP", "A lookup that shows a clean message instead of #N/A", "Customer names, product names, prices"],
             ["TEXT + TODAY", "A sentence that contains a date or today's date", "Report titles, overdue warnings"],
             ["LEFT + FIND", "Pulling out the part of a text code you need", "Splitting product codes, invoice prefixes"]
           ] },
-          { type: "tip", text: "Nesting is not about showing off. Each nesting exists because the question itself has several parts. If you can say the rule out loud in a sentence with the word \"and\", \"or\" or \"if... then... else\", the formula will need nesting." }
+          { type: "tip", text: "Nesting is not about showing off. Each nesting exists because the question has several parts. If you can say the rule out loud with \"and\", \"or\" or \"if... then... else\", the formula will need nesting." }
         ]
       },
       {
         heading: "IF with AND and OR: the bonus rule",
         blocks: [
-          { type: "p", text: "IF alone can test one condition. To test several conditions in the same IF, wrap them in AND (all conditions must be true) or OR (any one condition is enough). Here is the annual appraisal at Sunrise Traders. HR's rule: \"Excellent\" needs a score of at least 80 and attendance of at least 90%. Anything else is \"Review\"." },
+          { type: "p", text: "IF alone can test one condition. To test several at once, wrap them in AND or OR. AND means all conditions must be true. OR means any one is enough. Here is the annual appraisal at Sunrise Traders. HR's rule: \"Excellent\" needs a score of at least 80 and attendance of at least 90%. Anything else is \"Review\"." },
           { type: "grid", title: "Appraisal sheet with a combined IF + AND formula", rows: [
             ["Employee", "Score", "Attendance", "Result"],
             ["Arjun Mehta", "86", "94%", "=IF(AND(B2>=80,C2>=90%),\"Excellent\",\"Review\")"],
@@ -52,19 +53,19 @@ window.LEVEL_META[6] = {
             ["Rahul Verma", "68", "88%", "=IF(AND(B4>=80,C4>=90%),\"Excellent\",\"Review\")"],
             ["Sneha Iyer", "91", "91%", "=IF(AND(B5>=80,C5>=90%),\"Excellent\",\"Review\")"]
           ] },
-          { type: "p", text: "Arjun passes both tests, so AND returns TRUE and he is rated \"Excellent\". Rahul fails both, so he gets \"Review\". Priya is the interesting one: her score is only 74 but her attendance is 96%. Under AND she would fail. If HR decides a score of 70 or attendance of 95% is also enough, switch the inner test to OR:" },
+          { type: "p", text: "Arjun passes both tests, so AND returns TRUE. He is rated \"Excellent\". Rahul fails both, so he gets \"Review\". Priya is the interesting one: her score is only 74 but her attendance is 96%. Under AND she would fail. Suppose HR accepts a score of 70 or attendance of 95% instead. Then switch the inner test to OR:" },
           { type: "code", lang: "excel", text: "=IF(AND(B2>=80,C2>=90%),\"Excellent\",\n   IF(OR(B2>=70,C2>=95%),\"Good\",\"Needs training\"))" },
-          { type: "p", text: "Read it as a sentence: \"If the score is 80 or more and attendance is 90% or more, say Excellent. Otherwise, if the score is 70 or more or attendance is 95% or more, say Good. In every other case, say Needs training.\" Notice how the sentence and the formula match almost word for word — that is the sign of a good nested formula." }
+          { type: "p", text: "Read it as a sentence: \"If the score is 80 or more and attendance is 90% or more, say Excellent. Otherwise, if the score is 70 or more or attendance is 95% or more, say Good. In every other case, say Needs training.\" Notice how closely the sentence matches the formula. That match is the sign of a good nested formula." }
         ]
       },
       {
         heading: "IFERROR plus VLOOKUP: clean messages instead of errors",
         blocks: [
-          { type: "p", text: "VLOOKUP returns #N/A whenever the value it looks for is not in the table. In a live report that is normal: a new product code has not been added yet, or someone typed a code with an extra space. An #N/A down a whole column looks broken to a manager, even when the formula is doing its job correctly." },
+          { type: "p", text: "VLOOKUP returns #N/A when the value it looks for is not in the table. In a live report that is normal. A new product code may not be added yet. Or someone typed a code with an extra space. But a column full of #N/A looks broken to a manager, even when the formula is doing its job correctly." },
           { type: "p", text: "The professional pattern is to wrap the lookup in IFERROR. IFERROR takes two arguments: the thing to try, and what to show if that thing returns any error." },
           { type: "formula", name: "IFERROR + VLOOKUP", syntax: "=IFERROR(VLOOKUP(lookup_value, table_array, col_index_num, FALSE), \"message\")", example: "=IFERROR(VLOOKUP(A2,Products!$A$2:$D$200,2,FALSE),\"Code not found\")", explanation: "Looks up the product name for the code in A2. If the code exists, the name appears. If not, the cell shows \"Code not found\" instead of #N/A." },
-          { type: "warning", text: "Do not wrap every formula in IFERROR \"just in case\". IFERROR also hides serious errors like #REF! (a deleted column) and #DIV/0! (a real mistake in your data). Use it only where \"not found\" or \"empty cell\" is a normal, expected situation — lookups are the classic case." },
-          { type: "tip", text: "Make the fallback message useful. \"Code not found\" tells someone what to fix. A blank cell from =IFERROR(VLOOKUP(...),\"\") tells them nothing, and empty-looking cells get copied into reports as if they were real data." }
+          { type: "warning", text: "Do not wrap every formula in IFERROR \"just in case\". IFERROR also hides serious errors. These include #REF! (a deleted column) and #DIV/0! (a real mistake in your data). Use it only where \"not found\" or \"empty cell\" is a normal, expected situation. Lookups are the classic case." },
+          { type: "tip", text: "Make the fallback message useful. \"Code not found\" tells someone what to fix. A blank cell from `=IFERROR(VLOOKUP(...),\"\")` tells them nothing. Empty-looking cells get copied into reports as if they were real data." }
         ]
       },
       {
@@ -77,31 +78,31 @@ window.LEVEL_META[6] = {
             "`FIND(\"-\", A2)` returns the position of the first dash in the text in A2.",
             "`LEFT(A2, n)` returns the first n characters of the text in A2."
           ] },
-          { type: "p", text: "Here is the invoice overdue check the accounts team at Sunrise Traders runs every week. Each row has an invoice code in column A and a due date in column C. One formula builds the whole status message:" },
+          { type: "p", text: "The accounts team at Sunrise Traders runs this overdue check every week. Each row has an invoice code in column A and a due date in column C. One formula builds the whole status message:" },
           { type: "code", lang: "excel", text: "=IF(TODAY()>C2,\n   \"Overdue by \" & (TODAY()-C2) & \" days\",\n   \"Due on \" & TEXT(C2,\"dd-mmm\"))" },
-          { type: "p", text: "If the due date has passed, TODAY minus the due date is a number of days, and the formula builds a sentence like \"Overdue by 6 days\". If it is not yet due, TEXT formats the date so the message reads \"Due on 21-Nov\" instead of showing a raw date serial number." },
+          { type: "p", text: "If the due date has passed, TODAY minus the due date is a number of days. The formula builds a sentence like \"Overdue by 6 days\". If it is not yet due, `TEXT` formats the date nicely. The message reads \"Due on 21-Nov\", not a raw date serial number." },
           { type: "p", text: "LEFT + FIND is the standard way to split a code. Product codes at Sunrise Traders look like NOTE-A4-48PK, PEN-BLUE-10 or STAP-NO1-METAL. To get the product family (everything before the first dash):" },
           { type: "code", lang: "excel", text: "=LEFT(A2, FIND(\"-\", A2) - 1)" },
-          { type: "p", text: "FIND(\"-\", A2) returns the position of the dash — say 5 for NOTE-A4-48PK. Subtracting 1 gives 4, and LEFT(A2, 4) returns NOTE. Because FIND looks the position up instead of you counting characters, the same formula works for every code, long or short." }
+          { type: "p", text: "`FIND(\"-\", A2)` returns the position of the dash. For NOTE-A4-48PK that is 5. Subtract 1 to get 4. `LEFT(A2, 4)` returns NOTE. Because `FIND` looks up the position for you, the same formula works for every code, long or short." }
         ]
       },
       {
         heading: "Read it inside out, build it in pieces",
         blocks: [
-          { type: "p", text: "Long formulas look impossible until you know the trick: do not read left to right. Start at the deepest inner function and work outwards, one layer at a time. Take this real formula from the accounts sheet:" },
+          { type: "p", text: "Long formulas look impossible until you know the trick. Do not read left to right. Start at the deepest inner function. Work outwards, one layer at a time. Take this real formula from the accounts sheet:" },
           { type: "code", lang: "excel", text: "=IF(TODAY()>VLOOKUP(A2,Invoices,3,FALSE),\"Overdue\",\"On time\")" },
           { type: "steps", items: [
             "Innermost layer: VLOOKUP(A2,Invoices,3,FALSE) — finds the due date of the invoice whose code is in A2.",
             "Middle layer: TODAY()>that result — asks \"is today after the due date?\" and returns TRUE or FALSE.",
             "Outer layer: IF(TRUE/FALSE, \"Overdue\", \"On time\") — turns the answer into a readable status."
           ] },
-          { type: "p", text: "Three short steps and the formula is fully understood. To build such a formula, reverse the process: make one small piece per helper cell, check each result is correct, then combine. In the invoice sheet you might build it like this:" },
+          { type: "p", text: "Three short steps, and the formula is fully understood. To build such a formula, reverse the process. Make one small piece per helper cell. Check each result is correct, then combine. In the invoice sheet you might build it like this:" },
           { type: "grid", title: "Helper cells first, combined formula last", rows: [
             ["Invoice", "Due date", "E (due date)", "F (is it late?)", "G (final)"],
             ["INV-2041", "02-Nov-2026", "=VLOOKUP(A2,Invoices,3,FALSE)", "=TODAY()>E2", "=IF(F2,\"Overdue\",\"On time\")"],
             ["INV-2042", "28-Nov-2026", "=VLOOKUP(A3,Invoices,3,FALSE)", "=TODAY()>E3", "=IF(F3,\"Overdue\",\"On time\")"]
           ] },
-          { type: "p", text: "When every helper cell shows the right answer, replace E2 inside F2, then F2 inside G2, and you get the one-cell version above. If the combined formula misbehaves later, split it back into helpers to find the broken piece. Helper cells are also kinder to whoever inherits your file — they can see your thinking." }
+          { type: "p", text: "When every helper cell shows the right answer, combine them. Put E2 inside F2, then F2 inside G2. That gives the one-cell version above. If the combined formula misbehaves later, split it back into helpers. That helps you find the broken piece. Helper cells are also kinder to whoever inherits your file. They can see your thinking." }
         ]
       }
     ],
@@ -151,13 +152,14 @@ window.LEVEL_META[6] = {
       "Use approximate-match lookups for tax slabs and commission tiers",
       "Recognise XMATCH, the modern 365 replacement for MATCH"
     ],
-    intro: "VLOOKUP answers one question: \"find this value in the first column and return something from the right.\" Real workbooks ask harder questions. \"What is the price of Staplers in Chennai?\" needs a row and a column at the same time. \"What is Sneha Iyer's employee ID?\" needs a value from a column on the left, which VLOOKUP refuses to do. \"What commission rate applies to ₹1,75,000 of sales?\" needs the closest lower value, not an exact one.\n\nEvery one of these has a clean answer, and they all rest on one idea: separate finding a position from fetching a value. That is exactly what INDEX and MATCH do, and it is why professional workbooks use them far more than VLOOKUP.",
+    intro: "VLOOKUP answers one question: \"find this value in the first column and return something from the right.\" Real workbooks ask harder questions. \"What is the price of Staplers in Chennai?\" needs a row and a column at the same time. \"What is Sneha Iyer's employee ID?\" needs a value from a column on the left. VLOOKUP refuses to do that.\n\nEvery one of these has a clean answer. They all rest on one idea: separate finding a position from fetching a value. That is exactly what INDEX and MATCH do. It is why professional workbooks use them far more than VLOOKUP.",
+    keyIdea: "MATCH finds a position and INDEX fetches the value, so you can look up in any direction.",
     sections: [
       {
         heading: "INDEX and MATCH: the pair that does everything",
         blocks: [
-          { type: "p", text: "Recall the pattern from Level 5: `=INDEX(values, MATCH(what, where, 0))`. MATCH finds the position of a value in a list — for example, Staplers is the 3rd item — and INDEX returns the item at that position in another list. Neither function knows anything about the other; you are simply using the number MATCH returns as the address INDEX needs." },
-          { type: "p", text: "This separation is the whole secret. Because MATCH can search any column and INDEX can fetch from any range, you can look up in any direction — left, right, up, down. VLOOKUP can only ever look right. That single limitation is why so many experienced users stopped using VLOOKUP altogether." },
+          { type: "p", text: "Recall the pattern from Level 5: `=INDEX(values, MATCH(what, where, 0))`. `MATCH` finds the position of a value in a list. For example, Staplers is the 3rd item. `INDEX` returns the item at that position in another list. Neither function knows anything about the other. You simply use the number `MATCH` returns as the address `INDEX` needs." },
+          { type: "p", text: "This separation is the whole secret. `MATCH` can search any column. `INDEX` can fetch from any range. So you can look up in any direction — left, right, up, down. VLOOKUP can only ever look right. That single limitation is why so many experienced users stopped using VLOOKUP altogether." },
           { type: "table", headers: ["Need", "VLOOKUP", "INDEX/MATCH"], rows: [
             ["Return a column left of the search column", "Not possible", "Works normally"],
             ["Insert or delete columns inside the table", "Breaks (col_index_num is a hardcoded number)", "Survives (ranges are named directly)"],
@@ -169,7 +171,7 @@ window.LEVEL_META[6] = {
       {
         heading: "Two-way lookup: one INDEX, two MATCHes",
         blocks: [
-          { type: "p", text: "Sunrise Traders keeps one price list per city, laid out as a matrix: products down the side, cities across the top. To fetch the Chennai price for Staplers you need to find Staplers' row and Chennai's column at the same time. This is a two-way lookup, and it is one MATCH for each direction inside a single INDEX." },
+          { type: "p", text: "Sunrise Traders keeps one price list per city. It is laid out as a matrix: products down the side, cities across the top. To fetch the Chennai price for Staplers, you need two things at once. Find Staplers' row and Chennai's column. This is a two-way lookup: one `MATCH` for each direction inside a single `INDEX`." },
           { type: "grid", title: "City price matrix (A1:E5) with the two-way lookup in G3", rows: [
             ["Product", "Delhi", "Mumbai", "Chennai", "Kochi"],
             ["Notebooks", "120", "125", "118", "122"],
@@ -178,14 +180,14 @@ window.LEVEL_META[6] = {
             ["Printers", "8500", "8600", "8400", "8550"]
           ] },
           { type: "code", lang: "excel", text: "Product name in G2, city name in H2, price wanted in I2:\n\n=INDEX(B2:E5, MATCH(G2, A2:A5, 0), MATCH(H2, B1:E1, 0))" },
-          { type: "p", text: "Walk through it with Staplers and Chennai. MATCH(\"Staplers\", A2:A5, 0) returns 3, because Staplers is the third product row. MATCH(\"Chennai\", B1:E1, 0) returns 3, because Chennai is the third city column. INDEX then returns the item at row 3, column 3 of B2:E5 — 205, the Chennai stapler price. Change either dropdown cell and the price follows." },
-          { type: "tip", text: "Keep the two ranges consistent in your head: the first MATCH looks down the row labels (A2:A5), the second looks across the column headers (B1:E1), and the INDEX range (B2:E5) is the inner rectangle where they cross. If you get #N/A, check which of the three ranges you typed wrong." }
+          { type: "p", text: "Walk through it with Staplers and Chennai. `MATCH(\"Staplers\", A2:A5, 0)` returns 3. Staplers is the third product row. `MATCH(\"Chennai\", B1:E1, 0)` also returns 3. Chennai is the third city column. `INDEX` then returns the item at row 3, column 3 of `B2:E5` — 205, the Chennai stapler price. Change either dropdown cell and the price follows." },
+          { type: "tip", text: "Keep the three ranges straight in your head. The first `MATCH` looks down the row labels (`A2:A5`). The second looks across the column headers (`B1:E1`). The `INDEX` range (`B2:E5`) is the inner rectangle where they cross. If you get #N/A, check which of the three ranges you typed wrong." }
         ]
       },
       {
         heading: "Lookup to the left",
         blocks: [
-          { type: "p", text: "Here is the employee table where VLOOKUP fails. The employee ID is in column A, the city in column B, and the full name in column C. You know the name and want the ID — the answer sits to the left of what you are searching. VLOOKUP cannot do this without rebuilding the whole table." },
+          { type: "p", text: "Here is the employee table where VLOOKUP fails. The employee ID is in column A. The city is in column B. The full name is in column C. You know the name and want the ID. The answer sits to the left of what you are searching. VLOOKUP cannot do this without rebuilding the whole table." },
           { type: "grid", title: "Employees sheet — the answer (ID) is left of the search column (Name)", rows: [
             ["EmpID", "City", "Name"],
             ["S001", "Delhi", "Arjun Mehta"],
@@ -194,14 +196,14 @@ window.LEVEL_META[6] = {
             ["S004", "Chennai", "Sneha Iyer"]
           ] },
           { type: "code", lang: "excel", text: "Name typed in E2, ID wanted in F2:\n\n=INDEX(A2:A5, MATCH(E2, C2:C5, 0))" },
-          { type: "p", text: "MATCH finds \"Priya Nair\" in the Name column — position 2 — and INDEX returns the second item of the EmpID range: S002. The two ranges do not have to touch or even be next to each other; they only need to be the same height, so that position 2 means the same row in both." },
-          { type: "warning", text: "The two ranges must line up exactly: if MATCH searches C2:C50, INDEX must fetch from a range that starts at row 2 and ends at row 50, such as A2:A50. A mismatched start row silently returns the value from the wrong person — the most dangerous kind of lookup bug." }
+          { type: "p", text: "`MATCH` finds \"Priya Nair\" in the Name column at position 2. `INDEX` then returns the second item of the EmpID range: S002. The two ranges do not have to touch or even be next to each other. They only need to be the same height. Then position 2 means the same row in both." },
+          { type: "warning", text: "The two ranges must line up exactly. If `MATCH` searches `C2:C50`, `INDEX` must fetch from a range starting at row 2 and ending at row 50, such as `A2:A50`. A mismatched start row silently returns the wrong person's value. That is the most dangerous kind of lookup bug." }
         ]
       },
       {
         heading: "Multi-criteria lookup: matching on two things at once",
         blocks: [
-          { type: "p", text: "Sales data rarely has one unique key. The sheet below lists many rows per salesperson and per month, so \"Arjun Mehta\" alone is not unique, and neither is \"Jan\". Only the pair together is. The classic solution is a helper column that glues the two values into one key, and a lookup on that key." },
+          { type: "p", text: "Sales data rarely has one unique key. The sheet below lists many rows per salesperson and per month. So \"Arjun Mehta\" alone is not unique. Neither is \"Jan\". Only the pair together is. The classic solution is a helper column. It glues the two values into one key, and you look up on that key." },
           { type: "grid", title: "Sales rows with a helper key in column D", rows: [
             ["Salesperson", "Month", "Amount", "Key (helper)", "Lookup"],
             ["Arjun Mehta", "Jan", "82000", "=A2&\"|\"&B2", "Arjun Mehta|Jan"],
@@ -209,16 +211,16 @@ window.LEVEL_META[6] = {
             ["Arjun Mehta", "Feb", "78000", "=A4&\"|\"&B4", "=INDEX(C2:C4,MATCH(E2,D2:D4,0))"]
           ] },
           { type: "code", lang: "excel", text: "Helper key in D2, copied down:   =A2&\"|\"&B2\n\nLookup formula:  =INDEX(C2:C50, MATCH(E2, D2:D50, 0))\nwhere E2 contains the combined key, e.g. \"Arjun Mehta|Feb\"" },
-          { type: "p", text: "If you cannot or do not want to add a helper column, there is an array version that does the gluing in memory. It multiplies two TRUE/FALSE lists — which Excel treats as 1/0 — and finds the row where the product is 1, meaning both tests were TRUE:" },
+          { type: "p", text: "If you cannot add a helper column, or prefer not to, use an array version. It does the gluing in memory. It multiplies two TRUE/FALSE lists, which Excel treats as 1/0. It finds the row where the product is 1. That means both tests were TRUE:" },
           { type: "code", lang: "excel", text: "=INDEX(C2:C50, MATCH(1, (A2:A50=E2)*(B2:B50=F2), 0))\n\nOlder Excel (2019 and earlier): confirm with Ctrl+Shift+Enter.\nMicrosoft 365: plain Enter works." },
-          { type: "p", text: "Do not worry about the array mechanics; the sentence to remember is: \"give me the row where salesperson equals E2 AND month equals F2\". Each comparison produces TRUE/FALSE down the column, TRUE times TRUE is 1, and MATCH looks for that single 1. In older Excel versions such formulas must be confirmed with Ctrl+Shift+Enter — you will see curly braces appear around the formula. In Microsoft 365, just press Enter." },
+          { type: "p", text: "Do not worry about the array mechanics. Remember one sentence: \"give me the row where salesperson equals E2 AND month equals F2\". Each comparison gives TRUE/FALSE down the column. TRUE times TRUE is 1. `MATCH` looks for that single 1. In older Excel versions, confirm such formulas with [[Ctrl]] + [[Shift]] + [[Enter]]. You will see curly braces appear around the formula. In Microsoft 365, just press Enter." },
           { type: "tip", text: "The helper-column version is slower to set up but easier for colleagues to read and debug. Use the array version when the sheet is a downloaded export you cannot restructure, or when adding columns would break someone else's layout." }
         ]
       },
       {
         heading: "Approximate match: tax slabs and commission tiers",
         blocks: [
-          { type: "p", text: "Sometimes the lookup value will not be in the table at all — and should not be. A commission of ₹1,75,000 of sales does not appear as a row; it falls into a tier. This is the fourth argument of VLOOKUP set to TRUE (or MATCH with 1 as its third argument): find the largest value that is still less than or equal to the lookup value." },
+          { type: "p", text: "Sometimes the lookup value is not in the table at all — and should not be. A commission of ₹1,75,000 does not appear as a row. It falls into a tier. This is the fourth argument of VLOOKUP set to TRUE (or `MATCH` with 1 as its third argument). It finds the largest value that is still less than or equal to the lookup value." },
           { type: "table", headers: ["Sales from (₹)", "Rate", "Meaning"], rows: [
             ["0", "1%", "The first ₹49,999 earns 1%"],
             ["50000", "3%", "₹50,000 up to ₹99,999 earns 3%"],
@@ -226,8 +228,8 @@ window.LEVEL_META[6] = {
             ["200000", "8%", "₹2,00,000 and above earns 8%"]
           ] },
           { type: "code", lang: "excel", text: "Tier table in E2:F5, monthly sales in B2, commission rate in C2:\n\n=VLOOKUP(B2, $E$2:$F$5, 2, TRUE)" },
-          { type: "p", text: "With B2 = 175000, VLOOKUP scans down the first column for the largest value not above 175000 — that is 100000 — and returns 5%. This is how income-tax slabs, courier weight brackets and bulk discounts are all modelled in real finance sheets. The lookup column must be sorted in ascending order, or approximate match returns nonsense." },
-          { type: "p", text: "One honest note for Microsoft 365 users: the functions XLOOKUP and XMATCH exist as modern replacements. XMATCH is MATCH with exact match as the default (no need for the ,0 argument), can search from the bottom up, and supports the same approximate behaviour: `=XMATCH(F2, A2:A50)` finds F2 exactly. If your whole team is on 365 you may prefer it, but INDEX/MATCH remains the skill that works on every Excel any client or employer will hand you, so learn it first." }
+          { type: "p", text: "With `B2` = 175000, VLOOKUP scans down the first column. It looks for the largest value not above 175000 — that is 100000 — and returns 5%. Real finance sheets model income-tax slabs, courier weight brackets and bulk discounts exactly this way. The lookup column must be sorted in ascending order. Otherwise approximate match returns nonsense." },
+          { type: "p", text: "One honest note for Microsoft 365 users: XLOOKUP and XMATCH exist as modern replacements. XMATCH is `MATCH` with exact match as the default. No need for the `,0` argument. It can search from the bottom up, and it supports the same approximate behaviour: `=XMATCH(F2, A2:A50)` finds F2 exactly. If your whole team is on 365, you may prefer it. But INDEX/MATCH remains the skill that works on every Excel a client or employer will hand you. So learn it first." }
         ]
       }
     ],
@@ -278,30 +280,31 @@ window.LEVEL_META[6] = {
       "Call your custom function like a built-in one anywhere in the workbook",
       "Know what to use instead when colleagues are on older Excel"
     ],
-    intro: "LET and LAMBDA are the two features that make formulas feel like real programming — and both need Microsoft 365 or Excel 2021 onward for LET, and Microsoft 365 for LAMBDA. If you or your team are on Excel 2016 or 2019, read this lesson anyway: the thinking is valuable, and this lesson also shows the older-Excel equivalents so nothing here blocks you.\n\nWhy do professionals care? Because reports repeat the same sub-calculation five times inside one formula, and nobody can read the result. LET lets you give a piece of a formula a name. LAMBDA goes further: it lets you invent a function that did not exist before, save it in the workbook, and call it by name like SUM or VLOOKUP. No VBA required.",
+    intro: "LET and LAMBDA make formulas feel like real programming. LET needs Microsoft 365 or Excel 2021. LAMBDA needs Microsoft 365. If your team is on Excel 2016 or 2019, read this lesson anyway. The thinking is valuable, and the lesson shows the older-Excel equivalents too.\n\nWhy do professionals care? Reports repeat the same sub-calculation five times inside one formula. Nobody can read the result. LET gives a piece of a formula a name. LAMBDA goes further: it lets you invent a new function. Save it in the workbook, and call it by name like SUM or VLOOKUP. No VBA required.",
+    keyIdea: "LET names the steps inside a formula, and LAMBDA lets you create your own reusable function.",
     sections: [
       {
         heading: "LET: give your intermediate results a name",
         blocks: [
           { type: "p", text: "Look at this bonus calculation from the Sunrise Traders appraisal. The sales figure B2 is used three times and the rate logic is repeated twice:" },
           { type: "code", lang: "excel", text: "=ROUND(B2*IF(B2>=100000,5%,IF(B2>=50000,3%,1%)),0)\n\n+IF(B2>=100000,2000,0)\n\n+B2*0.5%*IF(AND(B2>=100000,C2>=90%),1,0)" },
-          { type: "p", text: "It works, but every reader must re-derive what B2 is and what the tiers mean. LET fixes both problems. Its syntax is a list of name–value pairs followed by the final calculation that uses those names:" },
+          { type: "p", text: "It works, but every reader must work out what B2 is and what the tiers mean. LET fixes both problems. Its syntax is a list of name–value pairs, followed by the final calculation that uses those names:" },
           { type: "code", lang: "excel", text: "=LET(\n   sales, B2,\n   attend, C2,\n   rate, IF(sales>=100000, 5%, IF(sales>=50000, 3%, 1%)),\n   loyalty, IF(sales>=100000, 2000, 0),\n   attendanceBonus, sales*0.5%*IF(AND(sales>=100000,attend>=90%),1,0),\n   ROUND(sales*rate,0) + loyalty + attendanceBonus\n)" },
-          { type: "p", text: "Read it top to bottom like a recipe: sales means B2, attend means C2, rate is the tier lookup, and the last line is the actual answer. Each name is defined once and used as many times as needed. If HR changes the tier thresholds next year, you edit one line instead of hunting through five copies of the same IF." },
-          { type: "tip", text: "LET can also make workbooks faster. A sub-expression written out three times is calculated three times; named once in LET, it is calculated once and reused. On big sheets with heavy lookups, this is a real, measurable speed-up." }
+          { type: "p", text: "Read it top to bottom like a recipe. sales means B2. attend means C2. rate is the tier lookup. The last line is the actual answer. Each name is defined once and used as many times as needed. If HR changes the tier thresholds next year, you edit one line. No hunting through five copies of the same IF." },
+          { type: "tip", text: "LET can also make workbooks faster. A sub-expression written out three times is calculated three times. Named once in LET, it is calculated once and reused. On big sheets with heavy lookups, this is a real, measurable speed-up." }
         ]
       },
       {
         heading: "A full LET worked example: the variance message",
         blocks: [
-          { type: "p", text: "Monthly targets are the bread and butter of retail reporting. The sheet below tracks each salesperson's actual sales against target, and the manager wants one column that speaks plainly: \"Above target by 8.2%\" or \"Below target by 3.5%\". Without LET, that sentence needs a long nest of repeated subtraction and division. With LET it reads like a sentence itself." },
+          { type: "p", text: "Monthly targets are the bread and butter of retail reporting. The sheet below tracks each salesperson's actual sales against target. The manager wants one column that speaks plainly: \"Above target by 8.2%\" or \"Below target by 3.5%\". Without LET, that sentence needs a long nest of repeated subtraction and division. With LET, it reads like a sentence itself." },
           { type: "grid", title: "Target tracking — one LET formula filled down column E", rows: [
             ["Salesperson", "Actual (₹)", "Target (₹)", "Message (the LET formula)"],
             ["Arjun Mehta", "432000", "400000", "Above target by 8.0%"],
             ["Rahul Verma", "386000", "400000", "Below target by 3.5%"]
           ] },
           { type: "code", lang: "excel", text: "In E2, filled down:\n\n=LET(\n   actual, B2,\n   target, C2,\n   diff, actual - target,\n   pct, diff / target,\n   IF(diff>=0, \"Above target by \" & TEXT(pct,\"0.0%\"),\n                   \"Below target by \" & TEXT(-pct,\"0.0%\"))\n)" },
-          { type: "p", text: "Four names, one answer. actual and target are plain cell references; diff is actual minus target; pct is diff divided by target. The final line builds the message, using -pct for the below-target case so the number reads positive (\"Below by 3.5%\", not \"Below by -3.5%\"). Notice how TEXT formats the fraction as a percentage inside the sentence — the same TEXT skill from the nested-formulas lesson." },
+          { type: "p", text: "Four names, one answer. actual and target are plain cell references. diff is actual minus target. pct is diff divided by target. The final line builds the message. It uses -pct for the below-target case, so the number reads positive (\"Below by 3.5%\", not \"Below by -3.5%\"). Notice how `TEXT` formats the fraction as a percentage inside the sentence. This is the same `TEXT` skill from the nested-formulas lesson." },
           { type: "steps", items: [
             "Start =LET( and add one name–value pair per idea: actual, target, diff, pct.",
             "Write the final calculation on the last line using only those names.",
@@ -309,13 +312,13 @@ window.LEVEL_META[6] = {
             "Copy the formula down. Because the names point at B2 and C2, they adjust to B3 and C3 automatically."
           ] },
           { type: "warning", text: "LET names cannot look like cell references. A name such as \"B2\" or \"CT1\" will be rejected or cause confusion. Use words: sales, target, rate, diff. Also, a LET name cannot be defined twice in the same formula." },
-          { type: "p", text: "On Excel 2016 or 2019, LET is not available. The equivalent discipline still works: put each intermediate value in its own helper column with a clear header (Actual, Diff, Pct), and build the message from those. Same clarity, one column per name instead of one name per line." }
+          { type: "p", text: "On Excel 2016 or 2019, LET is not available. The same discipline still works: put each intermediate value in its own helper column with a clear header (Actual, Diff, Pct). Build the message from those. Same clarity — one column per name instead of one name per line." }
         ]
       },
       {
         heading: "LAMBDA: invent the function Excel is missing",
         blocks: [
-          { type: "p", text: "LAMBDA lets you define a function with a name and arguments, exactly like the built-ins. The raw form looks odd at first: `=LAMBDA(x, y, x+y)(3, 4)` — it takes arguments, then a body, and you can even call it immediately with values in brackets at the end. Calling it directly like that is only for testing. The real power is saving it under a name." },
+          { type: "p", text: "LAMBDA lets you define a function with a name and arguments, exactly like the built-ins. The raw form looks odd at first: `=LAMBDA(x, y, x+y)(3, 4)`. It takes arguments, then a body. You can even call it immediately with values in brackets at the end. But calling it directly is only for testing. The real power is saving it under a name." },
           { type: "steps", items: [
             "Test the logic in a cell first: =LAMBDA(sales, rate, ROUND(sales*rate,0))(82000, 5%) should return 4100.",
             "Select the whole LAMBDA expression (without the test values at the end) and copy it.",
@@ -324,16 +327,16 @@ window.LEVEL_META[6] = {
             "Now use it anywhere: =Commission(B2, 5%) — exactly like a built-in function."
           ] },
           { type: "code", lang: "excel", text: "Definition saved in Name Manager as \"Commission\":\n=LAMBDA(sales, rate, ROUND(sales*rate, 0))\n\nUsage anywhere in the workbook:\n=Commission(B2, 5%)\n=Commission(120000, 8%)" },
-          { type: "p", text: "Anyone opening the workbook can now call Commission, and Excel's formula tooltip shows the argument names you chose. If the commission rule changes — say a flat ₹500 minimum — you edit the definition once in Name Manager and every cell that uses it updates on recalculation. That is the same benefit a VBA function would give, but without macros, without security warnings, and it recalculates automatically like any formula." }
+          { type: "p", text: "Anyone opening the workbook can now call Commission. Excel's formula tooltip shows the argument names you chose. If the commission rule changes — say a flat ₹500 minimum — you edit the definition once in Name Manager. Every cell that uses it updates on recalculation. This gives the same benefit as a VBA function. But there are no macros, no security warnings, and it recalculates automatically like any formula." }
         ]
       },
       {
         heading: "A full LAMBDA worked example: NetAmount with GST",
         blocks: [
-          { type: "p", text: "Sunrise Traders invoices follow one rule everywhere: net amount = quantity × unit price, minus any discount, plus 18% GST on the discounted subtotal. Doing this inline in every invoice sheet invites inconsistency — one file will use 18%, another 17.9%, a third will forget the discount. This is precisely the situation LAMBDA was built for." },
+          { type: "p", text: "Sunrise Traders invoices follow one rule everywhere: net amount = quantity × unit price, minus any discount, plus 18% GST on the discounted subtotal. Doing this inline in every invoice sheet invites inconsistency. One file will use 18%. Another will use 17.9%. A third will forget the discount. This is exactly the situation LAMBDA was built for." },
           { type: "code", lang: "excel", text: "Saved in Name Manager as \"NetAmount\":\n=LAMBDA(qty, price, discount,\n   LET(\n      gross, qty*price,\n      net, gross*(1-discount),\n      gst, ROUND(net*18%, 2),\n      ROUND(net+gst, 2)\n   )\n)\n\nUsage:\n=NetAmount(12, 210, 10%)   -> 2,226.96\n=NetAmount(B2, C2, D2)     -> filled down an invoice column" },
-          { type: "p", text: "This is LET and LAMBDA working together: LAMBDA gives the function its name and arguments, LET organises the three inside steps. Run the numbers once so you trust the function: twelve staplers at ₹210 with a 10% discount gives a gross of 2520, a net of 2268, GST of 2268 × 18% = 408.24, and a total of 2276.24. Every invoice sheet in the company can now produce that figure identically, because the rule exists in exactly one place." },
-          { type: "tip", text: "LAMBDA definitions live inside the workbook file. If you email the workbook, the functions travel with it. But a new blank workbook does not know them — keep a small \"function library\" workbook and copy definitions via Name Manager when starting a new project." }
+          { type: "p", text: "This is LET and LAMBDA working together. LAMBDA gives the function its name and arguments. LET organises the three inside steps. Run the numbers once so you trust the function. Twelve staplers at ₹210 with a 10% discount: gross 2520, net 2268. GST is 2268 × 18% = 408.24, so the total is 2276.24. Every invoice sheet in the company now produces that figure identically. The rule exists in exactly one place." },
+          { type: "tip", text: "LAMBDA definitions live inside the workbook file. If you email the workbook, the functions travel with it. But a new blank workbook does not know them. Keep a small \"function library\" workbook. Copy definitions via Name Manager when starting a new project." }
         ]
       },
       {
@@ -345,7 +348,7 @@ window.LEVEL_META[6] = {
             ["A rule that changes often (rates, tiers)", "LAMBDA: edit the definition once", "One master helper cell that everything else references"],
             ["Colleagues must audit your formula without training", "LET with meaningful names", "Helper columns — most auditable of all"]
           ] },
-          { type: "p", text: "One closing warning from the field: LET and LAMBDA formulas break with #NAME? errors the moment someone opens the file in Excel 2019. Before shipping a 365-only solution to a client or a new employer, ask what version they run. The safest professional pattern is LET/LAMBDA for your own analysis sheets, and plain helper columns for anything you hand to others." }
+          { type: "p", text: "One closing warning from the field: LET and LAMBDA formulas break with #NAME? errors the moment someone opens the file in Excel 2019. Before shipping a 365-only solution to a client or a new employer, ask what version they run. The safest professional pattern: use LET/LAMBDA for your own analysis sheets. Use plain helper columns for anything you hand to others." }
         ]
       }
     ],
@@ -396,13 +399,14 @@ window.LEVEL_META[6] = {
       "Load the cleaned result as a table and refresh it with one click",
       "Decide when Power Query beats manual cleaning"
     ],
-    intro: "Every office has the same monthly ritual: download an export, delete useless columns, fix the dates that arrived as text, trim the spaces someone typed before every product name, remove the duplicated rows, reformat it all by hand — and repeat the entire ritual next month. Power Query, built into Excel 2016 and later at no extra cost, does the cleaning once and then repeats it perfectly forever with one click.\n\nPower Query is not a formula and not a macro. It is a recording of your cleaning steps, attached to the source file. When next month's export arrives with the same shape, you drop it in, press Refresh, and every step replays on the new data. This lesson takes you from a genuinely messy export to a clean, refreshable table.",
+    intro: "Every office has the same monthly ritual. Download an export. Delete useless columns. Fix dates that arrived as text. Trim the extra spaces. Remove duplicated rows. Reformat it all by hand. Then repeat next month.\n\nPower Query is built into Excel 2016 and later at no extra cost. It cleans once, then repeats perfectly forever with one click. It is not a formula and not a macro. It is a recording of your cleaning steps, attached to the source file. Next month, drop in the new export and press Refresh. Every step replays on the new data.",
+    keyIdea: "Power Query cleans messy data automatically — set the steps once and replay them on every new file.",
     sections: [
       {
         heading: "Why professionals clean with Power Query, not by hand",
         blocks: [
-          { type: "p", text: "Manual cleaning has three hidden costs. First, it is slow: an hour of deleting, trimming and fixing types, every single month. Second, it is inconsistent: today you remember to remove duplicates, next month you forget one row. Third — and this is the killer — the work is thrown away. Nothing about hand-cleaning is saved; the next file starts from zero." },
-          { type: "p", text: "Power Query inverts that. You clean the first file by clicking through menus, and Excel writes down every action in order. That written recipe is called a query. Next month you point the same query at the new file, press Refresh, and the whole cleanup replays in two or three seconds. You do the thinking once; the machine does the repetition." },
+          { type: "p", text: "Manual cleaning has three hidden costs. First, it is slow: an hour of deleting, trimming and fixing types, every single month. Second, it is inconsistent: today you remember to remove duplicates, next month you forget one row. Third — and this is the killer — the work is thrown away. Nothing about hand-cleaning is saved. The next file starts from zero." },
+          { type: "p", text: "Power Query inverts that. You clean the first file by clicking through menus. Excel writes down every action in order. That written recipe is called a query. Next month, point the same query at the new file and press Refresh. The whole cleanup replays in two or three seconds. You do the thinking once. The machine does the repetition." },
           { type: "ul", items: [
             "It is free and built in: on the Data tab, look for the Get & Transform group. In Excel 2016 it is called Get & Transform; in Microsoft 365 the group is simply Get Data.",
             "Users on Excel 2010 or 2013 can install the free \"Microsoft Power Query for Excel\" add-in from Microsoft's site and follow along with almost everything in this lesson.",
@@ -421,15 +425,15 @@ window.LEVEL_META[6] = {
             "From Folder: Data > Get Data > From File > From Folder. Point at a folder and Power Query combines every file inside it into one table — ideal when each branch or month sends its own export.",
             "In the preview or navigator, always choose Transform Data rather than Load when cleaning is needed. That opens the Power Query Editor, where the real work happens."
           ] },
-          { type: "p", text: "For this lesson, use the practice download: a deliberately messy Sunrise Traders export with extra spaces, numbers stored as text, dates as text, and duplicated rows. Open the workbook first to see the mess with your own eyes, then import it: Data > Get Data > From File > From Workbook, select the messy sheet, and click Transform Data." },
-          { type: "warning", text: "When you import a CSV, Power Query guesses data types from the first rows. If the first 200 rows of an amount column are clean numbers and row 201 contains \"1 250\", the column may be typed as number and the odd row becomes an error. Always glance at the type icons in each column header before you trust the load." }
+          { type: "p", text: "For this lesson, use the practice download. It is a deliberately messy Sunrise Traders export: extra spaces, numbers stored as text, dates as text, and duplicated rows. Open the workbook first and see the mess with your own eyes. Then import it: Data > Get Data > From File > From Workbook. Select the messy sheet and click Transform Data." },
+          { type: "warning", text: "When you import a CSV, Power Query guesses data types from the first rows. Suppose the first 200 rows of an amount column are clean numbers. Row 201 contains \"1 250\". The column may be typed as number, and the odd row becomes an error. Always glance at the type icons in each column header before you trust the load." }
         ]
       },
       {
         heading: "The Power Query Editor and the Applied Steps pane",
         blocks: [
-          { type: "p", text: "The editor looks like a stripped-down Excel: your data in the middle, a ribbon of transforms on top, and on the right side a pane called Query Settings with a list named Applied Steps. That list is the heart of the whole tool." },
-          { type: "p", text: "Every click you make — removed a column, changed a type, replaced a value — is appended to Applied Steps as a named step. Click any earlier step and the data preview rewinds to how it looked at that moment; click the last step to return to the present. This gives you two superpowers manual cleaning never had:" },
+          { type: "p", text: "The editor looks like a stripped-down Excel. Your data is in the middle. A ribbon of transforms sits on top. On the right is a pane called Query Settings with a list named Applied Steps. That list is the heart of the whole tool." },
+          { type: "p", text: "Every click you make is appended to Applied Steps as a named step. Examples: removed a column, changed a type, replaced a value. Click any earlier step and the data preview rewinds to how it looked at that moment. Click the last step to return to the present. This gives you two superpowers manual cleaning never had:" },
           { type: "ul", items: [
             "Undo without Ctrl+Z: click the step above the mistake, delete the bad step (click the X next to it), and continue. Steps after it re-evaluate on the corrected data.",
             "A visible audit trail: a colleague can open the query, read the step names — Removed Columns, Changed Type, Removed Duplicates — and understand the entire cleanup without asking you anything."
@@ -440,7 +444,7 @@ window.LEVEL_META[6] = {
       {
         heading: "The everyday transforms",
         blocks: [
-          { type: "p", text: "You will use perhaps eight transforms for 95% of cleanup work. All of them act on the column you select first (click the column header; Ctrl+click for several). Here is the full toolkit applied to the messy practice export:" },
+          { type: "p", text: "You will use perhaps eight transforms for 95% of cleanup work. All of them act on the column you select first. Click the column header; Ctrl+click for several. Here is the full toolkit applied to the messy practice export:" },
           { type: "table", headers: ["Transform", "How", "Fixes"], rows: [
             ["Remove columns", "Right-click column header > Remove", "Export padding like row numbers, timestamps, internal codes"],
             ["Change type", "Type icon in the header (123/ABC) > pick Date, Number...", "Dates that arrived as text, amounts stored as text"],
@@ -451,9 +455,10 @@ window.LEVEL_META[6] = {
             ["Remove blank rows", "Home > Remove Rows > Remove Blank Rows", "Spacer rows from reports printed to CSV"],
             ["Unpivot columns", "Transform > Unpivot Columns", "A month-per-column report turned into a proper list"]
           ] },
-          { type: "p", text: "Two of these deserve special attention. Trim: text exports love to hide a space before values, and a lookup against \" Pens\" fails with #N/A even though the eye sees a perfect match. Trim removes the padding from every selected column in one action. Unpivot: the moment a report has one column per month (Jan, Feb, Mar across the top), it is a cross-tab, and no pivot or lookup works properly on it. Select the columns that are not months, right-click the month columns, choose Unpivot, and the cross-tab becomes a tidy three-column list: item, month, value." },
+          { type: "p", text: "Two of these deserve special attention. First, Trim: text exports love to hide a space before values. A lookup against \" Pens\" fails with #N/A, even though the eye sees a perfect match. Trim removes the padding from every selected column in one action." },
+          { type: "p", text: "Second, Unpivot: the moment a report has one column per month (Jan, Feb, Mar across the top), it is a cross-tab. No pivot or lookup works properly on it. Select the columns that are not months. Right-click the month columns and choose Unpivot. The cross-tab becomes a tidy three-column list: item, month, value." },
           { type: "code", lang: "excel", text: "Cross-tab (before unpivot):          After unpivot:\n\nProduct   | Jan | Feb                 Product   | Month | Sales\nNotebooks | 120 | 125                 Notebooks | Jan   | 120\nPens      |  35 |  38                 Notebooks | Feb   | 125\n                                    Pens      | Jan   | 35\n                                    Pens      | Feb   | 38" },
-          { type: "p", text: "The unpivoted shape is what the Data Model and Power Pivot (next lesson) expect. Cross-tabs are for humans to read; lists are for Excel to compute. Power Query converts between the two in one click — manually that conversion is copy-paste surgery." }
+          { type: "p", text: "The unpivoted shape is what the Data Model and Power Pivot (next lesson) expect. Cross-tabs are for humans to read. Lists are for Excel to compute. Power Query converts between the two in one click. Manually, that conversion is copy-paste surgery." }
         ]
       },
       {
@@ -466,9 +471,9 @@ window.LEVEL_META[6] = {
             "Next month: save the new export in the same location (or drop it in the connected folder), then Data > Refresh All (or right-click the table > Refresh). Every applied step replays automatically.",
             "If a column arrives with unexpected values, reopen the editor (double-click the query in the Queries & Connections pane), add or adjust a step, and Close & Load again."
           ] },
-          { type: "p", text: "That final click is the entire payoff of the tool. A cleanup that took an hour by hand now takes the time to drop a file in a folder and press Refresh All. And because the steps are saved in the workbook, whoever opens it next month inherits the whole process — the knowledge stops living only in your head." },
-          { type: "warning", text: "When to choose Power Query over doing it by hand: the cleanup will recur (monthly exports), the file is large (tens of thousands of rows), several files need combining, or the same cleanup must be shared across a team. When not to: a one-off 20-row fix, or data that arrives already clean. Power Query has a small learning cost — spend it on jobs that repeat." },
-          { type: "warning", text: "Refresh fails if the source file has been moved, renamed or deleted — the error names the path it could not find. Keep source files in a stable folder (or the same folder as the workbook for relative paths), and tell your team never to rename the export file." }
+          { type: "p", text: "That final click is the entire payoff of the tool. A cleanup that took an hour by hand now takes seconds. Drop a file in a folder and press Refresh All. The steps are saved in the workbook. Whoever opens it next month inherits the whole process. The knowledge stops living only in your head." },
+          { type: "warning", text: "Choose Power Query when the cleanup will recur (monthly exports), the file is large (tens of thousands of rows), several files need combining, or the same cleanup must be shared across a team. Do not use it for a one-off 20-row fix, or data that arrives already clean. Power Query has a small learning cost. Spend it on jobs that repeat." },
+          { type: "warning", text: "Refresh fails if the source file has been moved, renamed or deleted. The error names the path it could not find. Keep source files in a stable folder (or the same folder as the workbook for relative paths). Tell your team never to rename the export file." }
         ]
       }
     ],
@@ -521,7 +526,8 @@ window.LEVEL_META[6] = {
       "Explain why relationships replace VLOOKUP across large data",
       "Build a PivotTable directly from the Data Model"
     ],
-    intro: "VLOOKUP is brilliant for one table. But real businesses do not have one table — they have a Sales table with product codes, a Products table with names and prices, a Regions table with cities and managers, and they keep growing. The classic fix is to VLOOKUP the product name into the sales rows, the region manager into the sales rows, the category into the sales rows... until the file has fifteen helper columns and takes a minute to open.\n\nPower Pivot, included free in Excel 2016 and later, offers a better idea: keep each table as it is, and tell Excel how the tables relate. Sales rows link to Products by ProductID; Products link to nothing else; Regions link by RegionID. Excel then treats the connected tables as one model, and a single PivotTable can combine fields from all of them — no helper columns, no VLOOKUP, millions of rows if needed.",
+    intro: "VLOOKUP is brilliant for one table. But real businesses have many tables. A Sales table with product codes. A Products table with names and prices. A Regions table with cities and managers. They keep growing. The classic fix: VLOOKUP names, managers and categories into the sales rows. Soon the file has fifteen helper columns and takes a minute to open.\n\nPower Pivot is included free in Excel 2016 and later. It offers a better idea: keep each table as it is. Just tell Excel how the tables relate. Sales rows link to Products by ProductID. Regions link by RegionID. Excel treats the connected tables as one model. One PivotTable can combine fields from all of them — no helper columns, no VLOOKUP.",
+    keyIdea: "Power Pivot links tables with relationships, so one pivot can use many tables without VLOOKUP.",
     sections: [
       {
         heading: "Turning Power Pivot on",
@@ -533,8 +539,8 @@ window.LEVEL_META[6] = {
             "Tick Microsoft Power Pivot for Excel and click OK.",
             "A new Power Pivot tab appears on the ribbon with buttons like Manage, Measures and Add to Data Model."
           ] },
-          { type: "p", text: "In current Microsoft 365 installations the Data Model is often reachable without the add-in (look for \"Add this data to the Data Model\" checkboxes), but enabling the tab is still worth it: the Power Pivot window is where you see and manage everything in the model. There is no separate licence or fee — it is part of Excel." },
-          { type: "tip", text: "Not available at all? The standalone Excel 2016 \"Professional Plus\"-style editions all include it; only some basic OEM bundles omit it. If the add-in list is empty on a work machine, ask IT — it is a two-tick job for them." }
+          { type: "p", text: "In current Microsoft 365 installations, the Data Model is often reachable without the add-in. Look for the \"Add this data to the Data Model\" checkboxes. But enabling the tab is still worth it: the Power Pivot window is where you see and manage everything in the model. There is no separate licence or fee. It is part of Excel." },
+          { type: "tip", text: "Not available at all? The standalone Excel 2016 \"Professional Plus\"-style editions all include it. Only some basic OEM bundles omit it. If the add-in list is empty on a work machine, ask IT. It is a two-tick job for them." }
         ]
       },
       {
@@ -546,14 +552,14 @@ window.LEVEL_META[6] = {
             "From a normal sheet: Insert > PivotTable, tick \"Add this data to the Data Model\" in the dialog. Or select the table and use Power Pivot > Add to Data Model.",
             "From the Power Pivot window: Power Pivot > Manage opens the model window, where Get External Data lets you import straight from databases, feeds or files without ever touching a worksheet."
           ] },
-          { type: "p", text: "For this lesson, open the practice workbook: it contains three clean tables — Sales (one row per sale: Date, ProductID, RegionID, Salesperson, Amount), Products (ProductID, Product, Category, Unit Price) and Regions (RegionID, Region, City, Manager). Add each to the Data Model: click inside the Sales table, Power Pivot > Add to Data Model; repeat for Products and Regions. The Power Pivot window now shows all three as separate tabs — you can switch between them exactly like worksheet tabs." },
+          { type: "p", text: "For this lesson, open the practice workbook. It contains three clean tables. Sales: one row per sale (Date, ProductID, RegionID, Salesperson, Amount). Products: ProductID, Product, Category, Unit Price. Regions: RegionID, Region, City, Manager. Add each to the Data Model: click inside the Sales table, then Power Pivot > Add to Data Model. Repeat for Products and Regions. The Power Pivot window now shows all three as separate tabs. Switch between them exactly like worksheet tabs." },
           { type: "warning", text: "Give every table a real name before importing (via Table Design > Table Name). The model uses these names everywhere — in the field list, in DAX next lesson — and \"Table1\" tells nobody anything." }
         ]
       },
       {
         heading: "Relationships: telling Excel how the tables connect",
         blocks: [
-          { type: "p", text: "Tables in the model are strangers until you define a relationship. The Sales table stores only ProductID — it does not know that P104 is a Laptop or that it costs ₹52,000. The Products table holds that knowledge, one row per product. Sales has many rows per product; Products has exactly one row per product. That shape is called one-to-many, and it is the standard pattern for almost every business model." },
+          { type: "p", text: "Tables in the model are strangers until you define a relationship. The Sales table stores only ProductID. It does not know that P104 is a Laptop or that it costs ₹52,000. The Products table holds that knowledge, one row per product. Sales has many rows per product. Products has exactly one row per product. This shape is called one-to-many. It is the standard pattern for almost every business model." },
           { type: "table", headers: ["Table", "Role in the relationship", "Key column"], rows: [
             ["Products", "The \"one\" side (each product appears once)", "ProductID"],
             ["Sales", "The \"many\" side (each product appears on many rows)", "ProductID"],
@@ -566,7 +572,7 @@ window.LEVEL_META[6] = {
             "Click a line to see and edit the relationship (which table is which side, and active or not).",
             "Return to Data View to browse the tables again."
           ] },
-          { type: "p", text: "That is the entire act of \"joining\" the data: two drags. No VLOOKUP column, no copying names across, no formulas to break. If a new sale references a ProductID that is missing from Products, the relationship simply leaves that row unmatched — it does not error, which is why keeping the dimension tables complete still matters." },
+          { type: "p", text: "That is the entire act of \"joining\" the data: two drags. No VLOOKUP column, no copying names across, no formulas to break. Suppose a new sale references a ProductID that is missing from Products. The relationship simply leaves that row unmatched. It does not error. This is why keeping the dimension tables complete still matters." },
           { type: "tip", text: "Order does not matter when dragging: Excel detects which table is the one side and which is the many from the data itself. The arrow on the relationship line always points from the \"one\" table toward the \"many\" table." }
         ]
       },
@@ -598,8 +604,8 @@ window.LEVEL_META[6] = {
             ["Printers", "86000", "64000", "51000", "201000"],
             ["Stationery", "41000", "38000", "29000", "108000"]
           ] },
-          { type: "p", text: "Notice what you did not do: no VLOOKUP of category onto sales rows, no VLOOKUP of region names, no concatenations. The pivot reads Amount from Sales, Category from Products and Region from Regions, following the two relationships you drew. In plain-Excel terms you replaced two columns of VLOOKUPs and one source-file dependency with two lines in a diagram." },
-          { type: "p", text: "One habit to unlearn: the classic pivot field list shows one flat list of every column. The model field list groups columns under their tables — Sales fields under Sales, and so on. Read the grouping as the diagram: fields come from tables, tables are wired by keys. Once that clicks, the rest of Power Pivot — including DAX measures in the next lesson — is a natural continuation." }
+          { type: "p", text: "Notice what you did not do: no VLOOKUP of category onto sales rows, no VLOOKUP of region names, no concatenations. The pivot reads Amount from Sales, Category from Products and Region from Regions. It follows the two relationships you drew. In plain-Excel terms, you replaced two columns of VLOOKUPs with two lines in a diagram." },
+          { type: "p", text: "One habit to unlearn: the classic pivot field list shows one flat list of every column. The model field list groups columns under their tables. Sales fields sit under Sales, and so on. Read the grouping as the diagram: fields come from tables, and tables are wired by keys. Once that clicks, the rest of Power Pivot is a natural continuation. That includes DAX measures in the next lesson." }
         ]
       }
     ],

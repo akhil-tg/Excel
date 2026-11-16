@@ -26,7 +26,8 @@ window.LEVEL_META[2] = {
       "Use the Insert Function (fx) dialog when you cannot remember a function name",
       "Recognise and fix the most common syntax mistakes"
     ],
-    intro: "A function is a ready-made calculation that Excel already knows how to do. Instead of typing =B2+B3+B4+B5, you type `=SUM(B2:B5)` and Excel does the adding for you. Excel has hundreds of these ready-made calculations, and in this level you will learn the ones that office work actually uses every day: totals, averages, decisions, lookups, text and dates.\n\nEvery function follows the same simple shape. Once you can read that shape, every new function in this course becomes easier, because you already know where the name goes, where the inputs go, and what Excel expects from you.",
+    keyIdea: "A function is a ready-made formula: tell it what range to work on and it does the maths for you.",
+    intro: "A function is a ready-made calculation that Excel already knows how to do. Instead of typing `=B2+B3+B4+B5`, you type `=SUM(B2:B5)` and Excel adds for you. Excel has hundreds of these. In this level you will learn the ones office work uses every day: totals, averages, decisions, lookups, text and dates.\n\nEvery function follows the same simple shape. Learn that shape once, and every new function becomes easier. You will always know where the name goes and where the inputs go.",
     sections: [
       {
         heading: "The anatomy of a function",
@@ -48,7 +49,7 @@ window.LEVEL_META[2] = {
               "**Arguments are separated by commas.** In `=ROUND(A2, 2)` there are two arguments: the number and the number of digits."
             ]
           },
-          { type: "p", text: "Arguments can be single cells like `C2`, ranges like `C2:C4`, plain numbers like `2`, text like `\"North\"`, or even other functions tucked inside. Everything you will learn in this level fits inside this one simple shape." },
+          { type: "p", text: "Arguments can be single cells like `C2`. They can be ranges like `C2:C4`, plain numbers like `2`, or text like `\"North\"`. They can even be other functions tucked inside. Everything in this level fits inside this one simple shape." },
           {
             type: "grid",
             title: "A first function on the sheet",
@@ -60,13 +61,13 @@ window.LEVEL_META[2] = {
               ["Total", "", "=SUM(C2:C4)"]
             ]
           },
-          { type: "p", text: "Cell `C5` shows 187. If the price of Pens changes from 12 to 15, the total updates to 190 on its own — no retyping. This is the whole point of formulas: the sheet recalculates itself when the data changes." }
+          { type: "p", text: "Cell `C5` shows 187. If the price of Pens changes from 12 to 15, the total becomes 190 on its own. No retyping. This is the whole point of formulas: the sheet recalculates itself when the data changes." }
         ]
       },
       {
         heading: "Arguments, commas and the tooltip",
         blocks: [
-          { type: "p", text: "Some functions need one argument, some need two or three, and some can take many. You never have to memorise this, because Excel reminds you: as soon as you type the opening bracket, a small tooltip appears under the cell." },
+          { type: "p", text: "Some functions need one argument. Some need two or three. Some can take many. You never have to memorise this. As soon as you type the opening bracket, a small tooltip appears under the cell." },
           {
             type: "grid",
             title: "The tooltip while typing =ROUND(",
@@ -84,7 +85,7 @@ window.LEVEL_META[2] = {
               "**Nesting adds brackets.** In `=IF(A2>40, \"Pass\", \"Fail\")`, every bracket you open must be closed."
             ]
           },
-          { type: "tip", text: "If the tooltip disappears, click inside the formula in the formula bar and it comes back. The argument currently shown in bold is the one Excel expects you to type next — the bold part moves along as you type each comma." }
+          { type: "tip", text: "If the tooltip disappears, click inside the formula in the formula bar. It comes back. The bold argument is the one Excel expects you to type next. The bold part moves along as you type each comma." }
         ]
       },
       {
@@ -101,7 +102,8 @@ window.LEVEL_META[2] = {
               "Select or type the arguments, then press [[Enter]]. Excel adds the closing bracket automatically."
             ]
           },
-          { type: "p", text: "Autocomplete is not just about speed. It also protects you from misspelled names: if a name you remember is not in the list, you misremembered it. And when you type an opening bracket after the name, Excel often highlights the range you are selecting on the sheet, so you can confirm you picked the right cells." }
+          { type: "p", text: "Autocomplete is not just about speed. It also protects you from misspelled names. If a name you remember is not in the list, you misremembered it." },
+          { type: "p", text: "There is one more benefit. When you type an opening bracket, Excel often highlights the range you are selecting on the sheet. So you can confirm you picked the right cells." }
         ]
       },
       {
@@ -118,7 +120,7 @@ window.LEVEL_META[2] = {
               "Click OK to place the finished formula in the cell."
             ]
           },
-          { type: "p", text: "To edit a function later, click the cell and press [[F2]], or simply edit the text in the formula bar. Double-clicking a cell also enters edit mode. For long formulas with many nested brackets, reopening the fx dialog is often easier than editing raw text, because each argument sits in its own labelled box." }
+          { type: "p", text: "To edit a function later, click the cell and press [[F2]]. Or simply edit the text in the formula bar. Double-clicking a cell also enters edit mode. For long formulas, the fx dialog is often easier. Each argument sits in its own labelled box." }
         ]
       },
       {
@@ -134,7 +136,7 @@ window.LEVEL_META[2] = {
               ["Missing closing bracket", "Excel refuses to accept the formula when you press Enter", "Count your brackets — every open bracket needs a close"]
             ]
           },
-          { type: "warning", text: "When Excel rejects a formula, it usually highlights the exact problem spot in the formula bar. Do not delete the whole formula and start again — press [[Esc]], read the highlighted part, and fix only that." }
+          { type: "warning", text: "When Excel rejects a formula, it usually highlights the problem spot in the formula bar. Do not delete the whole formula. Press [[Esc]], read the highlighted part, and fix only that." }
         ]
       }
     ],
@@ -237,12 +239,13 @@ window.LEVEL_META[2] = {
       "Decide when a whole-column reference like E:E is helpful and when it is risky",
       "Explain how blank cells behave differently from zeros"
     ],
-    intro: "Every office report needs four basic questions answered: how much in total, what is typical, what is the biggest and what is the smallest. SUM, AVERAGE, MIN and MAX answer exactly these questions, and they are the four functions you will use most often in daily work.\n\nIn this lesson we work with the sales record of Sunrise Traders, a wholesale office supplies business. The same little table appears in your practice workbook, so you can follow along cell by cell.",
+    keyIdea: "SUM, AVERAGE, MIN and MAX answer four everyday questions: the total, the typical value, the biggest and the smallest.",
+    intro: "Every office report asks four basic questions. How much in total? What is typical? What is the biggest? What is the smallest?\n\nSUM, AVERAGE, MIN and MAX answer exactly these. They are the four functions you will use most in daily work. In this lesson we use the sales record of Sunrise Traders, a wholesale office supplies business. The same table is in your practice workbook, so you can follow along cell by cell.",
     sections: [
       {
         heading: "AutoSum: the fastest total in Excel",
         blocks: [
-          { type: "p", text: "AutoSum is a button that writes SUM for you. Select the cell directly **below** a column of numbers (or to the **right** of a row of numbers), then press [[Alt]] + [[=]]. Excel guesses which cells you want to add, writes the formula, and waits for you to confirm." },
+          { type: "p", text: "AutoSum is a button that writes SUM for you. Select the cell directly **below** a column of numbers, or to the **right** of a row. Then press [[Alt]] + [[=]]. Excel guesses which cells you want to add. It writes the formula and waits for you to confirm." },
           {
             type: "steps",
             items: [
@@ -252,7 +255,7 @@ window.LEVEL_META[2] = {
               "Check the guess. If it is right, press [[Enter]]. If it is wrong, select the correct range first, then press [[Enter]]."
             ]
           },
-          { type: "warning", text: "Always glance at the range AutoSum guessed before pressing Enter. If there is a gap in the column — even one empty cell — Excel stops guessing at the gap and your total misses rows." },
+          { type: "warning", text: "Always glance at the guessed range before pressing Enter. If there is a gap in the column, even one empty cell, Excel stops at the gap. Your total silently misses rows." },
           {
             type: "grid",
             title: "Sunrise Traders sales record",
@@ -282,7 +285,7 @@ window.LEVEL_META[2] = {
             example: "=SUM(E2:E10)",
             explanation: "Adds every number in the range E2 to E10. A colon between two cell references means \"from this cell to that cell\"."
           },
-          { type: "p", text: "The colon is the range operator: `E2:E10` means all nine cells from E2 through E10. You can also give SUM several separate ranges at once, separated by commas. This is useful when the rows you need are not next to each other." },
+          { type: "p", text: "The colon is the range operator: `E2:E10` means all nine cells from E2 through E10. You can also give SUM several ranges at once, separated by commas. This helps when the rows you need are not next to each other." },
           {
             type: "formula",
             name: "SUM with several ranges",
@@ -290,7 +293,7 @@ window.LEVEL_META[2] = {
             example: "=SUM(E2:E5, E8:E10)",
             explanation: "Adds two blocks of rows and skips the rows in between. The comma means \"and also\"."
           },
-          { type: "tip", text: "You can type the range or select it with the mouse. When you start typing =SUM( and then drag across the cells, Excel writes the range for you — this is the safest way to avoid typos like E2:E01." }
+          { type: "tip", text: "You can type the range or select it with the mouse. Start typing `=SUM(` and then drag across the cells. Excel writes the range for you. This is the safest way to avoid typos like `E2:E01`." }
         ]
       },
       {
@@ -332,7 +335,7 @@ window.LEVEL_META[2] = {
               "**Risk:** on very large sheets, whole-column formulas in many cells can slow the workbook down."
             ]
           },
-          { type: "warning", text: "SUM ignores text, so a header like \"Amount (₹)\" does not break =SUM(E:E). But COUNTA does count text, and a stray number parked somewhere in the column silently changes the total. In professional reports, a clean fixed range is usually the safer habit." }
+          { type: "warning", text: "SUM ignores text, so a header like \"Amount (₹)\" does not break `=SUM(E:E)`. But a stray number parked in the column silently changes the total. In professional reports, a clean fixed range is the safer habit." }
         ]
       },
       {
@@ -348,8 +351,9 @@ window.LEVEL_META[2] = {
               ["Text such as \"N/A\"", "Ignored", "Ignored", "Not counted"]
             ]
           },
-          { type: "p", text: "Example: your delivery team records units sold, but two days have no entry at all (empty cells). AVERAGE gives the average of the days that were actually recorded. If the team had typed 0 for those days instead, the average would drop, because the zeros now count as real days with no sales. Which is right depends on what the number means — that is a business decision, not an Excel one." },
-          { type: "p", text: "In plain arithmetic the rules change again: an empty cell used in a calculation acts like 0. `=E2*2` returns 0 when E2 is empty. So blanks are skipped by SUM and AVERAGE, but treated as zero inside formulas that multiply or divide them." }
+          { type: "p", text: "Example: your delivery team records units sold, but two days have no entry at all. AVERAGE then averages only the days that were actually recorded. If the team had typed 0 for those days, the average would drop. The zeros would count as real days with no sales." },
+          { type: "p", text: "Which is right? That depends on what the number means. It is a business decision, not an Excel one." },
+          { type: "p", text: "In plain arithmetic the rules change again. An empty cell used in a calculation acts like 0. `=E2*2` returns 0 when `E2` is empty. So blanks are skipped by SUM and AVERAGE. But formulas that multiply or divide treat them as zero." }
         ]
       }
     ],
@@ -461,7 +465,8 @@ window.LEVEL_META[2] = {
       "Explain the difference between rounding a value and formatting a cell",
       "Round money amounts to two decimal places the professional way"
     ],
-    intro: "Counting is not one job but three: how many cells hold numbers, how many cells are filled at all, and how many are empty. Excel gives each job its own function — COUNT, COUNTA and COUNTBLANK. Mixing them up is one of the most common beginner errors in reports.\n\nRounding is the second skill here. After this lesson you will know why the ROUND function and the cell format with two decimals are two completely different things — a difference that matters every time money is involved.",
+    keyIdea: "COUNT counts numbers, COUNTA counts anything filled, COUNTBLANK counts empty cells; ROUND changes the value, formatting only the look.",
+    intro: "Counting in Excel is really three jobs. How many cells hold numbers? How many are filled at all? How many are empty?\n\nExcel gives each job its own function: COUNT, COUNTA and COUNTBLANK. Mixing them up is a very common beginner error. This lesson also teaches ROUND. You will see why ROUND and number formatting are two different things — and that matters every time money is involved.",
     sections: [
       {
         heading: "Three ways to count",
@@ -502,7 +507,8 @@ window.LEVEL_META[2] = {
               ["Empty cells", "=COUNTBLANK(C2:C6)", "2"]
             ]
           },
-          { type: "p", text: "Read the grid like a report. `COUNT(C2:C6)` returns 3 because only three items have units sold recorded. `COUNTA(B2:B6)` returns 5 because all five item names are filled. `COUNTBLANK(C2:C6)` returns 2 — the Pens and Laptops rows still need data. In office work, COUNTBLANK is a quick data-quality check before you send a report." }
+          { type: "p", text: "Read the grid like a report. `COUNT(C2:C6)` returns 3 because only three items have units sold recorded. `COUNTA(B2:B6)` returns 5 because all item names are filled." },
+          { type: "p", text: "`COUNTBLANK(C2:C6)` returns 2. The Pens and Laptops rows still need data. In office work, COUNTBLANK is a quick data-quality check before you send a report." }
         ]
       },
       {
@@ -517,7 +523,7 @@ window.LEVEL_META[2] = {
               "**COUNT on a text column returns 0** — that is correct behaviour, not a bug. Names are not numbers."
             ]
           },
-          { type: "tip", text: "A neat identity: COUNT + COUNTBLANK on the same single-column range always equals the total number of cells in that range. If it does not, some cells hold something unexpected — worth investigating." }
+          { type: "tip", text: "A neat identity: COUNT + COUNTBLANK on the same single-column range always equals the total cells in that range. If it does not, some cells hold something unexpected. Worth investigating." }
         ]
       },
       {
@@ -540,7 +546,7 @@ window.LEVEL_META[2] = {
               "`=ROUNDDOWN(1234.569, 2)` returns 1234.56 — always towards zero, chopping the extra digits off."
             ]
           },
-          { type: "p", text: "ROUNDUP and ROUNDDOWN are for business rules, not maths. If notebooks are packed 25 to a carton, 58 notebooks need 2.32 cartons — you cannot order a third of a carton, so `=ROUNDUP(58/25, 0)` gives the correct answer 3. Rounding down would leave seven notebooks unpacked." }
+          { type: "p", text: "ROUNDUP and ROUNDDOWN are for business rules, not maths. Suppose notebooks are packed 25 to a carton, and you need 58. That is 2.32 cartons — you cannot order a third of a carton. So `=ROUNDUP(58/25, 0)` gives the correct answer 3. Rounding down would leave seven notebooks unpacked." }
         ]
       },
       {
@@ -557,7 +563,8 @@ window.LEVEL_META[2] = {
               ["3", "=ROUND(1234.567, 2)", "1234.57 (really changed)"]
             ]
           },
-          { type: "p", text: "Suppose an invoice line shows ₹123.46 after formatting, and another shows ₹123.46 after rounding, but both started from different raw values. Format the display and the true value still has its extra digits — a long invoice totalled from formatted cells can end up a few paise off from the sum of the figures printed on the page. Auditors hate that. When the printed total must match the printed lines, ROUND the values first." },
+          { type: "p", text: "Suppose two invoice lines both show ₹123.46 on screen. One got there by formatting, the other by rounding. Their true stored values are still different." },
+          { type: "p", text: "Format the display only, and the hidden extra digits survive. A long invoice totalled from formatted cells can end up a few paise off from the printed figures. Auditors hate that. When the printed total must match the printed lines, ROUND the values first." },
           {
             type: "formula",
             name: "Rounding money the professional way",
@@ -677,7 +684,8 @@ window.LEVEL_META[2] = {
       "Build realistic Pass/Fail, bonus and stock-reorder formulas",
       "Nest one IF inside another for a simple three-way result"
     ],
-    intro: "So far every function has calculated something. IF is different: it decides. \"If the marks are at least 40, write Pass, otherwise write Fail.\" \"If stock is below 10, flag it for reorder.\" Almost every checklist, payslip and stock report in an office runs on IF.\n\nIF is also your first function with true and false outcomes, so it introduces an idea the rest of this level builds on: Excel can test a condition and return different values depending on the answer.",
+    keyIdea: "IF tests a condition and shows one result when it is true, another when it is false.",
+    intro: "So far, every function has calculated something. IF is different: it decides. \"If the marks are at least 40, write Pass. Otherwise write Fail.\" \"If stock is below 10, flag it for reorder.\"\n\nAlmost every checklist, payslip and stock report in an office runs on IF. IF also introduces a big idea. Excel can test a condition and return different values depending on the answer. The rest of this level builds on that idea.",
     sections: [
       {
         heading: "The shape of a decision",
@@ -719,7 +727,7 @@ window.LEVEL_META[2] = {
               ["<=", "less than or equal", "D2<=10", "the stock is 10 or fewer"]
             ]
           },
-          { type: "p", text: "Pick >= or <= when the boundary itself belongs to one side. \"Pass at 40\" means 40 passes, so the test is `B2>=40`, not `B2>40`. Choosing between them is a business decision — get it wrong and someone exactly on the boundary falls through." },
+          { type: "p", text: "Pick >= or <= when the boundary itself belongs to one side. \"Pass at 40\" means 40 passes. So the test is `B2>=40`, not `B2>40`. Get this wrong and someone exactly on the boundary falls through." },
           { type: "tip", text: "The \"not equal\" operator is two characters, `<>`, and is read \"is different from\". It is perfect for flagging exceptions: =IF(A2<>\"Paid\", \"Follow up\", \"OK\")." }
         ]
       },
@@ -727,7 +735,8 @@ window.LEVEL_META[2] = {
         heading: "Text in quotes, numbers without",
         blocks: [
           { type: "p", text: "Whenever you compare against **text**, wrap the text in double quotes: `=IF(A2=\"North\", \"Home zone\", \"Other zone\")`. Forget the quotes and Excel thinks North is a name it should know — the formula returns the #NAME? error." },
-          { type: "p", text: "Numbers are the opposite: **no quotes**. `=IF(B2>=40, \"Pass\", \"Fail\")` compares against the number 40. Writing `\"40\"` compares against the text \"40\", and although Excel often still matches it, mixing text and number comparisons invites subtle bugs. The results \"Pass\" and \"Fail\" are in quotes because they are text you want to display." },
+          { type: "p", text: "Numbers are the opposite: **no quotes**. `=IF(B2>=40, \"Pass\", \"Fail\")` compares against the number 40. Writing `\"40\"` compares against the text \"40\". Excel often still matches it, but mixing text and numbers invites subtle bugs." },
+          { type: "p", text: "The results \"Pass\" and \"Fail\" are in quotes because they are text you want to display." },
           {
             type: "grid",
             title: "Stock reorder list",
@@ -757,20 +766,20 @@ window.LEVEL_META[2] = {
               ["Sneha Iyer", "75000", "=IF(B5>=50000, \"Bonus\", \"No bonus\")"]
             ]
           },
-          { type: "p", text: "Arjun and Sneha cross the line, Priya misses it by 2,000. If the rules later change — say the target becomes 45,000 — you edit one formula and refill the column, or better, test against a cell that holds the target so the sheet has a single place to change it." }
+          { type: "p", text: "Arjun and Sneha cross the line. Priya misses it by 2,000. If the target later becomes 45,000, you edit one formula and refill the column. Even better: test against a cell that holds the target. Then the sheet has a single place to change." }
         ]
       },
       {
         heading: "One IF inside another (a first taste)",
         blocks: [
-          { type: "p", text: "Sometimes two outcomes are not enough. A grading sheet needs Distinction for 75 and above, Pass for 40 to 74, and Fail below that. You can put a second IF in place of the first formula's false result:" },
+          { type: "p", text: "Sometimes two outcomes are not enough. A grading sheet needs three: Distinction for 75 and above, Pass for 40 to 74, Fail below that. You can put a second IF in place of the false result:" },
           {
             type: "code",
             lang: "excel",
             text: "=IF(B2>=75, \"Distinction\", IF(B2>=40, \"Pass\", \"Fail\"))"
           },
-          { type: "p", text: "Excel reads this from the outside in: is B2 at least 75? If yes, Distinction. If not, run the inner IF: is B2 at least 40? If yes, Pass, otherwise Fail. The order matters — test the top band first, because a value of 80 would also satisfy \"at least 40\"." },
-          { type: "warning", text: "Two levels of nesting like this is fine. Stacking five or six IFs makes formulas unreadable and fragile. Later levels of this course teach cleaner tools for many-way decisions (IFS, and lookup tables), so do not build towers of IFs out of habit." }
+          { type: "p", text: "Excel reads this from the outside in. Is B2 at least 75? If yes, Distinction. If not, the inner IF runs: is B2 at least 40? If yes, Pass. Otherwise Fail. The order matters. Test the top band first, because 80 also satisfies \"at least 40\"." },
+          { type: "warning", text: "Two levels of nesting like this is fine. Stacking five or six IFs makes formulas unreadable and fragile. Later levels teach cleaner tools for many-way decisions (IFS, and lookup tables). Do not build towers of IFs out of habit." }
         ]
       }
     ],
@@ -879,7 +888,8 @@ window.LEVEL_META[2] = {
       "Use the IFS function to replace several nested IFs in one readable formula",
       "Build the nested-IF alternative that works in older Excel versions"
     ],
-    intro: "Real decisions rarely depend on one condition. A bonus needs the sales target met **and** attendance above 90 percent. A customer gets free delivery from the North zone **or** on orders above 5,000. AND and OR are the functions that join conditions together.\n\nAt the end of the lesson you will meet IFS, a newer function that replaces towers of nested IFs. IFS needs Excel 2019 or Microsoft 365 — if your office still runs Excel 2016, the nested-IF alternative shown here does the same job.",
+    keyIdea: "AND needs every condition to be true; OR needs just one of them to be true.",
+    intro: "Real decisions rarely depend on one condition. A bonus needs the sales target met **and** attendance above 90 percent. Free delivery may need the North zone **or** an order above ₹5,000.\n\nAND and OR are the functions that join conditions together. At the end you will meet IFS, which replaces towers of nested IFs. IFS needs Excel 2019 or Microsoft 365. On older Excel, the nested-IF alternative shown here does the same job.",
     sections: [
       {
         heading: "AND and OR: two functions that answer yes or no",
@@ -898,7 +908,7 @@ window.LEVEL_META[2] = {
             example: "=OR(A2=\"North\", E2>5000)",
             explanation: "Returns TRUE when at least one condition inside is true. It only returns FALSE when all of them are false."
           },
-          { type: "p", text: "On their own, these functions show the words TRUE or FALSE in the cell. Try it: `=AND(2>1, 3>2)` shows TRUE; `=AND(2>1, 3<2)` shows FALSE; `=OR(3<2, 4<3)` shows FALSE. Handy for learning, but in real work you almost never leave them standing alone — you put them inside IF." },
+          { type: "p", text: "On their own, these functions show TRUE or FALSE in the cell. Try it: `=AND(2>1, 3>2)` shows TRUE. `=AND(2>1, 3<2)` shows FALSE. `=OR(3<2, 4<3)` shows FALSE. Handy for learning. In real work you almost never leave them standing alone — you put them inside IF." },
           {
             type: "table",
             headers: ["Condition A", "Condition B", "AND(A, B)", "OR(A, B)"],
@@ -909,7 +919,7 @@ window.LEVEL_META[2] = {
               ["FALSE", "FALSE", "FALSE", "FALSE"]
             ]
           },
-          { type: "p", text: "AND is strict: every rule must pass. OR is generous: any one rule is enough. Say this sentence out loud when you choose between them — \"the customer qualifies if the region is North **and** the order is above 5,000\" means AND; \"if the region is North **or** the order is above 5,000\" means OR." }
+          { type: "p", text: "AND is strict: every rule must pass. OR is generous: any one rule is enough. Say the rule out loud when you choose. \"North **and** order above 5,000\" means AND. \"North **or** order above 5,000\" means OR." }
         ]
       },
       {
@@ -927,7 +937,7 @@ window.LEVEL_META[2] = {
               ["Sneha Iyer", "75000", "Yes", "=IF(AND(B5>=50000, C5=\"Yes\"), \"Bonus\", \"No bonus\")"]
             ]
           },
-          { type: "p", text: "Read each row. Arjun passes both rules — Bonus. Priya misses the target — No bonus. Rahul beats the target but skipped training — No bonus, because AND demands both. Sneha passes both — Bonus. Compare with lesson 4, where Rahul earned a bonus on sales alone; the second rule changed the decision." },
+          { type: "p", text: "Read each row. Arjun passes both rules — Bonus. Priya misses the target — No bonus. Rahul beats the target but skipped training — No bonus, because AND demands both. Sneha passes both — Bonus. Compare with lesson 4. There, Rahul earned a bonus on sales alone; the second rule changed the decision." },
           { type: "p", text: "The same pattern handles free delivery: `=IF(AND(B2>=5000, A2=\"North\"), \"Free delivery\", \"Standard charges\")`." }
         ]
       },
@@ -946,8 +956,8 @@ window.LEVEL_META[2] = {
               ["West", "22000", "=IF(OR(A5=\"North\", B5>20000), \"Priority\", \"Standard\")"]
             ]
           },
-          { type: "p", text: "Rows 2, 3 and 5 qualify — the North region in row 2, the big spend in rows 3 and 5. Row 4 has neither, so it stays Standard. With OR, one satisfied condition carries the whole test." },
-          { type: "warning", text: "AND and OR can take many conditions, and they can be mixed: =IF(OR(AND(A2=\"North\", B2>5000), C2=\"VIP\"), ...) tests two sub-conditions then the VIP flag. If a formula grows past two levels of mixing, step back and simplify — readability is part of correctness." }
+          { type: "p", text: "Rows 2, 3 and 5 qualify — North in row 2, big spend in rows 3 and 5. Row 4 has neither, so it stays Standard. With OR, one satisfied condition carries the whole test." },
+          { type: "warning", text: "AND and OR can take many conditions, and they can be mixed: `=IF(OR(AND(A2=\"North\", B2>5000), C2=\"VIP\"), ...)` tests two sub-conditions, then the VIP flag. If a formula grows past two levels of mixing, step back and simplify. Readability is part of correctness." }
         ]
       },
       {
@@ -966,8 +976,8 @@ window.LEVEL_META[2] = {
             lang: "excel",
             text: "IFS version (Excel 2019+):\n=IFS(B2>=75, \"A grade\", B2>=40, \"B grade\", TRUE, \"C grade\")\n\nNested IF version (all Excel versions):\n=IF(B2>=75, \"A grade\", IF(B2>=40, \"B grade\", \"C grade\"))"
           },
-          { type: "p", text: "Both formulas grade 80 as A, 60 as B and 20 as C. The IFS version is easier to read and easier to extend — add another pair to create a fourth grade. Note the last pair uses the condition TRUE, which is always satisfied, so it catches everything the earlier tests missed." },
-          { type: "warning", text: "If no test in IFS is true and you did not include a final TRUE pair, IFS returns the #N/A error. Always finish with TRUE and a default result. If you are on Excel 2016 or older, use the nested IF version instead — IFS simply does not exist there." }
+          { type: "p", text: "Both formulas grade 80 as A, 60 as B and 20 as C. The IFS version is easier to read and easier to extend. Add another pair to create a fourth grade. The last pair uses TRUE, which is always satisfied. It catches everything the earlier tests missed." },
+          { type: "warning", text: "If no test is true and there is no final TRUE pair, IFS returns the #N/A error. Always finish with TRUE and a default result. On Excel 2016 or older, use the nested IF version instead. IFS simply does not exist there." }
         ]
       }
     ],
@@ -1076,7 +1086,8 @@ window.LEVEL_META[2] = {
       "Decide when an error should be fixed at the source instead of hidden",
       "Keep reports free of #DIV/0! without hiding real mistakes"
     ],
-    intro: "Nothing makes a report look unfinished like a column of #DIV/0! and #N/A. The calculations may be right — but the person reading the report sees red error text and loses trust in the numbers. IFERROR is the polite face of a formula: it catches errors and shows something sensible instead.\n\nThere is a discipline to it, though. An error is often information — it tells you the data behind the formula is broken. This lesson teaches you both halves: fix the error when you can, and use IFERROR when a clean fallback is genuinely the right answer.",
+    keyIdea: "IFERROR catches a formula's error and shows a clean fallback value instead of red error text.",
+    intro: "Nothing makes a report look unfinished like a column of #DIV/0! and #N/A. The maths may be right. But red error text makes readers lose trust in the numbers.\n\nIFERROR is the polite face of a formula. It catches errors and shows something sensible instead. But an error is also information — it tells you the data is broken. So fix errors when you can, and wrap them in IFERROR when a clean fallback is the right answer.",
     sections: [
       {
         heading: "The errors you will actually meet",
@@ -1092,8 +1103,8 @@ window.LEVEL_META[2] = {
               ["#NAME?", "A name Excel does not recognise — usually a misspelled function", "=SUMME(C2:C4) instead of =SUM(C2:C4)"]
             ]
           },
-          { type: "p", text: "Two of these are worth extra attention. #DIV/0! appears whenever the bottom of a division is 0 or empty — extremely common in daily-rate and percentage calculations. #N/A appears in lookup formulas, which you will meet later this level; it means \"the thing I was asked to find is not in the list\"." },
-          { type: "tip", text: "Click a cell showing an error and a small diamond icon appears beside it. Clicking the icon offers **Show Calculation Steps** and **Help on this error** — Excel explains exactly which part failed. Use it before reaching for IFERROR." }
+          { type: "p", text: "Two of these deserve extra attention. #DIV/0! appears whenever the bottom of a division is 0 or empty. This is very common in daily-rate and percentage calculations. #N/A appears in lookup formulas — you will meet them later this level. It means \"the thing I was asked to find is not in the list\"." },
+          { type: "tip", text: "Click a cell showing an error and a small diamond icon appears beside it. It offers **Show Calculation Steps** and **Help on this error**. Excel explains exactly which part failed. Use it before reaching for IFERROR." }
         ]
       },
       {
@@ -1134,7 +1145,7 @@ window.LEVEL_META[2] = {
               "**Prefer fixing the source.** A #VALUE! from a quantity typed as \"two\" is cured by correcting the data, not by hiding the error."
             ]
           },
-          { type: "warning", text: "A sheet where every formula is wrapped in IFERROR can look clean while producing nonsense. If you inherit a report full of IFERROR formulas, temporarily remove a few wrappers and look at what they are hiding before you trust the numbers." }
+          { type: "warning", text: "A sheet where every formula is wrapped in IFERROR can look clean while producing nonsense. If you inherit such a report, remove a few wrappers temporarily. Look at what they are hiding before you trust the numbers." }
         ]
       }
     ],
@@ -1238,7 +1249,8 @@ window.LEVEL_META[2] = {
       "Line up sum_range with the criteria range correctly",
       "Answer real sales questions: totals per region, counts per product, orders above a limit"
     ],
-    intro: "SUM tells you the total of everything. But office questions are rarely that broad: how much did the **North** region sell? How many **Notebook** orders came in? What is the total of orders **above 5,000**? SUMIF and COUNTIF answer questions with a condition attached — add up only the rows that match.\n\nThese two functions are the everyday workhorses of sales reports, stock lists and invoice summaries. Master them well here, because SUMIFS, COUNTIFS and AVERAGEIFS in the next lesson are their direct big siblings.",
+    keyIdea: "SUMIF and COUNTIF add up or count only the rows that match one condition.",
+    intro: "SUM totals everything. But office questions are usually narrower. How much did the **North** region sell? How many **Notebook** orders came in? What is the total of orders **above ₹5,000**?\n\nSUMIF and COUNTIF add up or count only the rows that match. They are the everyday workhorses of sales reports, stock lists and invoice summaries. Learn them well here. SUMIFS, COUNTIFS and AVERAGEIFS in the next lesson are their direct big siblings.",
     sections: [
       {
         heading: "COUNTIF: how many rows match?",
@@ -1284,7 +1296,7 @@ window.LEVEL_META[2] = {
               ["Wildcard", "\"Pen*\"", "How many rows start with Pen?"]
             ]
           },
-          { type: "p", text: "Comparisons go **inside the quotes**: `\">5000\"` is one piece of text that Excel interprets as a rule. And comparisons can join a cell reference with an ampersand, so the threshold lives in a cell you can change without editing the formula: `\">\"&G3` builds \">5000\" from whatever G3 holds." },
+          { type: "p", text: "Comparisons go **inside the quotes**: `\">5000\"` is one piece of text. Excel reads it as a rule. Comparisons can also join a cell reference with an ampersand. Then the threshold lives in a cell: `\">\"&G3` builds \">5000\" from whatever `G3` holds." },
           {
             type: "grid",
             title: "COUNTIF with different criteria",
@@ -1310,7 +1322,8 @@ window.LEVEL_META[2] = {
             example: "=SUMIF(A2:A10, \"North\", E2:E10)",
             explanation: "Looks in A2:A10 for North, and adds the Amount values from the matching rows in E2:E10. The ranges run parallel, row for row."
           },
-          { type: "p", text: "Read the three arguments as a sentence: \"look **here** for **this**, and add up **that**.\" The first range is where the condition lives, the second is the condition, the third is what gets added. When you leave out the third argument, SUMIF adds the criteria range itself — correct when you are summing the same numbers you are testing, like `=SUMIF(E2:E10, \">5000\")` for the total of big orders." },
+          { type: "p", text: "Read the three arguments as a sentence: \"look **here** for **this**, and add up **that**.\" The first range is where the condition lives. The second is the condition. The third is what gets added." },
+          { type: "p", text: "Leave out the third argument and SUMIF adds the criteria range itself. That is correct when you sum the same numbers you test, like `=SUMIF(E2:E10, \">5000\")` for the total of big orders." },
           {
             type: "grid",
             title: "SUMIF on the sales record",
@@ -1322,7 +1335,8 @@ window.LEVEL_META[2] = {
               ["Units for Pens", "=SUMIF(B2:B10, \"Pens\", C2:C10)", "180"]
             ]
           },
-          { type: "p", text: "Check the North total by hand: rows 2, 5 and 9 give 1800 + 17000 + 1300 = 20100. Notebook revenue is 1800 + 2700 + 1125 = 5625. Big orders are the Printer and Laptop rows: 17000 + 42000 = 59000. Units for Pens: 100 + 80 = 180. Every result traces back to visible rows — that is how you should verify your own SUMIF formulas." }
+          { type: "p", text: "Check the North total by hand: rows 2, 5 and 9 give 1800 + 17000 + 1300 = 20100. Notebook revenue is 1800 + 2700 + 1125 = 5625." },
+          { type: "p", text: "Big orders are the Printer and Laptop rows: 17000 + 42000 = 59000. Units for Pens: 100 + 80 = 180. Every result traces back to visible rows. That is how you should verify your own SUMIF formulas." }
         ]
       },
       {
@@ -1337,14 +1351,15 @@ window.LEVEL_META[2] = {
               "**Tilde ( ~ ) escapes a wildcard** if you truly need to search for a literal asterisk: `\"~*\"`."
             ]
           },
-          { type: "p", text: "In the product list, `\"Pen*\"` matches only Pens (2 orders), while `\"Pen\"` without the wildcard matches only the exact word Pen — which appears zero times here. Notebooks need no wildcard because the name is complete, but in real product lists names often come with sizes or codes attached (\"Notebook A4 Ruled\"), and `\"Notebook*\"` catches them all." },
+          { type: "p", text: "In the product list, `\"Pen*\"` matches only Pens (2 orders). `\"Pen\"` without the wildcard matches only the exact word Pen, which appears zero times here." },
+          { type: "p", text: "Notebooks need no wildcard because the name is complete. But real product lists often carry sizes or codes attached (\"Notebook A4 Ruled\"). `\"Notebook*\"` catches them all." },
           { type: "tip", text: "Wildcards also power the AVERAGEIF sibling: =AVERAGEIF(A2:A10, \"North\", E2:E10) gives the average North sale, 20100 divided by 3, which is 6700. Same argument order as SUMIF." }
         ]
       },
       {
         heading: "Keeping the ranges aligned",
         blocks: [
-          { type: "p", text: "The criteria range and the sum range must start at the same row and run the same length. Excel reads them row by row: row 2 of the criteria range decides whether row 2 of the sum range is added." },
+          { type: "p", text: "The criteria range and the sum range must start at the same row and run the same length. Excel reads them row by row. Row 2 of the criteria range decides whether row 2 of the sum range is added." },
           {
             type: "ul",
             items: [
@@ -1353,7 +1368,7 @@ window.LEVEL_META[2] = {
               "Wrong: ranges of different lengths invite mistakes — Excel tolerates them, but the results stop meaning anything."
             ]
           },
-          { type: "warning", text: "If a SUMIF returns a number that looks impossible, check the two ranges first — an off-by-one start row is the number-one cause of wrong conditional totals. The safest method: select both ranges from the same row and drag." }
+          { type: "warning", text: "If a SUMIF returns a number that looks impossible, check the two ranges first. An off-by-one start row is the number-one cause of wrong totals. The safest method: select both ranges from the same row and drag." }
         ]
       }
     ],

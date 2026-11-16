@@ -24,20 +24,23 @@ window.LEVEL_META[1] = {
       "Open Excel and create a blank workbook",
       "Save a workbook with Ctrl + S in the xlsx format"
     ],
-    intro: "Excel is the most used office program in the world after word processors. Almost every office job — accounts, sales, HR, stores, planning — expects you to open Excel and work with a list of numbers without fear.\n\nThis lesson starts from zero. You will learn what a spreadsheet actually is, who uses Excel in a normal working day, and how to open your first blank workbook and save it safely. No prior experience is needed.",
+    intro: "Excel is the most used office program in the world, after word processors. Almost every office job needs it. Accounts, sales, HR and stores all use it daily.\n\nThis lesson starts from zero. You will learn what a spreadsheet actually is. You will see who uses Excel in a normal working day. Then you will open your first blank workbook and save it safely. No prior experience is needed.",
+    keyIdea: "Excel is a big grid of boxes called cells, and each cell holds one piece of information.",
     sections: [
       {
         heading: "What is a spreadsheet?",
         blocks: [
-          { type: "p", text: "A **spreadsheet** is a very large grid of boxes. Each box is called a **cell**. You can type a number, some text, or a date into any cell. You can also tell Excel to calculate things for you. That is the big difference between Excel and a piece of paper: the sheet does the maths." },
-          { type: "p", text: "The grid is organised in **columns** and **rows**. Columns run down the sheet and are named with letters: A, B, C, and so on. Rows run across the sheet and are numbered: 1, 2, 3, and so on. Where a column and a row meet, there is a cell. The cell where column B meets row 3 is called `B3`." },
+          { type: "p", text: "A **spreadsheet** is a very large grid of boxes. Each box is called a **cell**. You can type a number, some text, or a date into any cell." },
+          { type: "p", text: "You can also ask Excel to calculate things for you. This is the big difference from a piece of paper: the sheet does the maths." },
+          { type: "p", text: "The grid is organised in **columns** and **rows**. Columns run down the sheet and are named with letters: A, B, C, and so on. Rows run across the sheet and are numbered: 1, 2, 3, and so on." },
+          { type: "p", text: "Where a column and a row meet, there is a cell. The cell where column B meets row 3 is called `B3`." },
           { type: "grid", title: "A small sales list for Sunrise Traders", rows: [
             ["Item", "Price", "Qty", "Total"],
             ["Notebook", "45", "10", "450"],
             ["Pen pack", "60", "5", "300"],
             ["Printer", "12500", "1", "12500"]
           ] },
-          { type: "p", text: "Look at the grid above. Each cell holds exactly one piece of information. `A2` holds the text \"Notebook\", `B2` holds the price 45, and `D2` holds the total 450, which Excel calculated from the price and the quantity. One grid like this can replace pages of hand-written calculations." }
+          { type: "p", text: "Look at the grid above. Each cell holds exactly one piece of information. `A2` holds the text \"Notebook\". `B2` holds the price 45. `D2` holds the total 450, which Excel calculated from the price and the quantity. One grid like this can replace pages of hand-written calculations." }
         ]
       },
       {
@@ -51,7 +54,7 @@ window.LEVEL_META[1] = {
             ["Store and inventory", "Tracking stock of items like notebooks and printers, flagging items that are running low"],
             ["Managers", "Reading reports, checking budgets, making simple charts for meetings"]
           ] },
-          { type: "p", text: "Notice something: in every case the person is doing the same three things — **entering data**, **calculating totals**, and **making the result look clean** for someone else to read. Those three skills are exactly what Level 1 of this course teaches." }
+          { type: "p", text: "Notice something: in every case the person is doing the same three things. They are **entering data**, **calculating totals**, and **making the result look clean** for someone else to read. Those three skills are exactly what Level 1 of this course teaches." }
         ]
       },
       {
@@ -71,20 +74,20 @@ window.LEVEL_META[1] = {
       {
         heading: "Opening Excel and creating a blank workbook",
         blocks: [
-          { type: "p", text: "A file made in Excel is called a **workbook**. A workbook can hold one or more **worksheets** (the individual grid pages). When you start a new piece of work, you create a new blank workbook." },
+          { type: "p", text: "A file made in Excel is called a **workbook**. A workbook can hold one or more **worksheets**. A worksheet is one individual grid page. When you start a new piece of work, you create a new blank workbook." },
           { type: "steps", items: [
             "Click the Start button (or press the Windows key) and type \"Excel\". Click **Excel** in the results.",
             "Excel opens and shows the Start screen with recent files and templates.",
             "Click **Blank workbook** — the large plain option with a green plus sign.",
             "A fresh empty grid opens, waiting for your data."
           ] },
-          { type: "p", text: "If Excel is already open, you can start a new workbook any time with the shortcut [[Ctrl]] + [[N]]. A blank workbook appears immediately, on top of the one you were working in." }
+          { type: "p", text: "If Excel is already open, you can start a new workbook any time. Press [[Ctrl]] + [[N]]. A blank workbook appears immediately, on top of the one you were working in." }
         ]
       },
       {
         heading: "Saving your work — the habit that saves jobs",
         blocks: [
-          { type: "p", text: "Here is a true office rule: **an unsaved file does not exist**. If the power fails or the computer restarts before you save, everything you typed is gone. Saving takes one second, so make it a habit." },
+          { type: "p", text: "Here is a true office rule: **an unsaved file does not exist**. If the power fails before you save, everything you typed is gone. Saving takes one second, so make it a habit." },
           { type: "steps", items: [
             "Press [[Ctrl]] + [[S]]. The first time, Excel shows the Save As screen.",
             "Choose a folder you will remember, for example **Documents** or a folder called **Excel Practice**.",
@@ -92,9 +95,9 @@ window.LEVEL_META[1] = {
             "Keep the file type as **Excel Workbook (*.xlsx)** — that is the standard modern format.",
             "Click **Save**."
           ] },
-          { type: "p", text: "After the first save, pressing [[Ctrl]] + [[S]] updates the same file silently — no dialog appears. The modern `.xlsx` format keeps formulas, formatting and multiple sheets intact, and opens in Excel 2007 and every later version." },
-          { type: "tip", text: "Press [[Ctrl]] + [[S]] every few minutes, and always just after finishing something important like a long list or a formula. The file name stays the same; only the contents are updated." },
-          { type: "warning", text: "If you want to keep an original copy and work on a new version, use **File > Save As** and give the file a new name, such as \"Sales Week 2\". If you just press [[Ctrl]] + [[S]], you overwrite the original." }
+          { type: "p", text: "After the first save, pressing [[Ctrl]] + [[S]] updates the same file silently. No dialog appears. The modern `.xlsx` format keeps formulas, formatting and multiple sheets intact. It opens in Excel 2007 and every later version." },
+          { type: "tip", text: "Press [[Ctrl]] + [[S]] every few minutes. Also save just after finishing something important, like a long list or a formula. The file name stays the same; only the contents are updated." },
+          { type: "warning", text: "Want to keep an original copy and work on a new version? Use **File > Save As** and give the file a new name, such as \"Sales Week 2\". If you just press [[Ctrl]] + [[S]], you overwrite the original." }
         ]
       }
     ],
@@ -140,12 +143,13 @@ window.LEVEL_META[1] = {
       "Navigate a large sheet with keyboard shortcuts",
       "Show, hide and use the Quick Access Toolbar and the Ribbon"
     ],
-    intro: "The first time Excel opens, it shows a lot of things at once: a giant grid, a long strip of buttons on top, small boxes above the grid, and coloured tabs at the bottom. It can feel overwhelming.\n\nThis lesson gives you a guided tour of every part of that screen. Once you can name each part and know what it is for, Excel stops being scary and starts being a tool you control.",
+    intro: "The first time Excel opens, it shows a lot of things at once. There is a giant grid, a strip of buttons on top, small boxes above the grid, and coloured tabs at the bottom. It can feel overwhelming.\n\nThis lesson gives you a guided tour of every part of that screen. Once you can name each part and know what it is for, Excel stops being scary. It becomes a tool you control.",
+    keyIdea: "The Excel screen has named parts, and each part does one clear job.",
     sections: [
       {
         heading: "The Ribbon: tabs, groups and dialog launchers",
         blocks: [
-          { type: "p", text: "The **Ribbon** is the wide strip of buttons across the top. It is divided into **tabs**: Home, Insert, Page Layout, Formulas, Data, Review and View. Each tab holds buttons for one kind of task. The **Home** tab is where beginners spend most of their time: font, colour, number format, alignment and borders are all there." },
+          { type: "p", text: "The **Ribbon** is the wide strip of buttons across the top. It is divided into **tabs**: Home, Insert, Page Layout, Formulas, Data, Review and View. Each tab holds buttons for one kind of task. Beginners spend most of their time on the **Home** tab. Font, colour, number format, alignment and borders are all there." },
           { type: "p", text: "Within a tab, related buttons sit together in **groups** with a small label underneath, such as Font, Alignment and Number on the Home tab." },
           { type: "table", headers: ["Tab", "What you find there"], rows: [
             ["Home", "Formatting: bold, font size, fill colour, borders, number formats, cell styles"],
@@ -156,14 +160,14 @@ window.LEVEL_META[1] = {
             ["Review", "Spell check, comments and sheet protection"],
             ["View", "Zoom, freezing rows, and switching window layout"]
           ] },
-          { type: "p", text: "Some groups have a tiny arrow in the bottom-right corner. That is a **dialog launcher**. Clicking it opens the full dialog box with every option for that group. Example: on the Home tab, click the launcher in the Number group and the full **Format Cells** dialog opens — the same dialog you get with [[Ctrl]] + [[1]], which you will meet properly in the number formatting lesson." }
+          { type: "p", text: "Some groups have a tiny arrow in the bottom-right corner. That is a **dialog launcher**. Clicking it opens the full dialog box with every option for that group. Example: on the Home tab, click the launcher in the Number group. The full **Format Cells** dialog opens. It is the same dialog you get with [[Ctrl]] + [[1]], which you will meet properly in the number formatting lesson." }
         ]
       },
       {
         heading: "The Name Box and the formula bar",
         blocks: [
-          { type: "p", text: "Directly above the grid on the left is a small white box called the **Name Box**. It always shows the address of the **active cell** — the one cell with the thick green border. If it shows `B4`, then B4 is active. You can also type an address like `D25` into the Name Box and press [[Enter]] to jump straight there." },
-          { type: "p", text: "Next to it is the **formula bar**, a long white strip. When a cell is active, this bar shows what is really inside the cell. This matters because cells can display one thing and contain another: a cell may show \"January\" but actually contain a date value, or show 450 because it contains the formula `=B2*C2`. Click any cell and read the formula bar to see the truth." },
+          { type: "p", text: "Directly above the grid on the left is a small white box called the **Name Box**. It always shows the address of the **active cell** — the one cell with the thick green border. If it shows `B4`, then B4 is active. You can also type an address like `D25` into the Name Box. Press [[Enter]] to jump straight there." },
+          { type: "p", text: "Next to it is the **formula bar**, a long white strip. When a cell is active, this bar shows what is really inside the cell. This matters because cells can display one thing and contain another. A cell may show \"January\" but actually contain a date value. Or it may show 450 because it contains the formula `=B2*C2`. Click any cell and read the formula bar to see the truth." },
           { type: "grid", title: "What you see vs what the formula bar shows", rows: [
             ["", "B", "C"],
             ["2", "Notebook", "45"],
@@ -177,16 +181,16 @@ window.LEVEL_META[1] = {
       {
         heading: "Status bar, zoom and the Quick Access Toolbar",
         blocks: [
-          { type: "p", text: "At the very bottom of the window is the **status bar**. It quietly gives useful information: the current zoom level, and — when you select a group of numbers — instant totals like **Sum**, **Count** and **Average** without typing any formula. Try it: select a few cells with numbers and look at the bottom-right corner." },
-          { type: "p", text: "The zoom controls sit on the status bar too. Drag the slider or click the plus and minus buttons to zoom between roughly 10% and 400%. Zoom changes only how big things look on screen; it never changes your data or the printed size." },
-          { type: "p", text: "Above the Ribbon, at the top-left, is the **Quick Access Toolbar** (QAT). It is a tiny row of one-click buttons, and by default it holds **Save**, **Undo** and **Redo**. You can add any command by right-clicking a Ribbon button and choosing \"Add to Quick Access Toolbar\". Many experienced users put their favourite tools there so they never have to hunt through tabs." },
-          { type: "tip", text: "Press [[Alt]] and Excel shows small letter labels over each tab (H for Home, N for Insert, and so on). Press the letter to open that tab using only the keyboard. This is called KeyTips and it is how fast office workers use the Ribbon." }
+          { type: "p", text: "At the very bottom of the window is the **status bar**. It quietly gives useful information. It shows the current zoom level. When you select a group of numbers, it also shows instant totals like **Sum**, **Count** and **Average** — with no formula. Try it: select a few cells with numbers and look at the bottom-right corner." },
+          { type: "p", text: "The zoom controls sit on the status bar too. Drag the slider, or click the plus and minus buttons. You can zoom between roughly 10% and 400%. Zoom changes only how big things look on screen. It never changes your data or the printed size." },
+          { type: "p", text: "Above the Ribbon, at the top-left, is the **Quick Access Toolbar** (QAT). It is a tiny row of one-click buttons. By default it holds **Save**, **Undo** and **Redo**. You can add any command by right-clicking a Ribbon button and choosing \"Add to Quick Access Toolbar\". Many experienced users put their favourite tools there. Then they never have to hunt through tabs." },
+          { type: "tip", text: "Press [[Alt]] and Excel shows small letter labels over each tab (H for Home, N for Insert, and so on). Press the letter to open that tab using only the keyboard. This is called KeyTips. Fast office workers use the Ribbon this way." }
         ]
       },
       {
         heading: "Sheet tabs at the bottom",
         blocks: [
-          { type: "p", text: "Below the grid, at the bottom-left, are the **sheet tabs**. Each tab is one worksheet in the workbook. A new workbook starts with a sheet usually named \"Sheet1\" (sometimes \"Sheet1\" plus extras depending on your version). Click a tab to switch to that sheet. The next lesson shows you how to add, rename, colour and rearrange these tabs — a real tidy-up skill that office files use all the time." }
+          { type: "p", text: "Below the grid, at the bottom-left, are the **sheet tabs**. Each tab is one worksheet in the workbook. A new workbook starts with a sheet usually named \"Sheet1\" (sometimes with extras, depending on your version). Click a tab to switch to that sheet. The next lesson shows you how to add, rename, colour and rearrange these tabs. It is a real tidy-up skill that office files use all the time." }
         ]
       },
       {
@@ -200,8 +204,8 @@ window.LEVEL_META[1] = {
             ["Page Down / Page Up", "Move one screenful down or up"],
             ["Name Box", "Type any address (like F500) and press Enter to jump there"]
           ] },
-          { type: "p", text: "**Ctrl + Arrow** is worth practising until it is automatic. If your data has 3,000 rows of sales, pressing [[Ctrl]] + [[Down]] once lands you on the last row instantly. Press [[Ctrl]] + [[Home]] to return to the top. Fast workers fly through big sheets this way without ever touching the scrollbar." },
-          { type: "p", text: "One more useful control: the small **^** arrow button at the top-right of the Ribbon (or right-clicking the Ribbon and choosing \"Collapse the Ribbon\"). This hides the button area, leaving only the tab names, so a wide sheet has more room. Click any tab name to show the buttons temporarily. Nothing is lost — it is only a display change." },
+          { type: "p", text: "**Ctrl + Arrow** is worth practising until it is automatic. Say your data has 3,000 rows of sales. Pressing [[Ctrl]] + [[Down]] once lands you on the last row instantly. Press [[Ctrl]] + [[Home]] to return to the top. Fast workers fly through big sheets this way. They never touch the scrollbar." },
+          { type: "p", text: "One more useful control: the small **^** arrow button at the top-right of the Ribbon. (You can also right-click the Ribbon and choose \"Collapse the Ribbon\".) This hides the button area and leaves only the tab names. A wide sheet then has more room. Click any tab name to show the buttons temporarily. Nothing is lost — it is only a display change." },
           { type: "warning", text: "When arrow keys seem to move the whole sheet instead of the active cell, **Scroll Lock** is turned on. Look for \"Scroll Lock\" on the status bar and turn the key off on your keyboard." }
         ]
       }
@@ -252,7 +256,8 @@ window.LEVEL_META[1] = {
       "Select cells, ranges, whole rows, columns and the entire sheet",
       "Adjust column width and row height, and hide or unhide them"
     ],
-    intro: "In the last lesson you learned to find your way around the screen. Now we go one level deeper: how an Excel file is organised inside, and how to manage its building blocks.\n\nBy the end you will handle worksheets like tabs in a paper file, and select and resize any part of the grid with confidence. These are the small skills that make every later lesson easier.",
+    intro: "In the last lesson you learned to find your way around the screen. Now we go one level deeper. Let us see how an Excel file is organised inside.\n\nBy the end you will handle worksheets like tabs in a paper file. You will also select and resize any part of the grid with confidence. These small skills make every later lesson easier.",
+    keyIdea: "A workbook is the file you save; worksheets are the tabbed pages inside it.",
     sections: [
       {
         heading: "Workbook vs worksheet",
@@ -262,7 +267,7 @@ window.LEVEL_META[1] = {
             "A **workbook** is the whole file — the thing you save with [[Ctrl]] + [[S]]. Its extension is `.xlsx`.",
             "A **worksheet** is one grid page inside that file. The tabs at the bottom each represent one worksheet."
           ] },
-          { type: "p", text: "A useful real-life picture: the workbook is a ring binder; each worksheet is a sheet of paper inside it. An office file often has several worksheets, for example \"Sales\", \"Expenses\" and \"Summary\", all saved inside one workbook. New workbooks start with one worksheet called Sheet1." }
+          { type: "p", text: "Here is a useful real-life picture. The workbook is a ring binder; each worksheet is a sheet of paper inside it. An office file often has several worksheets, for example \"Sales\", \"Expenses\" and \"Summary\". All of them are saved inside one workbook. New workbooks start with one worksheet called Sheet1." }
         ]
       },
       {
@@ -277,21 +282,21 @@ window.LEVEL_META[1] = {
             ["Copy a sheet", "Right-click the tab, choose Move or Copy, tick \"Create a copy\" (or drag the tab while holding Ctrl)"],
             ["Colour a tab", "Right-click the tab, choose Tab Color, pick a colour"]
           ] },
-          { type: "p", text: "Renaming sheets to meaningful names is more than decoration. A sheet called \"Expenses\" tells any colleague exactly what is inside, and formulas that read data across sheets become easier to understand, like `=Expenses!B10` (the `!` separates the sheet name from the cell)." },
+          { type: "p", text: "Renaming sheets to meaningful names is more than decoration. A sheet called \"Expenses\" tells any colleague exactly what is inside. Formulas that read data across sheets also become easier to understand, like `=Expenses!B10` (the `!` separates the sheet name from the cell)." },
           { type: "tip", text: "Colour the tabs of a shared workbook: green for data that people enter, blue for calculated reports, grey for old archived data. Colleagues learn the colour code within a day." }
         ]
       },
       {
         heading: "Cells and their addresses",
         blocks: [
-          { type: "p", text: "The grid is made of **rows** (numbered 1, 2, 3, ... down to more than a million) and **columns** (lettered A, B, C, ... to XFD — over 16,000 of them). Every cell has an **address**: column letter first, then row number. `C8` means column C, row 8. Row 8 is the eighth row down; column C is the third column from the left." },
+          { type: "p", text: "The grid is made of **rows** and **columns**. Rows are numbered 1, 2, 3, ... down to more than a million. Columns are lettered A, B, C, ... to XFD — over 16,000 of them. Every cell has an **address**: column letter first, then row number. `C8` means column C, row 8. Row 8 is the eighth row down; column C is the third column from the left." },
           { type: "grid", title: "Addresses in a small sheet", rows: [
             ["", "A", "B", "C"],
             ["1", "Employee", "Department", "Salary"],
             ["2", "Arjun Mehta", "Accounts", "32000"],
             ["3", "Priya Nair", "Sales", "28500"]
           ] },
-          { type: "p", text: "In this grid, \"Arjun Mehta\" lives at `A2` and his salary 32000 lives at `C2`. You will use these addresses constantly, because formulas refer to cells by address — you will write your first ones in a few lessons." }
+          { type: "p", text: "In this grid, \"Arjun Mehta\" lives at `A2`. His salary 32000 lives at `C2`. You will use these addresses constantly. Formulas refer to cells by address — you will write your first ones in a few lessons." }
         ]
       },
       {
@@ -307,31 +312,31 @@ window.LEVEL_META[1] = {
             ["The entire sheet", "Click the small triangle above the row numbers, left of column A — or press Ctrl + A"]
           ] },
           { type: "p", text: "Notice the colon: `B2:D5` means \"from B2 to D5\". This notation appears everywhere in Excel, especially inside formulas like `=SUM(B2:B10)`." },
-          { type: "tip", text: "Keyboard selection: click a cell, hold **Shift**, then press the arrow keys. The selection grows cell by cell. Shift + Ctrl + Arrow extends the selection all the way to the end of the data — ideal for selecting a 2,000-row column in one action." }
+          { type: "tip", text: "Keyboard selection: click a cell, hold **Shift**, then press the arrow keys. The selection grows cell by cell. Shift + Ctrl + Arrow extends the selection to the end of the data. It is ideal for selecting a 2,000-row column in one action." }
         ]
       },
       {
         heading: "Column width and row height",
         blocks: [
-          { type: "p", text: "Text often refuses to fit. A cell shows **#####** when a number is too wide for its column — that is Excel saying \"widen me\", not that the data is lost. To fix widths and heights:" },
+          { type: "p", text: "Text often refuses to fit. A cell shows **#####** when a number is too wide for its column. That is Excel saying \"widen me\". Your data is not lost. To fix widths and heights:" },
           { type: "ul", items: [
             "**Auto-fit**: double-click the border line between two column letters (for example between B and C). The column snaps to the widest content. Same trick works for rows.",
             "**Exact size**: right-click the column letter, choose Column Width, and type a number. Right-click a row number for Row Height.",
             "**Drag**: drag the border between column letters to size it by eye."
           ] },
-          { type: "p", text: "To change several columns at once, select them all first (click the first letter, then drag or Ctrl+click the rest), then apply any of the methods above. A tidy report has columns wide enough for their content — nothing cut off, no giant empty gaps." }
+          { type: "p", text: "To change several columns at once, select them all first. Click the first letter, then drag or Ctrl+click the rest. Then apply any of the methods above. A tidy report has columns wide enough for their content. Nothing is cut off, and there are no giant empty gaps." }
         ]
       },
       {
         heading: "Hiding and unhiding",
         blocks: [
-          { type: "p", text: "Sometimes a sheet contains columns colleagues do not need to see — maybe old prices or private salary details — but you do not want to delete them. **Hiding** removes them from view but keeps all data and formulas safe." },
+          { type: "p", text: "Sometimes a sheet has columns colleagues do not need to see. Maybe they hold old prices or private salary details. But you do not want to delete them. **Hiding** removes them from view and keeps all data and formulas safe." },
           { type: "steps", items: [
             "Select the column letter(s) to hide.",
             "Right-click the selection and choose **Hide**. The column disappears; the letter line skips straight from B to D if C is hidden.",
             "To bring it back, select the columns on both sides (B and D), right-click, and choose **Unhide**."
           ] },
-          { type: "warning", text: "Hidden is not secret. Anyone who knows how to unhide can see hidden columns and sheets. Never rely on hiding to protect confidential data — a company should control access to the file itself." }
+          { type: "warning", text: "Hidden is not secret. Anyone who knows how to unhide can see hidden columns and sheets. Never rely on hiding to protect confidential data. A company should control access to the file itself." }
         ]
       }
     ],
@@ -380,34 +385,35 @@ window.LEVEL_META[1] = {
       "Undo and redo mistakes confidently",
       "Enter data quickly across a range using Tab and Enter"
     ],
-    intro: "Data entry is the bread and butter of office Excel work. Somebody has to type the bills, the employee list, the stock counts — and the quality of that typing decides whether every later calculation works.\n\nThis lesson teaches you the rules Excel silently applies to what you type, how to fix mistakes without retyping whole cells, and the small tricks that make a long entry session fast and accurate.",
+    intro: "Data entry is the bread and butter of office Excel work. Somebody has to type the bills, the employee list and the stock counts. Good typing makes every later calculation work.\n\nThis lesson teaches the rules Excel applies to what you type. You will learn to fix mistakes without retyping whole cells. You will also pick up small tricks that make long entry sessions fast and accurate.",
+    keyIdea: "Type into a cell and press Enter; Excel decides if it is text, number or date.",
     sections: [
       {
         heading: "Typing text, numbers and dates",
         blocks: [
-          { type: "p", text: "Type into the active cell, then press [[Enter]] to confirm and move down, or [[Tab]] to confirm and move right. Press [[Esc]] if you change your mind mid-typing. As you type, Excel quietly decides what kind of data it is:" },
+          { type: "p", text: "Type into the active cell. Press [[Enter]] to confirm and move down. Press [[Tab]] to confirm and move right. Press [[Esc]] if you change your mind mid-typing. As you type, Excel quietly decides what kind of data it is:" },
           { type: "table", headers: ["You type", "Excel stores it as", "Alignment in the cell"], rows: [
             ["Sunrise Traders", "Text", "Left edge"],
             ["1250", "Number", "Right edge"],
             ["14-Mar-2026", "Date (a number)", "Right edge"]
           ] },
-          { type: "p", text: "The alignment is the giveaway. **Text hugs the left; numbers and dates hug the right.** This is not decoration — it is Excel telling you what it stored. A name or code that you expected to be treated as a number but shows left-aligned has been stored as text, and maths on it will fail." },
+          { type: "p", text: "The alignment is the giveaway. **Text hugs the left; numbers and dates hug the right.** This is not decoration — it is Excel telling you what it stored. A value you expected as a number but see left-aligned has been stored as text. Maths on it will fail." },
           { type: "grid", title: "Alignment reveals the data type", rows: [
             ["", "A", "B"],
             ["1", "Item", "Notebook"],
             ["2", "Price", "45"],
             ["3", "Ordered on", "14-Mar-2026"]
           ] },
-          { type: "p", text: "In this grid, \"Notebook\" sits left, while 45 and 14-Mar-2026 sit right. Both right-aligned values are numbers under the hood — dates are just numbers wearing a date format. You will see why that matters in the number formatting lesson." },
-          { type: "p", text: "Dates Excel understands include `14-Mar-2026`, `14/3/2026` (depending on your regional settings), `Mar 14, 2026` and `14-Mar`. That last one is handy: typing just `14-Mar` stores this year's 14 March. Always type dates in a form Excel recognises, so later lessons can sort and calculate with them." },
+          { type: "p", text: "In this grid, \"Notebook\" sits left, while 45 and 14-Mar-2026 sit right. Both right-aligned values are numbers under the hood. Dates are just numbers wearing a date format. You will see why that matters in the number formatting lesson." },
+          { type: "p", text: "Dates Excel understands include `14-Mar-2026`, `14/3/2026` (depending on your regional settings), `Mar 14, 2026` and `14-Mar`. That last one is handy: typing just `14-Mar` stores this year's 14 March. Always type dates in a form Excel recognises. Then later lessons can sort and calculate with them." },
           { type: "warning", text: "Never enter a date as text like \"March 14th\" by hand with a trailing \"th\" — Excel stores it as text, sorts it wrongly, and refuses to subtract it from other dates." }
         ]
       },
       {
         heading: "Autocomplete for repeated text",
         blocks: [
-          { type: "p", text: "Type the first letters of an entry you have already typed elsewhere in the same column, and Excel offers to finish it. Type \"Sun\" in a column where \"Sunrise Traders\" exists above, and Excel suggests the rest, selected after your letters. Press [[Enter]] to accept, or keep typing to override." },
-          { type: "p", text: "In a real office list — employee names, supplier names, item names — autocomplete saves enormous typing time and, just as importantly, keeps spellings consistent, so \"Sunrise Traders\" never becomes \"Sunrise Trader\" halfway down the column." }
+          { type: "p", text: "Type the first letters of an entry you have already typed in the same column. Excel offers to finish it. Say \"Sunrise Traders\" exists above. Type \"Sun\" and Excel suggests the rest, selected after your letters. Press [[Enter]] to accept, or keep typing to override." },
+          { type: "p", text: "In a real office list — employee names, supplier names, item names — autocomplete saves enormous typing time. It also keeps spellings consistent. \"Sunrise Traders\" never becomes \"Sunrise Trader\" halfway down the column." }
         ]
       },
       {
@@ -418,15 +424,15 @@ window.LEVEL_META[1] = {
             "Select the cell and press **F2** — the cursor goes into the cell and you edit in place.",
             "Or **double-click** the cell — the same thing, using the mouse."
           ] },
-          { type: "p", text: "In edit mode you can move the cursor with arrows, delete single characters with [[Backspace]] or [[Delete]], and insert new text. Press [[Enter]] to confirm the edit, or [[Esc]] to abandon it and keep the original. There is also a third way: click the cell and edit directly in the **formula bar**, which is comfortable for long text or formulas." },
-          { type: "tip", text: "A single click on a cell selects it; a double-click (or F2) edits it. Knowing which one you want — select or edit — prevents the most common beginner fumbles, like accidentally typing over a good cell." }
+          { type: "p", text: "In edit mode you can move the cursor with arrows. Delete single characters with [[Backspace]] or [[Delete]], and insert new text. Press [[Enter]] to confirm the edit, or [[Esc]] to abandon it and keep the original. There is also a third way: click the cell and edit directly in the **formula bar**. That is comfortable for long text or formulas." },
+          { type: "tip", text: "A single click on a cell selects it; a double-click (or F2) edits it. Knowing which one you want prevents the most common beginner fumbles, like accidentally typing over a good cell." }
         ]
       },
       {
         heading: "Deleting contents: Delete key vs Clear",
         blocks: [
-          { type: "p", text: "Select cell(s) and press the **Delete** key: the contents vanish, but the cell itself remains, with its formatting. This is what you want 95% of the time — clearing a value while keeping the sheet structure." },
-          { type: "p", text: "The difference matters when formatting is involved. Suppose a cell was coloured yellow and bold. Pressing [[Delete]] empties the value but the yellow bold look remains, which confuses the next person. To remove value **and** formatting together, select the cells, then choose **Home > Clear** (the little eraser icon) and pick **Clear All**." },
+          { type: "p", text: "Select cell(s) and press the **Delete** key. The contents vanish, but the cell itself remains, with its formatting. This is what you want 95% of the time: clearing a value while keeping the sheet structure." },
+          { type: "p", text: "The difference matters when formatting is involved. Suppose a cell was coloured yellow and bold. Pressing [[Delete]] empties the value, but the yellow bold look remains. That confuses the next person. To remove value **and** formatting together, select the cells. Then choose **Home > Clear** (the little eraser icon) and pick **Clear All**." },
           { type: "table", headers: ["Command", "Removes"], rows: [
             ["Delete key", "Contents only — formatting stays"],
             ["Clear All", "Contents and formatting"],
@@ -513,6 +519,7 @@ window.LEVEL_META[1] = {
       "Copy formulas down a column safely"
     ],
     intro: "Nobody in a real office types the same data twice. Copying and moving cells is where Excel starts to feel genuinely powerful — and where beginners occasionally create chaos by pasting over the wrong thing.\n\nThis lesson covers the full copy-and-paste toolkit, including Paste Special, one of Excel's most useful hidden gems. Everything here works on the practice workbook, so follow along as you read.",
+    keyIdea: "Paste Special lets you choose exactly what arrives: values only, formulas, formatting, or a transposed layout.",
     sections: [
       {
         heading: "Copy and paste: the basics",
@@ -631,6 +638,7 @@ window.LEVEL_META[1] = {
       "Split and reshape text with Flash Fill (Ctrl + E)"
     ],
     intro: "Typing \"Monday, Tuesday, Wednesday...\" by hand, or the same formula forty times, is exactly the work Excel was built to abolish. This lesson covers two tools that finish your typing for you: AutoFill, which extends patterns, and Flash Fill, which learns from one example and completes the column.\n\nNote: Flash Fill needs Excel 2013 or later, so every version from 2016 onward has it. AutoFill works everywhere. Both appear constantly in office work, from staff rosters to tidying imported customer lists.",
+    keyIdea: "Drag the fill handle to extend any pattern, and Flash Fill (Ctrl + E) finishes typing from one example.",
     sections: [
       {
         heading: "The fill handle: Excel's fastest tool",
