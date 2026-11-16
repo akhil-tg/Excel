@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" font-family="Inter, 'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0d9488" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#134e4a"/>
+    </linearGradient>
+    <linearGradient id="sheetHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0d9488"/>
+      <stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+    <clipPath id="sheetClip">
+      <rect x="752" y="96" width="456" height="232" rx="12"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="400" fill="url(#bg)"/>
+  <rect width="1280" height="400" fill="url(#grid)"/>
+  <circle cx="1180" cy="40" r="180" fill="#0d9488" opacity="0.06"/>
+  <circle cx="120" cy="380" r="140" fill="#14b8a6" opacity="0.05"/>
+
+  <!-- Logo mark -->
+  <g transform="translate(64,96)">
+    <rect width="60" height="60" rx="14" fill="#0d9488"/>
+    <rect x="12" y="12" width="15" height="15" rx="3" fill="#ffffff"/>
+    <rect x="33" y="12" width="15" height="15" rx="3" fill="#ffffff" opacity="0.75"/>
+    <rect x="12" y="33" width="15" height="15" rx="3" fill="#ffffff" opacity="0.75"/>
+    <rect x="33" y="33" width="15" height="15" rx="3" fill="#ffffff"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="148" y="140" font-size="46" font-weight="800" fill="#ffffff">Excel Lab</text>
+  <text x="64" y="196" font-size="21" fill="#94a3b8">Learn Microsoft Excel — <tspan fill="#5eead4" font-weight="600">zero to professional</tspan>, free and hands-on.</text>
+
+  <!-- Stat chips -->
+  <g font-size="15" font-weight="600">
+    <rect x="64" y="234" width="118" height="40" rx="20" fill="#0d9488" fill-opacity="0.12" stroke="#134e4a"/>
+    <text x="123" y="259" text-anchor="middle" fill="#5eead4">7 Levels</text>
+
+    <rect x="196" y="234" width="130" height="40" rx="20" fill="#0d9488" fill-opacity="0.12" stroke="#134e4a"/>
+    <text x="261" y="259" text-anchor="middle" fill="#5eead4">74 Lessons</text>
+
+    <rect x="340" y="234" width="204" height="40" rx="20" fill="#0d9488" fill-opacity="0.12" stroke="#134e4a"/>
+    <text x="442" y="259" text-anchor="middle" fill="#5eead4">53 Practice Workbooks</text>
+
+    <rect x="558" y="234" width="150" height="40" rx="20" fill="#0d9488" fill-opacity="0.12" stroke="#134e4a"/>
+    <text x="633" y="259" text-anchor="middle" fill="#5eead4">Quizzes + Dashboard</text>
+  </g>
+
+  <!-- Spreadsheet mockup -->
+  <g transform="rotate(-3 980 212)">
+    <!-- window shadow -->
+    <rect x="758" y="104" width="456" height="232" rx="12" fill="#000000" opacity="0.35"/>
+    <rect x="752" y="96" width="456" height="232" rx="12" fill="#1e293b" stroke="#334155"/>
+
+    <!-- title bar -->
+    <g clip-path="url(#sheetClip)">
+      <circle cx="776" cy="116" r="5" fill="#ef4444"/>
+      <circle cx="792" cy="116" r="5" fill="#f59e0b"/>
+      <circle cx="808" cy="116" r="5" fill="#22c55e"/>
+      <rect x="840" y="108" width="200" height="16" rx="8" fill="#0f172a" opacity="0.8"/>
+      <text x="850" y="120" font-size="10" fill="#64748b">sales-summary.xlsx</text>
+    </g>
+
+    <!-- formula bar -->
+    <rect x="764" y="132" width="432" height="24" rx="6" fill="#0f172a"/>
+    <text x="776" y="148" font-size="12" fill="#0d9488" font-weight="700">fx</text>
+    <text x="800" y="148" font-size="12" fill="#5eead4" font-family="Consolas, monospace">=SUM(B2:B10)</text>
+
+    <!-- column headers -->
+    <g clip-path="url(#sheetClip)">
+      <rect x="764" y="164" width="432" height="20" fill="url(#sheetHeader)"/>
+      <g font-size="10" fill="#ffffff" font-weight="600">
+        <text x="826" y="177">A</text><text x="912" y="177">B</text>
+        <text x="998" y="177">C</text><text x="1084" y="177">D</text>
+        <text x="1170" y="177">E</text>
+      </g>
+      <text x="772" y="177" font-size="10" fill="#ccfbf1" font-weight="600">1</text>
+
+      <!-- grid -->
+      <g stroke="#334155" stroke-width="1">
+        <line x1="764" y1="184" x2="1196" y2="184"/>
+        <line x1="764" y1="214" x2="1196" y2="214"/>
+        <line x1="764" y1="244" x2="1196" y2="244"/>
+        <line x1="764" y1="274" x2="1196" y2="274"/>
+        <line x1="764" y1="304" x2="1196" y2="304"/>
+        <line x1="806" y1="164" x2="806" y2="328"/>
+        <line x1="892" y1="164" x2="892" y2="328"/>
+        <line x1="978" y1="164" x2="978" y2="328"/>
+        <line x1="1064" y1="164" x2="1064" y2="328"/>
+        <line x1="1150" y1="164" x2="1150" y2="328"/>
+      </g>
+      <!-- row numbers -->
+      <g font-size="10" fill="#64748b">
+        <text x="772" y="203">2</text>
+        <text x="772" y="233">3</text>
+        <text x="772" y="263">4</text>
+        <text x="772" y="293">5</text>
+      </g>
+      <!-- cell text -->
+      <g font-size="11" fill="#e2e8f0">
+        <text x="814" y="203">Region</text>
+        <text x="814" y="233">North</text>
+        <text x="814" y="263">South</text>
+        <text x="814" y="293">East</text>
+        <text x="920" y="233" font-family="Consolas, monospace">48,200</text>
+        <text x="920" y="263" font-family="Consolas, monospace">39,150</text>
+        <text x="920" y="293" font-family="Consolas, monospace">51,840</text>
+      </g>
+      <!-- total row highlight -->
+      <rect x="892" y="304" width="86" height="24" fill="#0d9488" fill-opacity="0.18"/>
+      <text x="920" y="321" font-size="11" fill="#5eead4" font-weight="700" font-family="Consolas, monospace">139,190</text>
+    </g>
+  </g>
+
+  <!-- check badge -->
+  <g transform="translate(1176,296)">
+    <circle r="22" fill="#22c55e"/>
+    <path d="M -8 0 L -2 6 L 8 -5" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
