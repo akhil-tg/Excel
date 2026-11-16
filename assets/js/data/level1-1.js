@@ -25,6 +25,7 @@ window.LEVEL_META[1] = {
       "Save a workbook with Ctrl + S in the xlsx format"
     ],
     intro: "Excel is the most used office program in the world, after word processors. Almost every office job needs it. Accounts, sales, HR and stores all use it daily.\n\nThis lesson starts from zero. You will learn what a spreadsheet actually is. You will see who uses Excel in a normal working day. Then you will open your first blank workbook and save it safely. No prior experience is needed.",
+    clip: "assets/files/clips/l1-what-is-excel.mp4",
     keyIdea: "Excel is a big grid of boxes called cells, and each cell holds one piece of information.",
     sections: [
       {

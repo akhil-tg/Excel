@@ -379,6 +379,11 @@ html.dark .sidebar-list a.active { color: var(--teal-200); }
 .key-idea svg { width: 22px; height: 22px; flex: none; margin-top: 2px; color: var(--primary); }
 .key-idea p { margin: 4px 0 0; font-size: 1.02rem; }
 .key-idea-lbl { font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--primary); }
+.clip-card { padding: 18px; margin-bottom: 26px; }
+.clip-card video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius); background: #0b1220; }
+.clip-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 4px 2px; color: var(--text-3); font-size: .85rem; font-weight: 600; flex-wrap: wrap; }
+.clip-lbl { display: inline-flex; gap: 7px; align-items: center; font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--primary); }
+.clip-lbl svg { width: 15px; height: 15px; }
 .objectives h2 { font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 .objectives h2 svg { width: 17px; height: 17px; color: var(--primary); }
 .objectives ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--text-2); font-size: .95rem; }
