@@ -7,7 +7,12 @@
 **A complete, free Excel learning platform — 7 levels, 74 lessons, real workbooks, real office projects.**
 From your first cell to Power Query, dashboards and VBA.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-akhil--tg.github.io%2FExcel-0d9488?style=for-the-badge&logo=github)](https://akhil-tg.github.io/Excel/)
+<div align="center">
+
+<a href="https://akhil-tg.github.io/Excel/">
+<img alt="Go to Live Site" src="https://img.shields.io/badge/GO_TO_LIVE_SITE-akhil--tg.github.io%2FExcel-0d9488?style=for-the-badge&logo=microsoftexcel&logoColor=white" height="40">
+</a>
+
 [![Levels](https://img.shields.io/badge/Levels-7-115e59?style=for-the-badge)]()
 [![Lessons](https://img.shields.io/badge/Lessons-74-134e4a?style=for-the-badge)]()
 [![Workbooks](https://img.shields.io/badge/Practice_Workbooks-53-0f766e?style=for-the-badge)]()
