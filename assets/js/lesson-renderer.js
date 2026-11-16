@@ -230,15 +230,6 @@ function renderLessonPage() {
     h += '<div class="key-idea card">' + icon("bulb") + '<div><span class="key-idea-lbl">Key idea</span><p>' + md(lesson.keyIdea) + "</p></div></div>";
   }
 
-  /* explainer clip */
-  if (lesson.clip) {
-    var poster = lesson.clip.replace(/\.mp4$/, ".jpg");
-    h += '<div class="clip-card card">'
-      + '<video controls preload="none" playsinline poster="' + escHtml(poster) + '" src="' + escHtml(lesson.clip) + '"></video>'
-      + '<div class="clip-meta"><span class="clip-lbl">' + icon("play") + "Video lesson</span>"
-      + "<span>Easy explainer · ~2 min</span></div></div>";
-  }
-
   /* objectives */
   if (lesson.objectives && lesson.objectives.length) {
     h += '<div class="objectives card"><h2>' + icon("target") + "In this lesson you will learn to</h2><ul>"

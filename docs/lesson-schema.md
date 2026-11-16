@@ -54,9 +54,6 @@ in a `-2` file. Do not define anything else globally.
   intro: "…\n\n…",                   // 2 short paragraphs separated by \n\n
   keyIdea: "…",                      // ONE simple sentence (max 20 words) — the single main takeaway,
                                      // rendered as a teal "Key idea" callout at the top of the lesson
-  clip: "assets/files/clips/<id>.mp4", // optional explainer video (H.264 MP4, 16:9). A same-name
-                                     // .jpg poster must sit beside it. Rendered as a click-to-play
-                                     // card between the Key idea and the objectives.
   sections: [ SECTION, … ],          // 3-6 sections
   mistakes: [ { wrong: "…", right: "…", why: "…" } ],   // 2-4
   shortcuts: [ { keys: "Ctrl + Z", action: "…" } ],     // 0-8, only ones actually taught
