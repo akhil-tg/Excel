@@ -10,3 +10,6 @@ desktop.ini
 
 # GitNexus index artifacts
 .gitnexus/
+
+# Local tooling artifacts
+.engram/
